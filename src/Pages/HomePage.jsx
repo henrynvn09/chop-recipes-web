@@ -1,12 +1,16 @@
 import React from "react";
-
+import Navbar from "../Components/Navbar";
 import '../Styles/global.css'
+
 
 
 function HomePage(){
     return (
         <div>
-            Edmund is the best :)
+            <Navbar />
+            <div>
+                Edmund is the best :)
+            </div>
         </div>
 
     );
