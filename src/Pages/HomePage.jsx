@@ -1,10 +1,14 @@
 import React from "react";
 
+import '../Styles/global.css'
+
+
 function HomePage(){
     return (
         <div>
-            <h1>Home Page</h1>
+            Edmund is the best :)
         </div>
+
     );
 }
 
