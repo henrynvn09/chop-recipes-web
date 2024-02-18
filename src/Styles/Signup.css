@@ -1,0 +1,139 @@
+.center-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../assets/signupbackground.png);
+    background-size: cover;
+    background-position: center;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease-in-out; /* Smooth transition over 1 second */
+}
+
+.center-page.fade-in {
+    opacity: 1; /* Fades in the background image */
+}
+
+
+/* login set up for the form and sign up */
+.signin-setup {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+
+.center-logo {
+    text-align: center;
+    margin-bottom: 5px; /* Adjust as needed */
+}
+
+/* Style the custom-div */
+.signup-form {
+  margin: 40px 200px;
+  padding: 1rem; /* Equivalent to 3 units of padding */
+  background-color: #fff; /* White background color */
+  width: 400px; /* Width set to 25% of its containing element */
+  height: 550px;
+  border: 1px solid #BFBFBF; /* 1px solid black border */
+  border-radius: 8px;
+}
+
+.email-password{
+    margin-bottom: 1rem; 
+}
+
+.custom-input {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-input::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.login-logo{
+    padding: 10px;
+    width: 200px;
+    max-width: 100%;
+    max-height: 100%;
+    height: 200px;
+}
+
+.login-button {
+  background-color: #3897f0; /* Instagram blue color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.login-button:hover {
+  background-color: #3173b1; 
+}
+
+.login-button:disabled {
+  background-color: #b2dffc; 
+  cursor: not-allowed;
+}
+
+.sign-up {
+    padding: 14px 95px; 
+    background-color: #fff; 
+    border: 1px solid #BFBFBF; 
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+
+@keyframes shakeAndFade {
+  0% { transform: translateX(0); opacity: 1; }
+  25% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.popup {
+  animation: shakeAndFade 0.5s ease-in-out; /* Initial shake, fade-in, and fade-out after 2.5 seconds */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden;
+  color: #FF1A1A;
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* xs */
+/* @media (min-width: 475px) {} */
+
+/* sm */
+/* @media (min-width: 640px) {} */
+
+/* md */
+/* @media (min-width: 768px) {} */
+
+/* lg */
+/* @media (min-width: 1024px) {} */
+
+/* xl */
+/* @media (min-width: 1280px) {} */
+
+/* 2xl */
+/* @media (min-width: 1536px) {} */

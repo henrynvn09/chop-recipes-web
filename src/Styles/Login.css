@@ -100,6 +100,26 @@
     font-size: 15px;
 }
 
+@keyframes shakeAndFade {
+  0% { transform: translateX(0); opacity: 1; }
+  25% { transform: translateX(-1px); }
+  50% { transform: translateX(1px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.popup {
+  animation: shakeAndFade 0.5s ease-in-out; /* Initial shake, fade-in, and fade-out after 2.5 seconds */
+  opacity: 0; /* Initially hidden */
+  visibility: hidden;
+  color: #FF1A1A;
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* xs */
 /* @media (min-width: 475px) {} */
 
