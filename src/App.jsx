@@ -3,17 +3,17 @@ import HomePage from './Pages/HomePage';
 import ContactPage from './Pages/ContactPage';
 import ErrorPage from './Pages/ErrorPage';
 import UserPage from './Pages/UserPage';
-import Navbar from './Components/Navbar';
 import LoginPage from './Pages/LoginPage';
-
+import SignUpPage from './Pages/SignUpPage';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/contacts" element={<ContactPage/>} />
           <Route path="/user" element={<UserPage/>} />
           <Route path="*" element={<ErrorPage />} />
