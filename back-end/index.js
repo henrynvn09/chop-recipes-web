@@ -1,17 +1,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require("cors")
+const cors = require("cors");
 const UserModel = require('./models/Users'); 
-
+require("dotenv").config({ path: "./config.env"});
 
 const app = express();
 //turns it to json file
 app.use(express.json());
+
 //access backend from front end
 app.use(cors());
 
 //this is just local connection to the database
-mongoose.connect('mongodb://localhost:27017/users');
+// mongoose.connect('mongodb://localhost:27017/users');
+MONGODB = process.env.MONGODB_URI
+
+mongoose.connect(MONGODB)
+
 
 app.post ('/login', (req, res) => {
     const {email, password} = req.body;
@@ -50,3 +55,4 @@ app.post('/signup', (req, res) => {
 app.listen(3001, () => {
     console.log('Server is running...');
 });
+
