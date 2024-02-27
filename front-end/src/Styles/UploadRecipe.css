@@ -1,0 +1,66 @@
+.center-page-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+textarea {
+  width: 750px; /* Make the textarea fill the container width */
+  height: 100px; /* Set the initial height of the textarea */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+.select-image-button {
+  display: inline-block;
+  padding: 10px 20px; /* Adjust padding as needed */
+  font-size: 16px; /* Adjust font size as needed */
+  cursor: pointer;
+  border-radius: 5px; /* Add rounded corners if desired */
+  border: 2px solid red; /* Add a 2px solid red border */
+}
+
+/* Optional: Hover effect */
+.select-image-button:hover {
+  background-color: darkred; /* Change color on hover */
+  border-color: darkred; /* Change border color on hover */
+}
+
+/* Optional: Hover effect */
+.select-image-button:hover {
+  background-color: darkred; /* Change color on hover */
+}
+
+.upload-image{
+    width: 150px;
+    height: 150px;
+}
+
+.instruction-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.tags-container {
+  margin-top: 20px;
+  
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Adjust the gap between tags as needed */
+}
+
+.tag-pill {
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.tag-pill button {
+  margin-left: 5px;
+  cursor: pointer;
+}
