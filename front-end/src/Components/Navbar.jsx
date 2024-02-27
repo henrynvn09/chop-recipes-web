@@ -55,6 +55,9 @@ const Navbar = () => {
         <li>
           <Link to="/user">User</Link>
         </li>
+        <li>
+          <Link to="/upload-recipe">Upload Recipe</Link>
+        </li>
       </ul>
     </nav>
   );
