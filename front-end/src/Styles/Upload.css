@@ -1,0 +1,72 @@
+form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+  
+input, textarea {
+    padding: 5px;
+}
+  
+form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
+
+#steps {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+  }
+  
+
+#steps li {
+    background-color: Cornsilk;
+    border: 1px solid BurlyWood;
+    border-radius: 5px 2px;
+    margin: 8px 0;
+}
+  
+#steps li div {
+    position: relative;
+}
+  
+#steps li div button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: 0;
+    padding: 10px;
+    font-weight: bolder;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+#steps li div button:hover, #steps li div button:focus {
+    box-shadow: 0 0 1px black;
+  }
+  
+#steps li h2 {
+    background-color: NavajoWhite;
+    margin: 0;
+    padding: 4px;
+}
+  
+#steps li p {
+    margin: 8px;
+}
+
+.stepImage {
+    width: 30%; 
+    height: 30%; 
+    object-fit: cover;
+} 
+.container {
+    width: 80%;
+    max-width: 1200px; 
+    margin-left: auto;
+    margin-right: auto;
+  }
