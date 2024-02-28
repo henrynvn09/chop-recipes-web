@@ -9,6 +9,9 @@ import AboutPage from './Pages/AboutPage';
 import UploadPage from './Pages/UploadPage';
 import Navbar from "./Components/Navbar";
 
+
+
+
 function App() {
   return (
     <>
