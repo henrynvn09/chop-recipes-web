@@ -1,72 +1,188 @@
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 form {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
-  
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
 input, textarea {
-    padding: 5px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-  
-form button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px;
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
 }
 
 #steps {
-    list-style: none;
-    text-align: center;
-    padding: 0;
-  }
-  
+  list-style: none;
+  padding: 0;
+}
 
 #steps li {
-    background-color: Cornsilk;
-    border: 1px solid BurlyWood;
-    border-radius: 5px 2px;
-    margin: 8px 0;
-}
-  
-#steps li div {
-    position: relative;
-}
-  
-#steps li div button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: transparent;
-    border: 0;
-    padding: 10px;
-    font-weight: bolder;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-#steps li div button:hover, #steps li div button:focus {
-    box-shadow: 0 0 1px black;
-  }
-  
-#steps li h2 {
-    background-color: NavajoWhite;
-    margin: 0;
-    padding: 4px;
-}
-  
-#steps li p {
-    margin: 8px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 16px 0;
+  padding: 20px;
 }
 
-.stepImage {
-    width: 30%; 
-    height: 30%; 
-    object-fit: cover;
+#steps li h2 {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+  margin: 0 -20px 20px -20px;
+}
+
+#steps li p {
+  margin: 10px 0;
+}
+
+#steps li img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+#steps li div button {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#steps li div button:hover {
+  background-color: #c62828;
+}
+
+
+#tags {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tags li {
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+.tag-container {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.tag-container button {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.tag-container button:hover {
+  background-color: #c62828;
+}
+
+
+.coverImageContainer {
+  max-width: 60%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.coverImageContainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0; 
+  max-height: 40vh; 
 } 
-.container {
-    width: 80%;
-    max-width: 1200px; 
-    margin-left: auto;
-    margin-right: auto;
-  }
+
+.stepImageContainer {
+  max-width: 60%; /* Adjust the max-width as needed */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.stepImageContainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0;
+  max-height: 40vh; /* Adjust the max-height as needed */
+}
+
+.ingredient-table {
+  width: 100%;
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+.ingredient-table th, .ingredient-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.ingredient-table th {
+  background-color: #f2f2f2;
+}
+
+.ingredient-table td {
+  background-color: #fff;
+}
