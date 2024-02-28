@@ -11,7 +11,11 @@ export default function StepsList({ allSteps, handleDelete }) {
               <button onClick={() => handleDelete(id)}>X</button>
             </div>
             {!description ? null : <p>{description}</p>}
-            {image && <img src={URL.createObjectURL(image)} alt={title} className="stepImage"/>}
+            {image && (
+              <div className="stepImageContainer">
+                <img src={URL.createObjectURL(image)} alt={title} className="stepImage" />
+              </div>
+            )}
           </li>
         ))}
       </ul>
