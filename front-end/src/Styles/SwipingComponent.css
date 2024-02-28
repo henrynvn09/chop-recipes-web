@@ -1,0 +1,22 @@
+.swipe-container {
+    position: relative;
+    width: auto;
+    display: block;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .swipe-item {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: #4caf50; /* Green */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
