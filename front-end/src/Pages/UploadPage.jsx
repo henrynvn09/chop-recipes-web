@@ -75,7 +75,7 @@ const handleFormSubmit = async (event) => {
   
     const formData = new FormData();
     formData.append('recipeTitle', recipeTitle);
-    formData.append('coverImage', coverImage);
+    formData.append('coverImage', coverImage.image.files[0]);
   
     ingredients.forEach((ingredient, index) => {
       formData.append(`ingredients[${index}].name`, ingredient.name);
@@ -89,23 +89,29 @@ const handleFormSubmit = async (event) => {
     allSteps.forEach((step, index) => {
       formData.append(`allSteps[${index}].title`, step.title);
       formData.append(`allSteps[${index}].description`, step.description);
-      formData.append(`allSteps[${index}].image`, step.image);
+      formData.append(`allSteps[${index}].image`, step.image.files[0]);
     });
   
-    const response = await fetch('http://localhost:3001/api/recipes', {
+    const response = await fetch('http://localhost:3000/api/recipes', {
       method: 'POST',
       body: formData,
+      headers: {
+        'Content-Type': 'application/json'
+        }
     });
   
     const data = await response.json();
     console.log(data);
-  
+    
     // Reset the form after submission
-    setRecipeTitle('');
-    setCoverImage(null);
-    setIngredients([]);
-    setTags([]);
-    setAllSteps([]);
+    if (data) {
+        setRecipeTitle('');
+        setCoverImage(null);
+        setIngredients([]);
+        setTags([]);
+        setAllSteps([]);
+    }
+
   };
 
     return (

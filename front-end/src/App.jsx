@@ -8,6 +8,7 @@ import SignUpPage from './Pages/SignUpPage';
 import AboutPage from './Pages/AboutPage';  
 import UploadPage from './Pages/UploadPage';
 import Navbar from "./Components/Navbar";
+import ViewRecipe from './Pages/viewPage';
 import UploadRecipe from './Components/UploadRecipe';
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/contacts" element={<ContactPage/>} />
           <Route path="/about" element={<AboutPage />} /> 
           <Route path="/upload-recipe" element={<UploadPage/>} />
+          <Route path="/view-recipe" element={<ViewRecipe/>} />
           <Route path="/user" element={<UserPage/>} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
