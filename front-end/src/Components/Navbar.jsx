@@ -58,6 +58,9 @@ const Navbar = () => {
         <li>
           <Link to="/upload-recipe">Upload Recipe</Link>
         </li>
+        <li>
+          <Link to="/view-recipe">View Recipe</Link>
+        </li>
       </ul>
     </nav>
   );

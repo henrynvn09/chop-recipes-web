@@ -1,20 +1,10 @@
-body, h1, h2, h3, p, ul, li {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f8f8f8;
-}
-
-main {
-  max-width: 1200px;
+.upload-page {
+  width: 50%;
   margin: 0 auto;
   padding: 20px;
 }
 
-form {
+.upload-page form {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -22,12 +12,12 @@ form {
   margin-bottom: 20px;
 }
 
-label {
+.upload-page label {
   display: block;
   margin-bottom: 8px;
 }
 
-input, textarea {
+.upload-page input, textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 16px;
@@ -35,7 +25,7 @@ input, textarea {
   border-radius: 4px;
 }
 
-button {
+.upload-page button {
   background-color: #4caf50;
   color: #fff;
   border: none;
@@ -45,7 +35,7 @@ button {
   font-size: 16px;
 }
 
-button:hover {
+.upload-page button:hover {
   background-color: #45a049;
 }
 
