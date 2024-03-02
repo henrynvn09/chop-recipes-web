@@ -8,6 +8,7 @@ import SignUpPage from './Pages/SignUpPage';
 import AboutPage from './Pages/AboutPage';  
 import UploadPage from './Pages/UploadPage';
 import Navbar from "./Components/Navbar";
+import UploadRecipe from './Components/UploadRecipe';
 
 
 
