@@ -95,17 +95,23 @@ const handleFormSubmit = async (event) => {
     const response = await fetch('http://localhost:3001/api/recipes', {
       method: 'POST',
       body: formData,
+      headers: {
+        'Content-Type': 'application/json'
+        }
     });
   
     const data = await response.json();
     console.log(data);
-  
+    
     // Reset the form after submission
-    setRecipeTitle('');
-    setCoverImage(null);
-    setIngredients([]);
-    setTags([]);
-    setAllSteps([]);
+    if (data) {
+        setRecipeTitle('');
+        setCoverImage(null);
+        setIngredients([]);
+        setTags([]);
+        setAllSteps([]);
+    }
+
   };
 
     return (
