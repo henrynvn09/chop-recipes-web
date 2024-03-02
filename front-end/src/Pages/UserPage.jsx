@@ -1,69 +1,168 @@
-import React from 'react'
-// import Navbar from '../Components/Navbar';
-const UserPage = () => {
+import React from "react";
+import myImage from "../assets/signupbackground.png"; 
+import Navbar from "../Components/Navbar.jsx";
+import "../Styles/UserPage.css"
+//import Footer from "../components/Footer.jsx";
+
+export default function Profile() {
   return (
-    <div>
-        {/* <Navbar /> */}
-        <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-            <div>
-            "The sun rose slowly over the horizon, casting a warm golden glow across the landscape. Birds chirped cheerfully in the trees, their songs echoing through the crisp morning air. As I stepped outside, I inhaled deeply, filling my lungs with the scent of fresh dew and blooming flowers. It was a new day, full of promise and possibility. The world seemed to awaken with me, buzzing with energy and life. I walked along the winding path, the crunch of gravel beneath my feet a soothing rhythm. The sky above was painted in shades of pink and orange, a masterpiece of nature's creation. In the distance, mountains loomed majestically, their peaks kissed by the first light of dawn. I paused for a moment to take it all in, feeling grateful for the beauty that surrounded me. Every leaf, every blade of grass seemed to dance with joy, celebrating the gift of another day. I smiled, my heart overflowing with gratitude. Life was a precious gift, a treasure to be cherished and savored. With each passing moment, I vowed to live fully, to embrace the magic of the present. The world was vast and full of wonder, waiting to be explored. I set out with a sense of purpose, eager to discover the secrets hidden within its folds. Along the way, I met kindred spirits, souls whose paths intersected with mine. We laughed, we cried, we shared stories beneath the starlit sky. Time seemed to stand still as we forged connections, bonds that would last a lifetime. 
-        </div>
-        <br/>
-        
-
-    </div>
-  )
+    <>
+      <main className="profile-page">
+        <section className="profile-section">
+            <div
+            className="profile-background"
+            style={{backgroundImage: `url(${myImage})`}}
+            >
+            <span
+              className="black-overlay"
+            ></span>
+          </div>
+          <div className="bottom-shape">
+            <svg
+              className="svg-shape"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              version="1.1"
+              viewBox="0 0 2560 100"
+              x="0"
+              y="0"
+            >
+              <polygon
+                className="polygon-shape"
+                points="2560 0 2560 100 0 100"
+              ></polygon>
+            </svg>
+          </div>
+        </section>
+        <section className="profile-segment">
+          <div className="container">
+            <div className="profile-card">
+              <div className="profile-top">
+                <div className="profile-topCenter">
+                  <div className="image-container">
+                    <div className="relative">
+                      <img
+                        alt="..."
+                        src={myImage}
+                        className="profile-img"
+                        style={{ maxWidth: "200px" }}
+                      />
+                    </div>
+                  </div>
+                  <div className="button-container">
+                    <div className="py-6 px-3 mt-32 sm:mt-0">
+                      <button
+                        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                        type="button"
+                        style={{ transition: "all .15s ease" }}
+                      >
+                        Connect
+                      </button>
+                    </div>
+                  </div>
+                  <div className="profile-stat">
+                    <div className="stat">
+                      <div className="stat-number">
+                        <span className="value">
+                          22
+                        </span>
+                        <span className="placeholder">Friends</span>
+                      </div>
+                      <div className="stat-number">
+                        <span className="value">
+                          10
+                        </span>
+                        <span className="placeholder">Recipes</span>
+                      </div>
+                      <div className="stat-number">
+                        <span className="value">
+                          89
+                        </span>
+                        <span className="placeholder">Points</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="profile-info">
+                <h3 className="profile-name">
+                  Chop
+                </h3>
+                <div className="profile-location">
+                  <i className="profile-icon fas fa-map-marker-alt"></i>
+                  Los Angeles, California
+                </div>
+                <div className="profile-job">
+                  <i className="profile-icon fas fa-briefcase"></i>
+                  Student
+                </div>
+                <div className="profile-university">
+                  <i className="profile-icon fas fa-university"></i>
+                  University of California
+                </div>
+              </div>
+              <div className="recipes-heading"><h2>Your recommended recipes</h2></div>
+                <div className="recipes-container">
+                  <div className="recipe">
+                      <a
+                        href="./Aboutpage.jsx"
+                        className="font-normal text-pink-500"
+                        onClick={e => e.preventDefault()}
+                      >
+                        <img alt="No recipes found" src={myImage} style={{ maxWidth: "200px" }}/>
+                      </a>
+                  </div>
+                  <div className="recipe">
+                      <a
+                        href="./Aboutpage.jsx"
+                        className="font-normal text-pink-500"
+                        onClick={e => e.preventDefault()}
+                      >
+                        <img alt="No recipes found" src={myImage} style={{ maxWidth: "200px" }}/>
+                      </a>
+                  </div>
+                  <div className="recipe">
+                      <a
+                        href="./Aboutpage.jsx"
+                        className="font-normal text-pink-500"
+                        onClick={e => e.preventDefault()}
+                      >
+                        <img alt="No recipes found" src={myImage} style={{ maxWidth: "200px" }}/>
+                      </a>
+                  </div>
+                  <div className="recipe">
+                      <a
+                        href="./Aboutpage.jsx"
+                        className="font-normal text-pink-500"
+                        onClick={e => e.preventDefault()}
+                      >
+                        <img alt="No recipes found" src={myImage} style={{ maxWidth: "200px" }}/>
+                      </a>
+                  </div>
+                  <div className="recipe">
+                      <a
+                        href="./Aboutpage.jsx"
+                        className="font-normal text-pink-500"
+                        onClick={e => e.preventDefault()}
+                      >
+                        <img alt="No recipes found" src={myImage} style={{ maxWidth: "200px" }}/>
+                      </a>
+                  </div>
+                  <div className="recipe">
+                      <a
+                        href="./Aboutpage.jsx"
+                        className="font-normal text-pink-500"
+                        onClick={e => e.preventDefault()}
+                      >
+                        <img alt="No recipes found" src={myImage} style={{ maxWidth: "200px" }}/>
+                      </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+     {/* <Footer /> */}
+    </>
+  );
 }
-
-export default UserPage;
