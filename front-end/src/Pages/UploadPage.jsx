@@ -69,27 +69,44 @@ export default function UploadPage() {
         setTags((prev) => prev.filter((_, i) => i !== index));
     };
 
-    // Recipe Submit to database
-    const handleFormSubmit = (event) => {
-        event.preventDefault();
-
-        // Perform the database submission logic here
-        // use a backend API to handle the actual database interaction
-        console.log({
-        recipeTitle,
-        coverImage,
-        ingredients,
-        tags,
-        allSteps,
-        });
-
-        // Reset the form after submission
-        setRecipeTitle("");
-        setCoverImage(null);
-        setIngredients([]);
-        setTags([]);
-        setAllSteps([]);
-    };
+// Recipe Submit to database
+const handleFormSubmit = async (event) => {
+    event.preventDefault();
+  
+    const formData = new FormData();
+    formData.append('recipeTitle', recipeTitle);
+    formData.append('coverImage', coverImage);
+  
+    ingredients.forEach((ingredient, index) => {
+      formData.append(`ingredients[${index}].name`, ingredient.name);
+      formData.append(`ingredients[${index}].quantity`, ingredient.quantity);
+    });
+  
+    tags.forEach((tag, index) => {
+      formData.append(`tags[${index}]`, tag);
+    });
+  
+    allSteps.forEach((step, index) => {
+      formData.append(`allSteps[${index}].title`, step.title);
+      formData.append(`allSteps[${index}].description`, step.description);
+      formData.append(`allSteps[${index}].image`, step.image);
+    });
+  
+    const response = await fetch('http://localhost:3001/api/recipes', {
+      method: 'POST',
+      body: formData,
+    });
+  
+    const data = await response.json();
+    console.log(data);
+  
+    // Reset the form after submission
+    setRecipeTitle('');
+    setCoverImage(null);
+    setIngredients([]);
+    setTags([]);
+    setAllSteps([]);
+  };
 
     return (
         <main className="upload-page">
