@@ -4,11 +4,12 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema(
   {
+    title: { type: String, required: true },
+    cover_image: { type: String, required: true },
     content_list: { type: Array, required: true },
     tagName_lists: { type: Array, required: true },
     ingredient_lists: { type: Array, required: true },
-    total_rating: { type: Number, required: true },
-    rating_count: { type: Number, required: true },
+    author_id: { type: String, required: true },
   },
   {
     timestamps: true, // to auto track time
