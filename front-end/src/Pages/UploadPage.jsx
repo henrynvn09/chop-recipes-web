@@ -21,11 +21,30 @@ export default function UploadPage() {
         setRecipeTitle(event.target.value);
     };
 
+    let resultObj;
+
+
     // Recipe Coverimage
     const [coverImage, setCoverImage] = useState(null);
-    const handleCoverImageChange = (event) => {
-        setCoverImage(event.target.files[0]);
-    };
+    // const handleCoverImageChange = (event) => {
+    //     setCoverImage(event.target.files[0]);
+    // };
+    const handleCoverImageBase64 = (event) =>{
+        console.log(event);
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = () => {
+            console.log(reader.result); // base64 encoded string
+            setCoverImage(reader.result);
+        };
+        reader.onerror = (error) => { 
+            console.log("Error: ", error);
+        }
+    }
+    // const handleCombinedImageChange = (event) => {
+    //     handleCoverImageChange(event);
+    //     handleCoverImageBase64(event);
+    // };
 
     // Recipe Steps
     const [newStep, setNewStep] = useState({});
@@ -37,9 +56,22 @@ export default function UploadPage() {
 
     // Recipe Steps image
     const [image, setImage] = useState(null);
-    const handleImageChange = (event) => {
-        setImage(event.target.files[0]);
-    };
+    // const handleImageChange = (event) => {
+    //     setImage(event.target.files[0]);
+    // };
+    const handleStepImageBase64 = (event) =>{
+        console.log(event);
+        var reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = () => {
+            console.log(reader.result); // base64 encoded string
+            setImage(reader.result);
+        };
+        reader.onerror = (error) => { 
+            console.log("Error: ", error);
+        }
+    }
+
 
     // Recipe all steps
     const [allSteps, setAllSteps] = useState([]);
@@ -75,7 +107,7 @@ const handleFormSubmit = async (event) => {
   
     const formData = new FormData();
     formData.append('recipeTitle', recipeTitle);
-    formData.append('coverImage', coverImage.image.files[0]);
+    formData.append('coverImage', coverImage);
   
     ingredients.forEach((ingredient, index) => {
       formData.append(`ingredients[${index}].name`, ingredient.name);
@@ -91,6 +123,9 @@ const handleFormSubmit = async (event) => {
       formData.append(`allSteps[${index}].description`, step.description);
       formData.append(`allSteps[${index}].image`, step.image.files[0]);
     });
+
+    
+    resultObj.coverImage = coverImage;
   
     const response = await fetch('http://localhost:3000/api/recipes', {
       method: 'POST',
@@ -99,6 +134,7 @@ const handleFormSubmit = async (event) => {
         'Content-Type': 'application/json'
         }
     });
+    
   
     const data = await response.json();
     console.log(data);
@@ -135,11 +171,11 @@ const handleFormSubmit = async (event) => {
             type="file"
             id="coverImage"
             accept="image/*"
-            onChange={handleCoverImageChange}
+            onChange={handleCoverImageBase64}
         />
-        {coverImage && (
+        {coverImage === "" || coverImage === null ? "" : (
             <div className="coverImageContainer">
-            <img src={URL.createObjectURL(coverImage)} alt="Cover" className="coverImage" />
+            <img src={coverImage} alt="Cover" className="coverImage" />
             </div>
         )}
         <br></br>
@@ -179,7 +215,7 @@ const handleFormSubmit = async (event) => {
             newStep={newStep}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-            handleImageChange={handleImageChange}
+            handleImageChange={handleStepImageBase64}
         />
         <StepsList allSteps={allSteps} handleDelete={handleDelete} />
         <form onSubmit={handleFormSubmit}>
