@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import  '../Styles/Upload.css';
+//import  '../Styles/Upload.css';
 import Step from "../Components/RecipeStep";
 import StepsList from "../Components/StepsList";
 import Ingredient from "../Components/Ingredient";
 import IngredientTable from "../Components/IngredientTable";
+import Navbar from "../Components/Navbar";
+
 
 export default function UploadPage() {
     // Recipe Ingredient
@@ -93,6 +95,7 @@ export default function UploadPage() {
 
     return (
         <main className="upload-page">
+        <Navbar></Navbar>
         <h1>Recipe Upload</h1>
 
         
