@@ -79,11 +79,12 @@ app.post ('/login', (req, res) => {
     .then(users => {
         if(users){
             if(users.password === password){
+                UserID = users._id
                 const accessToken = jwt.sign({email: email}, "jwt-access-token-secret-key", {expiresIn: "1m"})
                 const refreshToken = jwt.sign({email: email}, "jwt-refresh-token-secret-key", {expiresIn: "2m"})
                 res.cookie('accessToken',accessToken,{maxAge:60000})
                 res.cookie('refreshToken',refreshToken,{maxAge:300000, httpOnly: true, secure: true, sameSite: 'strict'})
-                return res.json({Login: true})
+                return res.json({Login: true, UserID: UserID, message: "login successful"})
             }
             else{
                 res.json({Login: false, message: "password incorrect"})
