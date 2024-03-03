@@ -1,0 +1,225 @@
+/* UserPage.css */
+.profile-page {
+    position: relative;
+  .profile-section {
+    position: relative;
+    height: 500px;
+  
+    .profile-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .black-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
+      background-color: black;
+    }
+    
+    .bottom-shape {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 70px;
+      pointer-events: none;
+      overflow: hidden;
+    
+      .svg-shape {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+      }
+      .polygon-shape {
+        fill: #ccc; /* Fill color of the polygon */
+        /* Additional styles for the polygon shape */
+      }
+    }
+  }
+  .profile-segment {
+    position: relative;
+    background-color: #f8f9fa;
+    padding: 16px 0;
+  
+    .container {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 4px;
+
+    .profile-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      width: 100%;
+      margin-bottom: 1.5rem; 
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+      border-radius: 8px;
+      margin-top: -4rem;
+    
+      .profile-top{
+        padding: 0px 20px;
+      
+        .profile-topCenter {
+          position: relative;
+          display: flex;
+          flex-wrap:wrap;
+          justify-content: center;
+        
+            &{
+            @media only screen and (max-width: 668px) {
+              .image-container{
+                width: 100%;
+              }
+            }
+            .image-container{
+              position:relative;
+              width: 33.33%;
+              padding: 0rem 1rem; 
+              order: 1;
+              display: flex;
+              justify-content: center;
+            
+            .profile-image {
+              position: relative;
+            }
+            .profile-img{
+              box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+              border-radius: 50%;
+              vertical-align: middle;
+              border: none;
+              position: absolute;
+              margin: -4rem; 
+              margin-left: -20rem; 
+              margin-left: -1rem; 
+              max-width: 10px;
+            }
+          }
+          }
+             &{ 
+              @media screen and (max-width: 668px) {
+              /* For mobile phones: */
+              .button-container{
+                width: 100%;
+              }
+            }
+            .button-container {
+              width: 33.33%;
+              order: 3;
+              text-align: right;
+              align-self: center;
+              padding: 1.5rem 0.75rem;
+            }
+          }
+
+          &{.profile-stat{
+            width: 10%;
+            padding: 0 1rem; 
+            @media screen and (max-width: 668px) {
+              /* For mobile phones: */
+              .profile-stat{
+                width: 100%;
+              }
+            }
+
+          .stat {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content: center;
+            padding: 1rem 0; 
+
+          .stat-number{
+            display: grid;
+            grid-template-rows: auto auto;
+            margin-right: 1rem;
+            padding: 0.75rem; 
+            text-align: center;
+            
+          .value {
+            font-size: 1.25rem; 
+            font-weight: bold;
+          }
+
+          .placeholder{
+            font-size: 0.875rem; 
+            color: #718096; 
+          }
+        }
+      }
+      }
+      }
+      }
+      .profile-info {
+        text-align: center;
+        margin-top: 3rem; 
+      }
+      
+      .profile-name {
+        font-size: 2.5rem; 
+        font-weight: 600; 
+        line-height: 1.5; 
+        margin-bottom: 1rem; 
+        color: #2d3748; 
+      }
+      
+      .profile-location {
+        font-size: 0.875rem;
+        line-height: 1.6; 
+        margin-top: 0; 
+        margin-bottom: 1rem; 
+        color: #718096; 
+      }
+      
+      .profile-job {
+        font-size: 1rem; 
+        line-height: 1.6; 
+        margin-bottom: 1rem; 
+        color: #2d3748; 
+      }
+      
+      .profile-university {
+        font-size: 1rem; 
+        line-height: 1.6; 
+        margin-bottom: 1rem; 
+        color: #2d3748; 
+      }
+      
+      .profile-icon {
+        font-size: 1.25rem; 
+        color: #718096; 
+        margin-right: 0.5rem; 
+      }
+      .recipes-heading{
+        margin-left: 3rem;
+        margin-top: 7rem;
+        color: rgb(23, 178, 126);
+      }
+      .recipes-container {
+        position: relative;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin-left: 3rem;
+        padding: 2rem 0rem;
+      }
+      .recipe{
+        padding: 2rem 0rem;
+      }
+      }
+    }
+}
+}
+}

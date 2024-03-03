@@ -9,6 +9,7 @@ import AboutPage from './Pages/AboutPage';
 import UploadPage from './Pages/UploadPage';
 import Navbar from "./Components/Navbar";
 import ViewRecipe from './Pages/viewPage';
+import UploadRecipe from './Components/UploadRecipe';
 
 
 
