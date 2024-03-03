@@ -4,7 +4,9 @@ import { useState,useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 // import { useAuth } from './AuthContext';
+import AutoLogout from '../Components/AutoLogout'
 const LoginPage = () => {
+    AutoLogout();
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [wrongPassword, setWrongPassword] = useState(false)
@@ -25,12 +27,13 @@ const LoginPage = () => {
         return () => clearTimeout(timer);
     }, [wrongPassword, userDoesNotExists]);
 
+    axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/login', {email,password})
+        axios.post('http://localhost:5000/login', {email,password})
         .then(result => {
             console.log(result)
-            if (result.data === "success")
+            if (result.data.Login)
             {
                 // setIsLoggedIn(true);
                 navigate('/home')

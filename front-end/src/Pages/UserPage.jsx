@@ -1,12 +1,19 @@
 import React from "react";
 import myImage from "../assets/signupbackground.png"; 
-import Navbar from "../Components/Navbar.jsx";
 import "../Styles/UserPage.css"
 //import Footer from "../components/Footer.jsx";
+import LogoutButton from "../Components/LogoutButton.jsx";
+import ProtectedRoute from "../Components/ProtectedRoute.jsx";
+import Navbar from "../Components/Navbar.jsx";
 
 export default function Profile() {
+  ProtectedRoute();
   return (
     <>
+        <Navbar/>    
+      <div>
+        <LogoutButton />
+      </div>
       <main className="profile-page">
         <section className="profile-section">
             <div
