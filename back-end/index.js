@@ -7,8 +7,6 @@ const UserModel = require('./models/Users');
 
 require("dotenv").config({ path: "./config.env"});
 
-
-
 const app = express();
 //turns it to json file
 app.use(express.json());
@@ -20,6 +18,7 @@ app.use(cors(
         credentials: true
     }
 ));
+
 app.use(cookieParser());
 
 MONGODB = process.env.MONGODB_URI
@@ -36,11 +35,12 @@ app.post ('/login', (req, res) => {
     .then(users => {
         if(users){
             if(users.password === password){
+                userID = users._id
                 const accessToken = jwt.sign({email: email}, "jwt-access-token-secret-key", {expiresIn: "1m"})
-                const refreshToken = jwt.sign({email: email}, "jwt-refresh-token-secret-key", {expiresIn: "2m"})
+                const refreshToken = jwt.sign({email: email}, "jwt-refresh-token-secret-key", {expiresIn: "24h"})
                 res.cookie('accessToken',accessToken,{maxAge:60000})
-                res.cookie('refreshToken',refreshToken,{maxAge:300000, httpOnly: true, secure: true, sameSite: 'strict'})
-                return res.json({Login: true})
+                res.cookie('refreshToken',refreshToken,{maxAge:86400000, httpOnly: true, secure: true, sameSite: 'strict'})
+                return res.json({Login: true, userID: userID})
             }
             else{
                 res.json({Login: false, message: "password incorrect"})
@@ -52,6 +52,15 @@ app.post ('/login', (req, res) => {
     }
  )
 })
+
+app.post('/logout', (req, res) => { // Make sure to include both req and res here
+    // Clear the accessToken cookie
+    res.clearCookie('accessToken', {httpOnly: true, secure: true, sameSite: 'strict'});
+    // Clear the refreshToken cookie
+    res.clearCookie('refreshToken', {httpOnly: true, secure: true, sameSite: 'strict'});
+
+    return res.json({Logout: true, message: "Successfully logged out"});
+});
 
 //req.body is the data that is being sent to the server
 app.post('/signup', (req, res) => {

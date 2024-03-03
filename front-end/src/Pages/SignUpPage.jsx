@@ -3,8 +3,9 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Signup.css'
-
+import AutoLogout from '../Components/AutoLogout'
 const SignUpPage = () => {
+    AutoLogout();
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()

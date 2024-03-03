@@ -4,14 +4,22 @@ import Navbar from "../Components/Navbar.jsx";
 import "../Styles/UserPage.css"
 //import Footer from "../components/Footer.jsx";
 
+import ProtectedRoute from "../Components/ProtectedRoute.jsx";
+import LogoutButton from "../Components/LogoutButton.jsx";
 export default function Profile() {
+
+  ProtectedRoute();
   return (
     <>
+      <Navbar />
+      <div>
+        <LogoutButton />
+      </div>
       <main className="profile-page">
         <section className="profile-section">
             <div
-            className="profile-background"
-            style={{backgroundImage: `url(${myImage})`}}
+              className="profile-background"
+              style={{backgroundImage: `url(${myImage})`}}
             >
             <span
               className="black-overlay"
