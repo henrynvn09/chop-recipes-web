@@ -53,6 +53,15 @@ app.post ('/login', (req, res) => {
  )
 })
 
+app.post('/logout', (req, res) => { // Make sure to include both req and res here
+    // Clear the accessToken cookie
+    res.clearCookie('accessToken', {httpOnly: true, secure: true, sameSite: 'strict'});
+    // Clear the refreshToken cookie
+    res.clearCookie('refreshToken', {httpOnly: true, secure: true, sameSite: 'strict'});
+
+    return res.json({Logout: true, message: "Successfully logged out"});
+});
+
 //req.body is the data that is being sent to the server
 app.post('/signup', (req, res) => {
     UserModel.findOne({email: req.body.email})
