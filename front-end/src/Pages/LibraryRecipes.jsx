@@ -5,10 +5,12 @@ import "../Styles/LibraryRecipes.css";
 import React from "react";
 
 import RecipePreviewBox from "../Components/RecipePreviewBox";
+import ProtectedRoute from "../Components/ProtectedRoute";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 function LibraryRecipes() {
+  ProtectedRoute();
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);

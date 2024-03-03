@@ -5,8 +5,9 @@ import StepsList from "../Components/StepsList";
 import Ingredient from "../Components/Ingredient";
 import IngredientTable from "../Components/IngredientTable";
 import Navbar from "../Components/Navbar";
-
+import ProtectedRoute from "../Components/ProtectedRoute";
 export default function UploadPage() {
+    ProtectedRoute();
     // Recipe Ingredient
     const [ingredients, setIngredients] = useState([]);
     const handleAddIngredient = (ingredient) => {
@@ -113,7 +114,11 @@ const handleFormSubmit = async (event) => {
         setAllSteps([]);
     }
 
+
   };
+
+
+
 
     return (
         <>
