@@ -4,6 +4,7 @@ import Step from "../Components/RecipeStep";
 import StepsList from "../Components/StepsList";
 import Ingredient from "../Components/Ingredient";
 import IngredientTable from "../Components/IngredientTable";
+import Navbar from "../Components/Navbar";
 
 export default function UploadPage() {
     // Recipe Ingredient
@@ -115,76 +116,81 @@ const handleFormSubmit = async (event) => {
   };
 
     return (
-        <main className="upload-page">
-        <h1>Recipe Upload</h1>
+        <>
+            <Navbar />
+            <main className="upload-page">
 
-        
-        
-        <label htmlFor="recipeTitle">Recipe Title:</label>
-        <input
-            type="text"
-            id="recipeTitle"
-            placeholder="Enter Recipe Title"
-            value={recipeTitle}
-            onChange={handleRecipeTitleChange}
-        />
-        <br></br>
+            <h1>Recipe Upload</h1>
 
-        <label htmlFor="coverImage">Cover Image:</label>
-        <input
-            type="file"
-            id="coverImage"
-            accept="image/*"
-            onChange={handleCoverImageChange}
-        />
-        {coverImage && (
-            <div className="coverImageContainer">
-            <img src={URL.createObjectURL(coverImage)} alt="Cover" className="coverImage" />
-            </div>
-        )}
-        <br></br>
-
-        <Ingredient addIngredient={handleAddIngredient} />
-        <IngredientTable ingredients={ingredients} deleteIngredient={handleDeleteIngredient}/>
-        <br></br>
-
-        <h2>Tags</h2>
-        <div>
+            
+            
+            <label htmlFor="recipeTitle">Recipe Title:</label>
             <input
-            type="text"
-            placeholder="Enter Tag"
-            value={tag}
-            onChange={(e) => setTag(e.target.value)}
+                type="text"
+                id="recipeTitle"
+                placeholder="Enter Recipe Title"
+                value={recipeTitle}
+                onChange={handleRecipeTitleChange}
             />
-            <button onClick={handleAddTag}>Add Tag</button>
-        </div>
-        {tags.length > 0 && (
-            <div>
-            <ul id="tags">
-                {tags.map((tag, index) => (
-                <li key={index}>
-                    <div className="tag-container">
-                        {tag}
-                        <button onClick={() => handleDeleteTag(index)}>Remove</button>
-                    </div>
-                </li>
-                ))}
-            </ul>
-            </div>
-        )}
-        <br></br>
+            <br></br>
 
-        <h1>Steps</h1>
-        <Step
-            newStep={newStep}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            handleImageChange={handleImageChange}
-        />
-        <StepsList allSteps={allSteps} handleDelete={handleDelete} />
-        <form onSubmit={handleFormSubmit}>
-            <input type="submit"/>
-        </form>
-        </main>
+            <label htmlFor="coverImage">Cover Image:</label>
+            <input
+                type="file"
+                id="coverImage"
+                accept="image/*"
+                onChange={handleCoverImageChange}
+            />
+            {coverImage && (
+                <div className="coverImageContainer">
+                <img src={URL.createObjectURL(coverImage)} alt="Cover" className="coverImage" />
+                </div>
+            )}
+            <br></br>
+
+            <Ingredient addIngredient={handleAddIngredient} />
+            <IngredientTable ingredients={ingredients} deleteIngredient={handleDeleteIngredient}/>
+            <br></br>
+
+            <h2>Tags</h2>
+            <div>
+                <input
+                type="text"
+                placeholder="Enter Tag"
+                value={tag}
+                onChange={(e) => setTag(e.target.value)}
+                />
+                <button onClick={handleAddTag}>Add Tag</button>
+            </div>
+            {tags.length > 0 && (
+                <div>
+                <ul id="tags">
+                    {tags.map((tag, index) => (
+                    <li key={index}>
+                        <div className="tag-container">
+                            {tag}
+                            <button onClick={() => handleDeleteTag(index)}>Remove</button>
+                        </div>
+                    </li>
+                    ))}
+                </ul>
+                </div>
+            )}
+            <br></br>
+
+            <h1>Steps</h1>
+            <Step
+                newStep={newStep}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                handleImageChange={handleImageChange}
+            />
+            <StepsList allSteps={allSteps} handleDelete={handleDelete} />
+            <form onSubmit={handleFormSubmit}>
+                <input type="submit"/>
+            </form>
+            </main>
+        </>
+       
     );
 }

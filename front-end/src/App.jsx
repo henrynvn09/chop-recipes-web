@@ -18,11 +18,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar /> { /* Add Navbar component here so that no need to add this for every pages */ }
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/contacts" element={<ContactPage/>} />
           <Route path="/about" element={<AboutPage />} /> 
           <Route path="/upload-recipe" element={<UploadPage/>} />

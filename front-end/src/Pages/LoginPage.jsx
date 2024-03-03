@@ -25,12 +25,13 @@ const LoginPage = () => {
         return () => clearTimeout(timer);
     }, [wrongPassword, userDoesNotExists]);
 
+    axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3001/login', {email,password})
         .then(result => {
             console.log(result)
-            if (result.data === "success")
+            if (result.data.Login)
             {
                 // setIsLoggedIn(true);
                 navigate('/home')
