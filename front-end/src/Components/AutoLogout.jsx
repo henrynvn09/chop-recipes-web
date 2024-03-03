@@ -6,7 +6,7 @@ const AutoLogout = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.post('http://localhost:3001/logout', {}, { withCredentials: true })
+        axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
             .then(result => {
                 console.log(result);
             })
