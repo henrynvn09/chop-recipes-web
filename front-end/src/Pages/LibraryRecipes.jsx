@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import "../Styles/AllRecipes.css";
+import "../Styles/LibraryRecipes.css";
 
 import React from "react";
 
@@ -58,15 +58,15 @@ function LibraryRecipes() {
     // Filter by selected tags
     if (
       selectedTags.length > 0 &&
-      !selectedTags.some((tag) => recipe.tagName_lists.includes(tag))
+      !selectedTags.every((tag) => recipe.tagName_lists.includes(tag))
     ) {
       return false;
     }
     // Filter by selected ingredients
     if (
       selectedIngredients.length > 0 &&
-      !selectedIngredients.some((ingredient) =>
-        recipe.ingredient_lists.includes(ingredient)
+      !selectedIngredients.every((ingredient) =>
+        recipe.ingredient_lists.some((i) => i.name === ingredient)
       )
     ) {
       return false;
@@ -95,6 +95,7 @@ function LibraryRecipes() {
   const tags_html = filteredRecipes
     .reduce((acc, curr) => [...acc, ...curr.tagName_lists], [])
     .filter((value, index, self) => self.indexOf(value) === index)
+    .sort((a, b) => a.localeCompare(b))
     .map((tag, index) => (
       <div key={index} className="flex items-center mb-2">
         <input
@@ -109,16 +110,18 @@ function LibraryRecipes() {
 
   const ingredients_html = filteredRecipes
     .reduce((acc, curr) => [...acc, ...curr.ingredient_lists], [])
+    .map((i) => i.name)
     .filter((value, index, self) => self.indexOf(value) === index)
+    .sort((a, b) => a.localeCompare(b))
     .map((ingredient, index) => (
       <div key={index} className="flex items-center mb-2">
         <input
           type="checkbox"
-          checked={selectedIngredients.includes(ingredient.name)}
-          onChange={() => handleIngredientSelection(ingredient.name)}
+          checked={selectedIngredients.includes(ingredient)}
+          onChange={() => handleIngredientSelection(ingredient)}
           className="mr-2"
         />
-        <label>{ingredient.name}</label>
+        <label>{ingredient}</label>
       </div>
     ));
 
