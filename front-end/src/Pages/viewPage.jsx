@@ -1,5 +1,8 @@
 import React from "react";
+
 import '../Styles/viewRecipe.css';  
+import Navbar from "../Components/Navbar";
+
 
 const fakeData = {
     recipeTitle: "Cake",
@@ -35,21 +38,24 @@ const ViewRecipe = () => {
   }
 
   return (
-    <div className="view-recipe">
-      <h1>{recipe.recipeTitle}</h1>
-      
-      <div className="coverImageContainer">
-        <img src={recipe.coverImage} alt="Cover" className="coverImage" />
-      </div>
-      <br/>
+    <>
+    <Navbar />
+        <div className="view-recipe">
+          <h1>{recipe.recipeTitle}</h1>
+          
+          <div className="coverImageContainer">
+            <img src={recipe.coverImage} alt="Cover" className="coverImage" />
+          </div>
+          <br/>
 
-      <h2>Ingredients</h2>
-      <ul>
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient.name}: {ingredient.quantity}</li>
-        ))}
-      </ul>
-      <br/>
+          <h2>Ingredients</h2>
+          <ul>
+            {recipe.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient.name}: {ingredient.quantity}</li>
+            ))}
+          </ul>
+          <br/>
+
 
       <h2>Tags</h2>
       <ul id="tags">
@@ -63,24 +69,26 @@ const ViewRecipe = () => {
       </ul>
       <br/>
 
-      <h2>Steps</h2>
-      <ul>
-        {recipe.allSteps.map((step, index) => (
-          <li key={index}>
-            <div className="step-container">
-              <h3>{step.title}</h3>
-              {step.description && <p>{step.description}</p>}
-              {step.image && (
-                <div className="stepImageContainer">
-                  <img src={step.image} alt={step.title} className="stepImage" />
+
+          <h2>Steps</h2>
+          <ul>
+            {recipe.allSteps.map((step, index) => (
+              <li key={index}>
+                <div className="step-container">
+                  <h3>{step.title}</h3>
+                  {step.description && <p>{step.description}</p>}
+                  {step.image && (
+                    <div className="stepImageContainer">
+                      <img src={step.image} alt={step.title} className="stepImage" />
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+              </li>
+            ))}
+          </ul>
+        </div>
+    </>
+    );
 };
 
 export default ViewRecipe;

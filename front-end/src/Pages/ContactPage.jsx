@@ -1,13 +1,14 @@
 import React from 'react'
-// import Navbar from '../Components/Navbar';
+
+import Navbar from '../Components/Navbar';
+
+import ProtectedRoute from '../Components/ProtectedRoute';
+
 const ContactPage = () => {
+  ProtectedRoute();
   return (
     <div>
-      {/* <Navbar /> */}
-      <div>
-        hello world
-      </div>
-
+      <Navbar />
     </div>
   );
 }
