@@ -2,10 +2,13 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import UserProvider from './contexts/UserContent';
 
 ReactDOM.render(
   <StrictMode>  
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </StrictMode>,
   document.getElementById('root')
 );
