@@ -23,7 +23,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.log(err));
 
-app.get("/recipe/add", (req, res) => {
+app.get("/api/recipe/add", (req, res) => {
   const recipe = new Recipe({
     content_list: ["content 1", "content 2", "content 3"],
     tagName_lists: ["tag1", "tag 2", "tag 3"],
@@ -40,15 +40,24 @@ app.get("/recipe/add", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.get("/recipe/all_recipes", (req, res) => {
-  Recipe.find()
+app.get("/api/recipe/all_recipes", (req, res) => {
+  Recipe.find(
+    {},
+    {
+      title: 1,
+      cover_image: 1,
+      tagName_lists: 1,
+      ingredient_lists: 1,
+      _id: 1,
+    }
+  )
     .then((result) => {
       res.send(result);
     })
     .catch((err) => console.log(err));
 });
 
-app.get("/recipe/:id", (req, res) => {
+app.get("/api/recipe/:id", (req, res) => {
   Recipe.findById(req.params.id)
     .then((result) => {
       res.send(result);
