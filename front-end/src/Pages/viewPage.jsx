@@ -1,6 +1,5 @@
 import React from "react";
-import '../Styles/viewRecipe.css';  // Import your stylesheet
-
+import '../Styles/viewRecipe.css';  
 
 const fakeData = {
     recipeTitle: "Cake",
@@ -25,9 +24,8 @@ const fakeData = {
       },
       // Add more steps as needed
     ],
-  };
 
-
+  }
 
 const ViewRecipe = () => {
   const recipe = fakeData; // Replace with actual fetched data
@@ -57,7 +55,7 @@ const ViewRecipe = () => {
       <ul id="tags">
         {recipe.tags.map((tag, index) => (
           <li key={index}>
-            <div className="tag-container">
+            <div>
               {tag}
             </div>
           </li>
