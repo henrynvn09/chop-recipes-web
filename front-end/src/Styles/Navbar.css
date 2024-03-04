@@ -3,8 +3,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 7%;
     background-color: #000000;
+    padding-right: 2%;
+    padding-left: 1%;
 }
 .search-box {
     display: flex;
@@ -49,6 +50,7 @@
 
 nav ul{
     display: flex;
+    list-style-type: none;
 }
 
 nav ul li{
@@ -67,3 +69,9 @@ nav ul li a{
 nav ul li a:hover{
     color: #FF1A1A;
 }
+
+.notoverflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
