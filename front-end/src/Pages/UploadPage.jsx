@@ -23,14 +23,8 @@ export default function UploadPage() {
         setRecipeTitle(event.target.value);
     };
 
-    let resultObj;
-
-
     // Recipe Coverimage
     const [coverImage, setCoverImage] = useState(null);
-    // const handleCoverImageChange = (event) => {
-    //     setCoverImage(event.target.files[0]);
-    // };
     const handleCoverImageBase64 = (event) =>{
         console.log(event);
         var reader = new FileReader();
@@ -43,10 +37,7 @@ export default function UploadPage() {
             console.log("Error: ", error);
         }
     }
-    // const handleCombinedImageChange = (event) => {
-    //     handleCoverImageChange(event);
-    //     handleCoverImageBase64(event);
-    // };
+
 
     // Recipe Steps
     const [newStep, setNewStep] = useState({});
@@ -58,9 +49,6 @@ export default function UploadPage() {
 
     // Recipe Steps image
     const [image, setImage] = useState(null);
-    // const handleImageChange = (event) => {
-    //     setImage(event.target.files[0]);
-    // };
     const handleStepImageBase64 = (event) =>{
         console.log(event);
         var reader = new FileReader();
@@ -73,7 +61,6 @@ export default function UploadPage() {
             console.log("Error: ", error);
         }
     }
-
 
     // Recipe all steps
     const [allSteps, setAllSteps] = useState([]);
@@ -103,134 +90,123 @@ export default function UploadPage() {
         setTags((prev) => prev.filter((_, i) => i !== index));
     };
 
-// Recipe Submit to database
-const handleFormSubmit = async (event) => {
-    event.preventDefault();
-  
-    const formData = new FormData();
-    formData.append('recipeTitle', recipeTitle);
-    formData.append('coverImage', coverImage);
-  
-    ingredients.forEach((ingredient, index) => {
-      formData.append(`ingredients[${index}].name`, ingredient.name);
-      formData.append(`ingredients[${index}].quantity`, ingredient.quantity);
-    });
-  
-    tags.forEach((tag, index) => {
-      formData.append(`tags[${index}]`, tag);
-    });
-  
-    allSteps.forEach((step, index) => {
-      formData.append(`allSteps[${index}].title`, step.title);
-      formData.append(`allSteps[${index}].description`, step.description);
-      formData.append(`allSteps[${index}].image`, step.image.files[0]);
-    });
-
+    // Recipe Submit to database
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
     
-    resultObj.coverImage = coverImage;
+        const formData = new FormData();
+        formData.append('recipeTitle', recipeTitle);
+        formData.append('coverImage', coverImage);
+    
+        ingredients.forEach((ingredient, index) => {
+        formData.append(`ingredients[${index}].name`, ingredient.name);
+        formData.append(`ingredients[${index}].quantity`, ingredient.quantity);
+        });
+    
+        tags.forEach((tag, index) => {
+        formData.append(`tags[${index}]`, tag);
+        });
+    
+        allSteps.forEach((step, index) => {
+        formData.append(`allSteps[${index}].title`, step.title);
+        formData.append(`allSteps[${index}].description`, step.description);
+        formData.append(`allSteps[${index}].image`, step.image);
+        });
   
-    const response = await fetch('http://localhost:3000/api/recipes', {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Content-Type': 'application/json'
+        const response = await fetch('http://localhost:3000/api/recipes', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+        
+        const data = await response.json();
+        console.log(data);
+        
+        // Reset the form after submission
+        if (data) {
+            setRecipeTitle('');
+            setCoverImage(null);
+            setIngredients([]);
+            setTags([]);
+            setAllSteps([]);
         }
-    });
-    
-  
-    const data = await response.json();
-    console.log(data);
-    
-    // Reset the form after submission
-    if (data) {
-        setRecipeTitle('');
-        setCoverImage(null);
-        setIngredients([]);
-        setTags([]);
-        setAllSteps([]);
-    }
-
-
-  };
-
-
-
+    };
 
     return (
         <>
             <Navbar />
             <main className="upload-page">
 
-            <h1>Recipe Upload</h1>
-
-            
-            
-            <label htmlFor="recipeTitle">Recipe Title:</label>
-            <input
-                type="text"
-                id="recipeTitle"
-                placeholder="Enter Recipe Title"
-                value={recipeTitle}
-                onChange={handleRecipeTitleChange}
-            />
-            <br></br>
-
-            <label htmlFor="coverImage">Cover Image:</label>
-            <input
-                type="file"
-                id="coverImage"
-                accept="image/*"
-                onChange={handleCoverImageChange}
-            />
-            {coverImage && (
-                <div className="coverImageContainer">
-                <img src={URL.createObjectURL(coverImage)} alt="Cover" className="coverImage" />
-                </div>
-            )}
-            <br></br>
-
-            <Ingredient addIngredient={handleAddIngredient} />
-            <IngredientTable ingredients={ingredients} deleteIngredient={handleDeleteIngredient}/>
-            <br></br>
-
-            <h2>Tags</h2>
-            <div>
+                <h1>Recipe Upload</h1>     
+                <label htmlFor="recipeTitle">Recipe Title:</label>
                 <input
-                type="text"
-                placeholder="Enter Tag"
-                value={tag}
-                onChange={(e) => setTag(e.target.value)}
+                    type="text"
+                    id="recipeTitle"
+                    placeholder="Enter Recipe Title"
+                    value={recipeTitle}
+                    onChange={handleRecipeTitleChange}
                 />
-                <button onClick={handleAddTag}>Add Tag</button>
-            </div>
+                <br></br>
 
-            {tags.length > 0 && (
+                <label htmlFor="coverImage">Cover Image:</label>
+                <input
+                    type="file"
+                    id="coverImage"
+                    accept="image/*"
+                    onChange={handleCoverImageBase64}
+                />
+                {coverImage === "" || coverImage === null ? "" : (
+                    <div className="coverImageContainer">
+                    <img src={coverImage} alt="Cover" className="coverImage" />
+                    </div>
+                )}
+                <br></br>
+
+                <Ingredient addIngredient={handleAddIngredient} />
+                <IngredientTable ingredients={ingredients} deleteIngredient={handleDeleteIngredient}/>
+                <br></br>
+
+                <h2>Tags</h2>
                 <div>
-                <ul id="tags">
-                    {tags.map((tag, index) => (
-                    <li key={index}>
-                        <div className="tag-container">
-                            {tag}
-                            <button onClick={() => handleDeleteTag(index)}>Remove</button>
-                        </div>
-                    </li>
-                    ))}
-                </ul>
+                    <input
+                    type="text"
+                    placeholder="Enter Tag"
+                    value={tag}
+                    onChange={(e) => setTag(e.target.value)}
+                    />
+                    <button onClick={handleAddTag}>Add Tag</button>
                 </div>
-            )}
-            <br></br>
 
-            <h1>Steps</h1>
-            <Step
-                newStep={newStep}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                handleImageChange={handleImageChange}
-            />
-            <StepsList allSteps={allSteps} handleDelete={handleDelete} />
-            <form onSubmit={handleFormSubmit}>
-                <input type="submit"/>
-            </form>
+                {tags.length > 0 && (
+                    <div>
+                    <ul id="tags">
+                        {tags.map((tag, index) => (
+                        <li key={index}>
+                            <div className="tag-container">
+                                {tag}
+                                <button onClick={() => handleDeleteTag(index)}>Remove</button>
+                            </div>
+                        </li>
+                        ))}
+                    </ul>
+                    </div>
+                )}
+                <br></br>
+
+                <h1>Steps</h1>
+                <Step
+                    newStep={newStep}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    handleImageChange={handleStepImageBase64}
+                />
+                <StepsList allSteps={allSteps} handleDelete={handleDelete} />
+
+                <form onSubmit={handleFormSubmit}>
+                    <input type="submit"/>
+                </form>
             </main>
         </>
     );
