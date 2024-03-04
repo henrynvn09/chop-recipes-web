@@ -2,7 +2,8 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import { Link } from 'react-router-dom'
 import '../Styles/global.css'
-
+import ProtectedRoute from "../Components/ProtectedRoute";
+import { useUser } from "../contexts/UserContent";
 function Welcome() {
   return (
     <div style={{ border: "1px solid black", padding: "20px", margin: "20px" }}>
@@ -70,12 +71,14 @@ function UploadRecipe({value}){
 }
 
 function HomePage(){
+    const {userID} = useUser(); 
+    ProtectedRoute();
   function handleClick() {
     return;
   }
     return (
         <div>
-        <Navbar></Navbar>
+            <Navbar />
             <div>
                 <Welcome></Welcome>
                 <RecipeOfTheDay></RecipeOfTheDay>
@@ -85,7 +88,7 @@ function HomePage(){
                 <ChefProfile value="Chef's Profile" onChefClick={() => handleClick()}></ChefProfile>
                 <UploadRecipe value="Upload Recipe"></UploadRecipe>
             </div>
-        </div>
+        </div> 
     );
 }
 
