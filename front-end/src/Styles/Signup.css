@@ -100,6 +100,15 @@
     font-size: 15px;
 }
 
+.sign-up-button{
+    color: blue;
+    text-decoration: underline;
+}
+
+.sign-up-button:active{
+  color: rgb(0, 0, 0);
+}
+
 
 @keyframes shakeAndFade {
   0% { transform: translateX(0); opacity: 1; }

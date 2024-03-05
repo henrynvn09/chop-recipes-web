@@ -122,7 +122,9 @@
   background-color: #c62828;
 }
 
-
+.newline {
+  display: block; /* Ensures the element is treated as a block-level element, starting on a new line */
+}
 .coverImageContainer {
   max-width: 60%;
   overflow: hidden;
