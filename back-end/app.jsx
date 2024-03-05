@@ -64,6 +64,21 @@ app.get("/api/recipe/all_recipes", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.get("/api/recipe/all_recipes/:user_id", (req, res) => {
+  Recipe.find(
+    { author_id: req.params.user_id },
+    {
+      title: 1,
+      cover_image: 1,
+      _id: 1,
+    }
+  )
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
 app.get("/api/recipe/:id", (req, res) => {
   Recipe.findById(req.params.id)
     .then((result) => {
@@ -73,7 +88,40 @@ app.get("/api/recipe/:id", (req, res) => {
 });
 
 app.get("/api/:userid", (req, res) => {
-  Recipe.find({ user_id: req.params.userid })
+  UserModel.find({ _id: req.params.userid }, { password: 0 })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
+app.get("/api/followings/:profileList", (req, res) => {
+  const profileList = req.params.profileList.split(",");
+  UserModel.find({ _id: { $in: profileList } }, { password: 0 })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
+app.post("/api/followProfile/:userID/:profileID", (req, res) => {
+  UserModel.findByIdAndUpdate(
+    req.params.userID,
+    { $push: { followings: req.params.profileID } },
+    { new: true }
+  )
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
+app.post("/api/unfollowProfile/:userID/:profileID", (req, res) => {
+  UserModel.findByIdAndUpdate(
+    req.params.userID,
+    { $pull: { followings: req.params.profileID } },
+    { new: true }
+  )
     .then((result) => {
       res.send(result);
     })
