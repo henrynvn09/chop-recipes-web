@@ -5,24 +5,24 @@ import Navbar from "../Components/Navbar";
 
 
 const fakeData = {
-    recipeTitle: "Cake",
-    coverImage: "https://unsplash.com/photos/a-woman-working-on-a-laptop-6uAssP0vuPs",
-    
-    ingredients: [
+    title: "Cake",
+    cover_image: "https://unsplash.com/photos/a-woman-working-on-a-laptop-6uAssP0vuPs",
+    author_id: "141421421412",
+    ingredient_lists: [
       { name: "Flour", quantity: "100g" },
       { name: "Water", quantity: "200g" },
-      // Add more ingredients as needed
+      // Add more ingredient_lists as needed
     ],
     tags: ["easy to make", "within 10 miniutes", "delicious"],
-    allSteps: [
+    content_list: [
       {
         title: "Step 1",
-        description: "Put water in flour",
+        text: "Put water in flour",
         image: "https://unsplash.com/photos/a-computer-screen-with-a-remote-control-on-it-s5kTY-Ve1c0",
       },
       {
         title: "Step 2",
-        description: "stir the flour...",
+        text: "stir the flour...",
         image: "https://unsplash.com/photos/a-group-of-white-and-gold-tiles-on-a-white-surface-nPZ68nehUUo",
       },
       // Add more steps as needed
@@ -41,42 +41,51 @@ const ViewRecipe = () => {
     <>
     <Navbar />
         <div className="view-recipe">
-          <h1>{recipe.recipeTitle}</h1>
+          <h1>{recipe.title}</h1>
           
-          <div className="coverImageContainer">
-            <img src={recipe.coverImage} alt="Cover" className="coverImage" />
+          <div className="cover_imageContainer">
+            <img src={recipe.cover_image} alt="Cover" className="cover_image" />
           </div>
           <br/>
 
-          <h2>Ingredients</h2>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient.name}: {ingredient.quantity}</li>
+          <h3>Tags</h3>
+          <ul id="tags">
+            {recipe.tags.map((tag, index) => (
+              <li key={index}>
+                <div>
+                  {tag}
+                </div>
+              </li>
             ))}
           </ul>
           <br/>
 
-
-      <h2>Tags</h2>
-      <ul id="tags">
-        {recipe.tags.map((tag, index) => (
-          <li key={index}>
-            <div>
-              {tag}
-            </div>
-          </li>
-        ))}
-      </ul>
-      <br/>
-
+          <h2>Ingredients</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Ingredient</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {recipe.ingredient_lists.map((ingredient, index) => (
+                <tr key={index}>
+                  <td>{ingredient.name}</td>
+                  <td>{ingredient.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <br/>
 
           <h2>Steps</h2>
           <ul>
-            {recipe.allSteps.map((step, index) => (
+            {recipe.content_list.map((step, index) => (
               <li key={index}>
                 <div className="step-container">
                   <h3>{step.title}</h3>
-                  {step.description && <p>{step.description}</p>}
+                  {step.text && <p>{step.text}</p>}
                   {step.image && (
                     <div className="stepImageContainer">
                       <img src={step.image} alt={step.title} className="stepImage" />
