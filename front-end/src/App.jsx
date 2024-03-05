@@ -24,7 +24,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/upload-recipe" element={<UploadPage />} />
           <Route path="/view-recipe" element={<ViewRecipe />} />
-          <Route path="/user" element={<UserPage />} />
+          <Route path="/user/:profile_id" element={<UserPage />} />
           <Route path="/library" element={<LibraryRecipes />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
