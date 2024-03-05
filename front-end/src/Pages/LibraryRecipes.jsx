@@ -13,6 +13,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 function LibraryRecipes() {
   ProtectedRoute();
+  console.log("backend url = " + BACKEND_URL);
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);

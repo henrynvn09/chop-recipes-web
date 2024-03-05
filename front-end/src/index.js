@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import UserProvider from './contexts/UserContent';
 import firebase from "firebase/compat/app";
 
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
