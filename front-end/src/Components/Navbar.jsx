@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../Styles/Navbar.css";
+import { useUser } from "../contexts/UserContent";
 
 const Navbar = () => {
   // State variable to hold the value of the input field
@@ -24,6 +25,8 @@ const Navbar = () => {
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
   };
+
+  const { userID } = useUser();
 
   return (
     <nav className="navbar">
@@ -56,7 +59,7 @@ const Navbar = () => {
           <Link to="/contacts">Contact</Link>
         </li>
         <li>
-          <Link to="/user">User</Link>
+          <Link to={"/user/" + userID}>User</Link>
         </li>
         <li>
           <Link className="notoverflow" to="/upload-recipe">
