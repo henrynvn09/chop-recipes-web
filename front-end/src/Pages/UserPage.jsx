@@ -5,6 +5,8 @@ import "../Styles/UserPage.css"
 import LogoutButton from "../Components/LogoutButton.jsx";
 import ProtectedRoute from "../Components/ProtectedRoute.jsx";
 import Navbar from "../Components/Navbar.jsx";
+import ProfilePicture from "../Components/ProfilePicture";
+import "react-image-crop/dist/ReactCrop.css";
 
 export default function Profile() {
   ProtectedRoute();
@@ -48,12 +50,13 @@ export default function Profile() {
                 <div className="profile-topCenter">
                   <div className="image-container">
                     <div className="relative">
-                      <img
+                      {/* <img
                         alt="..."
                         src={myImage}
                         className="profile-img"
                         style={{ maxWidth: "200px" }}
-                      />
+                      /> */}
+                      <ProfilePicture/>
                     </div>
                   </div>
                   <div className="button-container">
