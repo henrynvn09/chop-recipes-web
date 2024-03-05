@@ -72,6 +72,14 @@ app.get("/api/recipe/:id", (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.get("/api/:userid", (req, res) => {
+  Recipe.find({ user_id: req.params.userid })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => console.log(err));
+});
+
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   UserModel.findOne({ email: email }).then((users) => {
