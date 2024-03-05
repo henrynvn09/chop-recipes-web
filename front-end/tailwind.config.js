@@ -12,6 +12,12 @@ module.exports = {
       },
       height: {
         '1/2': '50%',
+      },
+      spacing: {
+        '1/2': '50%',
+      },
+      colors: {
+        'custom-red': '#FF1A1A',
       }
     },
   },

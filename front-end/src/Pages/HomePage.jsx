@@ -7,18 +7,13 @@ import { useUser } from "../contexts/UserContent";
 
 import 'tailwindcss/tailwind.css';
 
-import 'tailwindcss/tailwind.css';
-
-import 'tailwindcss/tailwind.css';
-
 function Welcome() {
   return (
       <div className="bg-red-200 rounded-full w-1/3 h-1/2 p-2 absolute left-0 top-20 box-border font-roboto flex flex-col items-center justify-center text-center">
-          <h1 className="font-bold italic text-lg mb-2">Welcome</h1>
-          <h1 className="font-bold italic text-lg mb-2">to</h1>
+          <h1 className="font-bold italic text-lg mb-2">Welcome to</h1>
           <h1 className="font-bold italic text-lg mb-2">Chop!</h1>
           <p className="font-semibold italic text-xs">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut turpis velit. Integer nec facilisis velit. Fusce suscipit libero et odio facilisis, id fringilla nisi ultricies.
+          Whether you're a seasoned chef or a kitchen novice, prepare to embark on a flavor-packed adventure like no other. Dive into our recipe library, where a treasure trove of culinary delights awaits your discovery. With our intuitive search bar and ingredient-tagging magic, finding your next culinary masterpiece is as easy as pie. So, sharpen your knives and unleash your inner chef – let's Chop till we drop!
           </p>
       </div>
   );
@@ -34,68 +29,71 @@ function RecipeOfTheDay() {
 
 function RandomRecipe() {
   return (
-    <div style={{ border: "1px solid black", padding: "20px", margin: "20px" }}>
-      <h1>Recipe of The Day</h1>
-      <p>
-        Here's a random recipe for you!
-      </p>
-    </div>
+    <Link to="/random-recipe">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-3/4 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
+        Random Recipe
+      </div>
+    </Link>
   )
 }
 
 function Library(){
   return (
-    //TODO: CHANGE THIS LINK TO CORRECT PAGE
-    <Link to="/user">
-      <button className="chefButton">Browse our Library</button>
+    <Link to="/library">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cookbook-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-20 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
+        Browse our Library
+      </div>
     </Link>
   )
 }
 
-function ChefProfile({value}) {
+function ChefProfile() {
   return (
     <Link to="/user">
-      <button className="chefButton">Chef's Profile</button>
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/chefhat-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-3/4 top-20 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
+        Chef's Profile
+      </div>
     </Link>
   )
 }
 
-function AboutChop({value, onAboutChopClick}) {
+function AboutChop() {
   return (
     <Link to="/about">
-      <button className="AboutChop">About our kitchen</button>
+      <div style={{ backgroundImage: `url('https://img.freepik.com/premium-vector/blurred-gradient-mesh-abstract-background-orange-yellow-seamless-transition_427410-505.jpg')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
+        About our kitchen
+      </div>
     </Link>
   )
 }
 
-function UploadRecipe({value}){
+function UploadRecipe(){
   return (
     <Link to="/upload-recipe">
-      <button className="UploadRecipe">Upload New Recipe</button>
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/whisk-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
+        Upload New Recipe
+      </div>
     </Link>
   )
 }
 
 function HomePage(){
-    const {userID} = useUser(); 
-    ProtectedRoute();
-  function handleClick() {
-    return;
-  }
-    return (
-        <div>
-            <Navbar />
-            <div>
-                <Welcome></Welcome>
-                <RecipeOfTheDay></RecipeOfTheDay>
-                <Library></Library>
-                <RandomRecipe></RandomRecipe>
-                <AboutChop value="about" className="About Chop" ></AboutChop>
-                <ChefProfile value="Chef's Profile" onChefClick={() => handleClick()}></ChefProfile>
-                <UploadRecipe value="Upload Recipe"></UploadRecipe>
-            </div>
-        </div> 
-    );
+  const {userID} = useUser(); 
+  ProtectedRoute();
+  return (
+      <div>
+          <Navbar />
+          <div>
+              <Welcome></Welcome>
+              <RecipeOfTheDay></RecipeOfTheDay>
+              <Library></Library>
+              <RandomRecipe></RandomRecipe>
+              <AboutChop></AboutChop>
+              <ChefProfile></ChefProfile>
+              <UploadRecipe></UploadRecipe>
+          </div>
+      </div> 
+  );
 }
 
 export default HomePage;
