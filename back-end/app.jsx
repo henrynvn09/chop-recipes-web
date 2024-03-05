@@ -237,9 +237,18 @@ const renewToken = (req, res) => {
   return exist;
 };
 
+app.post("/uploadRecipe", (req, res) => {
+    Recipe.create(req.body)
+        .then((recipe) => res.json(recipe))
+        .catch((err) => res.json(err));
+    }
+);
+
 app.get("/verify", verifyUser, (req, res) => {
   return res.json({ valid: true, message: "auhorized" });
 });
+
+
 
 app.listen(PORT, () => {
   console.log("Server is running... in port", PORT);

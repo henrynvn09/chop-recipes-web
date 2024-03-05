@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 export const useUser = () => useContext(UserContext);
 
-const UserProvider = ({ children }) => {
+const UserContent = ({ children }) => {
   // Initialize userID from local storage or null if not present
   const [userID, setUserID] = useState(() => {
     const savedUserID = localStorage.getItem("userID");
@@ -24,4 +24,4 @@ const UserProvider = ({ children }) => {
   );
 };
 
-export default UserProvider;
+export default UserContent;
