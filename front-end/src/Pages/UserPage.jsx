@@ -6,6 +6,10 @@ import "../Styles/UserPage.css";
 import LogoutButton from "../Components/LogoutButton.jsx";
 import ProtectedRoute from "../Components/ProtectedRoute.jsx";
 import Navbar from "../Components/Navbar.jsx";
+
+import ProfilePicture from "../Components/ProfilePicture";
+import "react-image-crop/dist/ReactCrop.css";
+=======
 import { useUser } from "../contexts/UserContent";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -228,12 +232,13 @@ export default function Profile() {
                   </div>
                   <div className="image-container">
                     <div className="relative">
-                      <img
+                      {/* <img
                         alt="..."
                         src={user.Image}
                         className="profile-img rounded-full w-48 h-48 object-cover border-4 border-white justify-center"
                         style={{ maxWidth: "200px" }}
-                      />
+                      /> */}
+                      <ProfilePicture/>
                     </div>
                   </div>
                   <div className="profile-stat">
