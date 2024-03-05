@@ -70,6 +70,7 @@ function ChefProfile() {
 
 function RandomRecipe() {
   return (
+    //TODO: MAKE THIS LINK TO THE PAGE OF A RANDOM RECIPE
     <Link to="/random-recipe">
       <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
         <div></div>
