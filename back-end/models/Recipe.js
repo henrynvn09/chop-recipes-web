@@ -12,7 +12,7 @@ const recipeSchema = new Schema(
     author_id: { type: String, required: true },
   },
   {
-    timestamps: true, // to auto track time
+    timestamps: false, // to auto track time
   }
 );
 

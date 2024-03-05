@@ -1,18 +1,27 @@
-import React from 'react'
-import {createContext, useState, useContext} from 'react'
+import React, { createContext, useState, useContext, useEffect } from "react";
 
-const UserContent = createContext();
+const UserContext = createContext();
 
-export const useUser = () => useContext(UserContent)
+export const useUser = () => useContext(UserContext);
 
-const UserProvider = ({children}) => {
-    const [userID, setUserID] = useState(null)
+const UserContent = ({ children }) => {
+  // Initialize userID from local storage or null if not present
+  const [userID, setUserID] = useState(() => {
+    const savedUserID = localStorage.getItem("userID");
+    return savedUserID ? JSON.parse(savedUserID) : null;
+  });
 
-    return (
-        <UserContent.Provider value={{userID, setUserID}}>
-            {children}
-        </UserContent.Provider>
-    );
+  // Effect to run when userID changes
+  useEffect(() => {
+    // Save userID to local storage
+    localStorage.setItem("userID", JSON.stringify(userID));
+  }, [userID]);
+
+  return (
+    <UserContext.Provider value={{ userID, setUserID }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
-export default UserProvider
+export default UserContent;

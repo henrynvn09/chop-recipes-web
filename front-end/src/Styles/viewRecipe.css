@@ -1,7 +1,54 @@
-.view-recipe {
-  max-width: 800px;
+.view-recipe-container {
+  display: flex;
+  justify-content: center;
   margin: 0 auto;
+}
+
+.author-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 240px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  max-height: 350px;
+  margin-top: 200px;
+}
+
+.author-image-container {
+  position: relative;
+  text-align: center;
+}
+
+.author-image {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  object-fit: cover;
+}
+.author-info {
+  text-align: center;
+  margin-top: 16px;
+}
+.author-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.author-descrip {
+  font-size: 0.875rem;
+  color: #555;
+  margin-top: 8px;
+}
+.view-recipe {
+  max-width: 800px; /* this determines how large is the white space on two sides */
   padding: 20px;
+  flex: 1;
 }
 
 .view-recipe .coverImageContainer {
@@ -13,6 +60,7 @@
   height: auto;
 }
 
+/* specifically for the recipe's title */
 .view-recipe h1 {
   font-size: 2.5em;
   color: #333;
@@ -20,8 +68,94 @@
   margin-bottom: 20px;
 }
 
-.view-recipe h2 {
-  font-size: 2em;
-  color: #555;
+/* specifically for the recipe's tags */
+.view-recipe h3 {
+  font-size: 1.5em;
+  color: #C0AE7D;
   margin-top: 20px;
 }
+
+/* specifically for the recipe's Ingredients and Step */
+.view-recipe h2 {
+  font-size: 2em;
+  color: #C0AE7D;
+  margin-top: 20px;
+}
+
+.view-recipe ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#tags {
+  margin-top: 10px;
+}
+
+.view-recipe ul {
+  margin: 10px 0;
+}
+
+.view-recipe ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd; /* Add a bottom border for separation */
+}
+
+.view-recipe li:hover {
+  background-color: #f4f4f4;
+  transition: background-color 0.3s ease;
+}
+
+
+.view-recipe table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 0px solid transparent;
+  margin-top: 20px;
+}
+
+.view-recipe th, td {
+  border: 0px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  line-height: 50px;
+  padding: 8px;
+  text-align: left;
+}
+
+/* .view-recipe th {
+  background-color: #058ff9;
+}
+
+.view-recipe tr:nth-child(even) {
+  background-color: #89d6f2;
+}
+
+.view-recipe tr:nth-child(odd) {
+  background-color: #b1dff0;
+} */
+
+.view-recipe tr:hover {
+  background-color: #e5e5e5;
+  transition: background-color 0.3s ease;
+}
+
+.view-recipe .step-container h3 {
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.view-recipe .step-container p {
+  color: #7e7b7b;
+  margin-bottom: 15px;
+}
+
+.view-recipe .stepImageContainer {
+  margin-top: 10px;
+}
+
+.view-recipe .stepImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
