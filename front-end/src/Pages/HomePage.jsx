@@ -4,7 +4,6 @@ import '../Styles/global.css'
 import ProtectedRoute from "../Components/ProtectedRoute";
 import { useUser } from "../contexts/UserContent";
 
-
 function HomePage(){
     const {userID} = useUser(); 
     ProtectedRoute();
