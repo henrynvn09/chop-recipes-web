@@ -1,7 +1,54 @@
+.view-recipe-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.author-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 240px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  max-height: 350px;
+  margin-top: 200px;
+}
+
+.author-image-container {
+  position: relative;
+  text-align: center;
+}
+
+.author-image {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  object-fit: cover;
+}
+.author-info {
+  text-align: center;
+  margin-top: 16px;
+}
+.author-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.author-descrip {
+  font-size: 0.875rem;
+  color: #555;
+  margin-top: 8px;
+}
 .view-recipe {
   max-width: 800px; /* this determines how large is the white space on two sides */
-  margin: 0 auto;
   padding: 20px;
+  flex: 1;
 }
 
 .view-recipe .coverImageContainer {
@@ -111,3 +158,4 @@
   height: auto;
   border-radius: 5px;
 }
+
