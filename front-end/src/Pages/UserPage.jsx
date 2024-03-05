@@ -6,10 +6,8 @@ import "../Styles/UserPage.css";
 import LogoutButton from "../Components/LogoutButton.jsx";
 import ProtectedRoute from "../Components/ProtectedRoute.jsx";
 import Navbar from "../Components/Navbar.jsx";
-
 import ProfilePicture from "../Components/ProfilePicture";
 import "react-image-crop/dist/ReactCrop.css";
-=======
 import { useUser } from "../contexts/UserContent";
 import { useParams } from "react-router-dom";
 import axios from "axios";
