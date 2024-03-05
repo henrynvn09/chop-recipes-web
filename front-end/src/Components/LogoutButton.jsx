@@ -23,7 +23,7 @@ const LogoutButton = () => {
   return (
     <button
       onClick={handleSubmit}
-      class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+      class="bg-red-400 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full"
     >
       Sign out
     </button>

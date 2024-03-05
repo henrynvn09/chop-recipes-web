@@ -1,5 +1,6 @@
 import React from "react";
-import myImage from "../assets/signupbackground.png";
+import coverImage from "../assets/signupbackground.png";
+import blankAvatarImage from "../assets/blankProfile.webp";
 import "../Styles/UserPage.css";
 //import Footer from "../components/Footer.jsx";
 import LogoutButton from "../Components/LogoutButton.jsx";
@@ -8,6 +9,8 @@ import Navbar from "../Components/Navbar.jsx";
 import { useUser } from "../contexts/UserContent";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import ProfilePreview from "../Components/ProfilePreview.jsx";
+import RecipePreviewBox from "../Components/RecipePreviewBox.jsx";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -19,8 +22,130 @@ export default function Profile() {
   const { userID } = useUser();
   const { profile_id } = useParams();
 
+  const [userDetails, setUserDetails] = React.useState(null);
+  const [viewerProfile, setViewerProfile] = React.useState(null);
+  const [recipes, setRecipes] = React.useState([]);
+  const [followingProfiles, setFollowingProfiles] = React.useState([]);
+
+  // Fetching user data from backend
+  React.useEffect(() => {
+    fetchProfile();
+    fetchRecipesByProfileID();
+    fetchViewerProfile();
+  }, []);
+  const fetchProfile = async () => {
+    try {
+      const response = await axios.get(BACKEND_URL + "/api/" + profile_id);
+      console.log("User details fetched:", response.data[0]);
+      setUserDetails(response.data[0]);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  const fetchViewerProfile = async () => {
+    try {
+      const response = await axios.get(BACKEND_URL + "/api/" + userID);
+      console.log("Viewer details fetched:", response.data[0]);
+      setViewerProfile(response.data[0]);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  // fetch recipes by profile id
+  const fetchRecipesByProfileID = async () => {
+    try {
+      console.log("backend url = " + BACKEND_URL);
+      const response = await axios.get(
+        BACKEND_URL + "/api/recipe/all_recipes/" + profile_id
+      );
+
+      setRecipes(response.data);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  // fetch followings profiles by profile id
+  React.useEffect(() => {
+    if (userDetails) {
+      fetchFollowingsByProfileID();
+    }
+  }, [userDetails]);
+
+  React.useEffect(() => {
+    if (userID !== profile_id && userDetails && viewerProfile) {
+      setFollowed(viewerProfile.followings.includes(profile_id));
+      console.log("Followed:", viewerProfile.followings, profile_id);
+      console.log("Followed:", followed);
+    }
+  }, [viewerProfile, userDetails]);
+
+  const fetchFollowingsByProfileID = async () => {
+    try {
+      const response = await axios.get(
+        BACKEND_URL + "/api/followings/" + userDetails.followings.join(",")
+      );
+      console.log("Followings fetched:", response.data);
+
+      setFollowingProfiles(response.data);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  const user = {
+    name: "Username",
+    description: "",
+    Image: blankAvatarImage,
+    followings: [],
+    recipes: [],
+  };
+  if (userDetails) {
+    user.name = userDetails.name;
+    user.description = userDetails.description;
+    user.Image = userDetails.Image ? userDetails.Image : blankAvatarImage;
+  }
+  if (recipes) {
+    user.recipes = recipes;
+  }
+  if (followingProfiles) {
+    user.followings = followingProfiles;
+  }
+
+  // Button follow and signout
   const followButtonHandler = () => {
-    setFollowed(!followed);
+    if (followed) {
+      unfollowUser();
+    } else {
+      followUser();
+    }
+  };
+  const followUser = async () => {
+    try {
+      const response = await axios.post(
+        BACKEND_URL + "/api/followProfile/" + userID + "/" + profile_id
+      );
+      console.log("Followed:", response.data);
+      setFollowed(true);
+    } catch (error) {
+      console.error("Error following user:", error);
+    }
+  };
+  const unfollowUser = async () => {
+    try {
+      console.warn(
+        BACKEND_URL + "/api/unfollowProfile/" + userID + "/" + profile_id
+      );
+      const response = await axios.post(
+        BACKEND_URL + "/api/unfollowProfile/" + userID + "/" + profile_id
+      );
+      console.log("Unfollowed:", response.data);
+      setFollowed(false);
+    } catch (error) {
+      console.error("Error unfollowing user:", error);
+    }
   };
 
   const followOrSignoutButton = () => {
@@ -43,6 +168,22 @@ export default function Profile() {
       );
     }
   };
+
+  // render Followings
+  const followingComponents = user.followings.map((user, index) => {
+    return <ProfilePreview key={index} user={user} />;
+  });
+
+  // render recipes
+  const recipePreviewBoxes = recipes.map((recipe, index) => (
+    <RecipePreviewBox
+      key={index}
+      image={recipe.cover_image}
+      title={recipe.title}
+      id={recipe._id}
+    />
+  ));
+
   return (
     <>
       <Navbar />
@@ -51,7 +192,7 @@ export default function Profile() {
         <section className="profile-section">
           <div
             className="profile-background"
-            style={{ backgroundImage: `url(${myImage})` }}
+            style={{ backgroundImage: `url(${coverImage})` }}
           >
             <span className="black-overlay"></span>
           </div>
@@ -80,7 +221,7 @@ export default function Profile() {
                   <div className="profile-stat">
                     <div className="stat">
                       <div className="stat-number">
-                        <span className="value">10</span>
+                        <span className="value">{user.recipes.length}</span>
                         <span className="placeholder">Recipes</span>
                       </div>
                     </div>
@@ -89,7 +230,7 @@ export default function Profile() {
                     <div className="relative">
                       <img
                         alt="..."
-                        src={myImage}
+                        src={user.Image}
                         className="profile-img rounded-full w-48 h-48 object-cover border-4 border-white justify-center"
                         style={{ maxWidth: "200px" }}
                       />
@@ -98,101 +239,29 @@ export default function Profile() {
                   <div className="profile-stat">
                     <div className="stat">
                       <div className="stat-number">
-                        <span className="value">22</span>
-                        <span className="placeholder">Friends</span>
+                        <span className="value">{user.followings.length}</span>
+                        <span className="placeholder">Followings</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <h3 className="profile-name">User name</h3>
+                  <h3 className="profile-name">{user.name}</h3>
                   {followOrSignoutButton()}
-                  <div>Description</div>
+                  <div>{user.description}</div>
                 </div>
 
+                <div className="bg-gray-200 h-[1px] mx-12 mt-10"></div>
                 <div className="text-xl h-10 pt-10 pl-10">
                   <h2>User's recipes</h2>
                 </div>
-                <div className="recipes-container">
-                  <div className="recipe">
-                    <a
-                      href="./Aboutpage.jsx"
-                      className="font-normal text-pink-500"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <img
-                        alt="No recipes found"
-                        src={myImage}
-                        style={{ maxWidth: "200px" }}
-                      />
-                    </a>
-                  </div>
-                  <div className="recipe">
-                    <a
-                      href="./Aboutpage.jsx"
-                      className="font-normal text-pink-500"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <img
-                        alt="No recipes found"
-                        src={myImage}
-                        style={{ maxWidth: "200px" }}
-                      />
-                    </a>
-                  </div>
-                  <div className="recipe">
-                    <a
-                      href="./Aboutpage.jsx"
-                      className="font-normal text-pink-500"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <img
-                        alt="No recipes found"
-                        src={myImage}
-                        style={{ maxWidth: "200px" }}
-                      />
-                    </a>
-                  </div>
-                  <div className="recipe">
-                    <a
-                      href="./Aboutpage.jsx"
-                      className="font-normal text-pink-500"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <img
-                        alt="No recipes found"
-                        src={myImage}
-                        style={{ maxWidth: "200px" }}
-                      />
-                    </a>
-                  </div>
-                  <div className="recipe">
-                    <a
-                      href="./Aboutpage.jsx"
-                      className="font-normal text-pink-500"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <img
-                        alt="No recipes found"
-                        src={myImage}
-                        style={{ maxWidth: "200px" }}
-                      />
-                    </a>
-                  </div>
-                  <div className="recipe">
-                    <a
-                      href="./Aboutpage.jsx"
-                      className="font-normal text-pink-500"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      <img
-                        alt="No recipes found"
-                        src={myImage}
-                        style={{ maxWidth: "200px" }}
-                      />
-                    </a>
-                  </div>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mx-10 p-10 overflow-y-scroll">
+                  {recipePreviewBoxes}
+                </div>
+                <h3 className="text-xl h-10 pl-10">Followings</h3>
+                <div className="flex overflow-x-scroll space-x-24 mx-10 mb-5 border rounded-md">
+                  {followingComponents}
                 </div>
               </div>
             </div>

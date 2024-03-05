@@ -59,7 +59,13 @@ const Navbar = () => {
           <Link to="/contacts">Contact</Link>
         </li>
         <li>
-          <Link to={"/user/" + userID}>User</Link>
+          <Link
+            onClick={() => {
+              window.location.href = "/user/" + userID;
+            }}
+          >
+            User
+          </Link>
         </li>
         <li>
           <Link className="notoverflow" to="/upload-recipe">
