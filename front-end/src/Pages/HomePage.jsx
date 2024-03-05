@@ -9,7 +9,7 @@ import 'tailwindcss/tailwind.css';
 
 function Welcome() {
   return (
-    <div className="fixed top-24 left-4 w-1/3 h-40vh p-4 rounded-lg bg-custom-red">
+    <div className="fixed top-24 left-12 w-1/3 h-40vh p-4 rounded-lg bg-custom-red">
       <div className="text-center">
         <p className="font-bold italic text-lg">Welcome to</p>
         <p className="font-bold italic text-4xl">CHOP</p>
@@ -29,47 +29,18 @@ function Welcome() {
 
 function RecipeOfTheDay() {
   return (
-      <div className="bg-red-200 rounded-full w-1/3 h-auto p-2 absolute left-0 top-2/3 box-border font-roboto flex flex-col items-center justify-center text-center">
+      <div className="bg-custom-red rounded-full w-1/3 h-auto p-2 absolute left-12 top-2/3 box-border font-roboto flex flex-col items-center justify-center text-center">
           <h1 className="font-bold italic text-lg mb-2">Recipe Of The Day</h1>
       </div>
   );
 }
 
-function RandomRecipe() {
-  return (
-    <Link to="/random-recipe">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-3/4 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
-        Random Recipe
-      </div>
-    </Link>
-  )
-}
-
 function Library(){
   return (
     <Link to="/library">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cookbook-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-20 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
-        Browse our Library
-      </div>
-    </Link>
-  )
-}
-
-function ChefProfile() {
-  return (
-    <Link to="/user">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/chefhat-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-3/4 top-20 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
-        Chef's Profile
-      </div>
-    </Link>
-  )
-}
-
-function AboutChop() {
-  return (
-    <Link to="/about">
-      <div style={{ backgroundImage: `url('https://img.freepik.com/premium-vector/blurred-gradient-mesh-abstract-background-orange-yellow-seamless-transition_427410-505.jpg')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
-        About our kitchen
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cookbook-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-xl w-64 h-64 absolute left-1/2 top-24 transform -translate-x-1/2 box-border font-roboto flex flex-col justify-between items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+        <div></div>
+        <div>Browse our Library</div>
       </div>
     </Link>
   )
@@ -78,8 +49,43 @@ function AboutChop() {
 function UploadRecipe(){
   return (
     <Link to="/upload-recipe">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/whisk-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
-        Upload New Recipe
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/whisk-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-1/2 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+        <div></div>
+        <div>Upload New Recipe</div>
+      </div>
+    </Link>
+  )
+}
+
+function ChefProfile() {
+  return (
+    <Link to="/user">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/chefhat-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-24 transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+        <div></div>
+        <div>Chef's Profile</div>
+      </div>
+    </Link>
+  )
+}
+
+function RandomRecipe() {
+  return (
+    <Link to="/random-recipe">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+        <div></div>
+        <div>Random Recipe</div>
+      </div>
+    </Link>
+  )
+}
+
+
+//CURRENTLY NOT USED
+function AboutChop() {
+  return (
+    <Link to="/about">
+      <div style={{ backgroundImage: `url('https://img.freepik.com/premium-vector/blurred-gradient-mesh-abstract-background-orange-yellow-seamless-transition_427410-505.jpg')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 absolute left-1/2 top-1/2 transform -translate-x-1/2 box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
+        About our kitchen
       </div>
     </Link>
   )
@@ -96,7 +102,7 @@ function HomePage(){
               <RecipeOfTheDay></RecipeOfTheDay>
               <Library></Library>
               <RandomRecipe></RandomRecipe>
-              <AboutChop></AboutChop>
+              {/* <AboutChop></AboutChop> */}
               <ChefProfile></ChefProfile>
               <UploadRecipe></UploadRecipe>
           </div>
