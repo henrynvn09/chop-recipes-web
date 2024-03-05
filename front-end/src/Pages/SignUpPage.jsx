@@ -77,7 +77,7 @@ const SignUpPage = () => {
                     </form>
                 </div>
                 <div className = "sign-up">
-                    <p>Already have an account? <a href="/">Login</a></p>
+                    <p>Already have an account? <a className = "sign-up-button"href="/">Login</a></p>
                 </div>
             </div>
         </div>
