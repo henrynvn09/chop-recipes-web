@@ -14,7 +14,7 @@ const AutoLogout = () => {
                 localStorage.removeItem('userID');
             })
             .catch(err => console.log(err));
-    }, [navigate]);
+    }, [setUserID, navigate]);
 
     // This component does not render anything
     return null;
