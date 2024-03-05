@@ -40,8 +40,9 @@ export default function UploadPage() {
     const UploadCoverImage = (event) => {
         const selectedFile = event.target.files[0];
         if (selectedFile) {
+            const uniqueFileName = `${Date.now()}-${selectedFile.name}`;
             const storageRef = firebase.storage().ref();
-            const fileRef = storageRef.child(selectedFile.name);
+            const fileRef = storageRef.child(uniqueFileName);
 
             fileRef.put(selectedFile).then((snapshot) => {
                 snapshot.ref.getDownloadURL().then((downloadURL) => {
@@ -68,8 +69,9 @@ export default function UploadPage() {
     const UploadStepImage = (event) => {
         const selectedFile = event.target.files[0];
         if (selectedFile) {
+            const uniqueFileName = `${Date.now()}-${selectedFile.name}`;
             const storageRef = firebase.storage().ref();
-            const fileRef = storageRef.child(selectedFile.name);
+            const fileRef = storageRef.child(uniqueFileName);
 
             fileRef.put(selectedFile).then((snapshot) => {
                 snapshot.ref.getDownloadURL().then((downloadURL) => {

@@ -4,6 +4,17 @@ import "../Styles/Navbar.css";
 import { useUser } from "../contexts/UserContent";
 
 const Navbar = () => {
+  const { userID } = useUser();
+  const navLinks = [
+  { path: "/home", label: "Home" },
+  { path: "/library", label: "Library" },
+  { path: "/contacts", label: "Contact" },
+  { path: `/user/${userID}`, label: "User" },
+  { path: "/upload-recipe", label: "Upload Recipe" },
+  { path: "/view-recipe", label: "View Recipe" },
+];
+
+
   // State variable to hold the value of the input field
   const [searchInput, setSearchInput] = useState("");
 
@@ -26,7 +37,6 @@ const Navbar = () => {
     setSearchInput(event.target.value);
   };
 
-  const { userID } = useUser();
 
   return (
     <nav className="navbar">
@@ -46,38 +56,12 @@ const Navbar = () => {
         </button>
       </div>
       <ul>
-        <li>
-          <Link to="/home">Home</Link>
+      {navLinks.map((link) => (
+        <li key={link.path}>
+          <Link to={link.path}>{link.label}</Link>
         </li>
-        <li>
-          <Link to="/library">Library</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/contacts">Contact</Link>
-        </li>
-        <li>
-          <Link
-            onClick={() => {
-              window.location.href = "/user/" + userID;
-            }}
-          >
-            User
-          </Link>
-        </li>
-        <li>
-          <Link className="notoverflow" to="/upload-recipe">
-            Upload Recipe
-          </Link>
-        </li>
-        <li>
-          <Link className="notoverflow" to="/view-recipe">
-            View Recipe
-          </Link>
-        </li>
-      </ul>
+      ))}
+    </ul>
     </nav>
   );
 };
