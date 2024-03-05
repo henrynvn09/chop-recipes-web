@@ -6,8 +6,11 @@ import Ingredient from "../Components/Ingredient";
 import IngredientTable from "../Components/IngredientTable";
 import Navbar from "../Components/Navbar";
 import ProtectedRoute from "../Components/ProtectedRoute";
+import { useUser } from "../contexts/UserContent";
+import axios from 'axios';
 export default function UploadPage() {
     ProtectedRoute();
+    const { userID } = useUser();
     // Recipe Ingredient
     const [ingredients, setIngredients] = useState([]);
     const handleAddIngredient = (ingredient) => {
@@ -109,29 +112,80 @@ export default function UploadPage() {
     
         allSteps.forEach((step, index) => {
         formData.append(`allSteps[${index}].title`, step.title);
-        formData.append(`allSteps[${index}].description`, step.description);
+        formData.append(`allSteps[${index}].text`, step.description);
         formData.append(`allSteps[${index}].image`, step.image);
         });
   
-        const response = await fetch('http://localhost:3000/api/recipes', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Content-Type': 'application/json'
+        const responseJson = {
+            title: "", // To be filled from formData        
+            cover_image: "", // To be filled from formData
+            content_list: [], // To be filled from formData (allSteps)
+            tagName_lists: [], // To be filled from formData (tags)
+            ingredient_lists: [], // To be filled from formData (ingredients)
+            author_id: userID // Assuming userID is available in your scope
+        }; 
+         console.log(responseJson);
+
+        for (let [key, value] of formData.entries()) {
+            if (key === 'recipeTitle') {
+                responseJson.title = value;
             }
-        });
+            else if (key === 'coverImage') {
+                responseJson.cover_image = value;
+            }
+            else if (key.includes('allSteps')) {
+                const stepIndex = key.match(/\d+/)[0];
+                const stepKey = key.split('.')[1];
+                if (!responseJson.content_list[stepIndex]) {
+                    responseJson.content_list[stepIndex] = {};
+                }
+                responseJson.content_list[stepIndex][stepKey] = value;
+            }
+            else if (key.includes('tags')) {
+                responseJson.tagName_lists.push(value);
+            }
+            else if (key.includes('ingredients')) {
+                const ingredientIndex = key.match(/\d+/)[0];
+                const ingredientKey = key.split('.')[1];
+                if (!responseJson.ingredient_lists[ingredientIndex]) {
+                    responseJson.ingredient_lists[ingredientIndex] = {};
+                }
+                responseJson.ingredient_lists[ingredientIndex][ingredientKey] = value;
+            }
+        }
         
-        const data = await response.json();
-        console.log(data);
+        axios.post('http://localhost:5000/uploadRecipe', responseJson)
+        .then(result => {
+            console.log('Recipe added successfully')
+            console.log(result)
+        })
+        .catch(err => console.log(err))
+
+        // console.log(responseJson);
+
+
+
+
+
+        // const response = await fetch('http://localhost:3000/api/recipes', {
+        // method: 'POST',
+        // body: formData,
+        // headers: {
+        //     'Content-Type': 'application/json'
+        //     }
+        // });
+        
+        // const data = await response.json();
+        // console.log(data);
         
         // Reset the form after submission
-        if (data) {
-            setRecipeTitle('');
-            setCoverImage(null);
-            setIngredients([]);
-            setTags([]);
-            setAllSteps([]);
-        }
+        // if (data) {
+        //     setRecipeTitle('');
+        //     setCoverImage(null);
+        //     setIngredients([]);
+        //     setTags([]);
+        //     setAllSteps([]);
+        // }
     };
 
     return (
