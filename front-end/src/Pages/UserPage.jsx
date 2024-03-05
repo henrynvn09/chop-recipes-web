@@ -5,19 +5,48 @@ import "../Styles/UserPage.css";
 import LogoutButton from "../Components/LogoutButton.jsx";
 import ProtectedRoute from "../Components/ProtectedRoute.jsx";
 import Navbar from "../Components/Navbar.jsx";
+import { useUser } from "../contexts/UserContent";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 export default function Profile() {
-  const [followed, setFollowed] = React.useState(false);
+  // protected route
   ProtectedRoute();
+
+  const [followed, setFollowed] = React.useState(false);
+  const { userID } = useUser();
+  const { profile_id } = useParams();
+
   const followButtonHandler = () => {
     setFollowed(!followed);
+  };
+
+  const followOrSignoutButton = () => {
+    if (profile_id === userID) {
+      return (
+        <div className="flex justify-center pt-1 pb-8">
+          <LogoutButton />
+        </div>
+      );
+    } else {
+      return (
+        <div className="flex justify-center pt-1 pb-8">
+          <button
+            onClick={followButtonHandler}
+            class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          >
+            {followed ? "Unfollow" : "Follow"}
+          </button>
+        </div>
+      );
+    }
   };
   return (
     <>
       <Navbar />
-      <div>
-        <LogoutButton />
-      </div>
+
       <main className="profile-page">
         <section className="profile-section">
           <div
@@ -78,14 +107,7 @@ export default function Profile() {
 
                 <div className="text-center">
                   <h3 className="profile-name">User name</h3>
-                  <div className="flex justify-center pt-1 pb-8">
-                    <button
-                      onClick={followButtonHandler}
-                      class="bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-                    >
-                      {followed ? "Unfollow" : "Follow"}
-                    </button>
-                  </div>
+                  {followOrSignoutButton()}
                   <div>Description</div>
                 </div>
 
