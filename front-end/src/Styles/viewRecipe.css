@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  background-color: #f3f1eb;
 }
 
 .author-card {
@@ -13,7 +14,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   max-height: 350px;
-  margin-top: 200px;
+  background-color: #CCCC99;
+  margin: 10px;
+
+  position: sticky;
+  top: 200px; 
+  align-self: flex-start;
 }
 
 .author-image-container {
@@ -23,9 +29,8 @@
 
 .author-image {
   position: relative;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0%);
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -49,6 +54,7 @@
   max-width: 800px; /* this determines how large is the white space on two sides */
   padding: 20px;
   flex: 1;
+  background-color: #dfd9c5;
 }
 
 .view-recipe .coverImageContainer {
@@ -102,7 +108,7 @@
 }
 
 .view-recipe li:hover {
-  background-color: #f4f4f4;
+  background-color: #e5e5e5;
   transition: background-color 0.3s ease;
 }
 
@@ -116,7 +122,7 @@
 
 .view-recipe th, td {
   border: 0px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #ddd;
   line-height: 50px;
   padding: 8px;
   text-align: left;

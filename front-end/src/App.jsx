@@ -19,7 +19,7 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/contacts" element={<ContactPage />} />
           <Route path="/upload-recipe" element={<UploadPage />} />
-          <Route path="/view-recipe" element={<ViewRecipe />} />
+          <Route path="/view-recipe/:recipe_id" element={<ViewRecipe />} />
           <Route path="/user/:profile_id" element={<UserPage />} />
           <Route path="/library" element={<LibraryRecipes />} />
           <Route path="*" element={<ErrorPage />} />
