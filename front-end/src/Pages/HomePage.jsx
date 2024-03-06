@@ -45,46 +45,45 @@ function RecipeOfTheDay({ className }) {
 
 function Library({ className }) {
   return (
-    <Link to="/library">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cookbook.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className={`rounded-lg w-64 h-64 box-border font-roboto items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <div></div>
-        <div>Browse our Library</div>
-      </div>
-    </Link>
+    <div className="border border-white flex justify-center">
+      <Link to="/library" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+        <img src={`${process.env.PUBLIC_URL + '/cookbook.png'}`} alt="Cookbook" className="w-full h-full object-cover" />
+        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Browse our Library</div>
+      </Link>
+    </div>
   )
 }
 
 function UploadRecipe({ className }) {
   return (
-    <Link to="/upload-recipe">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/whisk.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className={`rounded-lg w-64 h-64 box-border font-roboto justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <div></div>
-        <div>Upload New Recipe</div>
-      </div>
-    </Link>
+    <div className="border border-white flex justify-center">
+      <Link to="/upload-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+        <img src={`${process.env.PUBLIC_URL + '/whisk.png'}`} alt="Whisk" className="w-full h-full object-cover" />
+        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Upload New Recipe</div>
+      </Link>
+    </div>
   )
 }
 
 function ChefProfile({ className }) {
   return (
-    <Link to="/user">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/chefhat.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className={`rounded-lg w-64 h-64 box-border font-roboto items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 border-black ${className}`}>
-        <div></div>
-        <div>Chef's Profile</div>
-      </div>
+    <div className="border border-white flex justify-center">
+    <Link to="/user" className={`rounded-lg w-64 h-64 box-border font-roboto flex flex-col justify-center items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 border border-black ${className}`}>
+      <img src={`${process.env.PUBLIC_URL + '/chefhat.png'}`} alt="Chef Hat" className="w-full h-full object-cover" />
+      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Chef's Profile</div>
     </Link>
+    </div>
   )
 }
 
 function RandomRecipe({ className }) {
   return (
-    //TODO: MAKE THIS LINK TO THE PAGE OF A RANDOM RECIPE
-    <Link to="/random-recipe">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 border border-black ${className}`}>
-        <div></div>
-        <div>Random Recipe</div>
-      </div>
-    </Link>
+    <div className="border border-white flex justify-center">
+      <Link to="/random-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 border border-black ${className}`}>
+        <img src={`${process.env.PUBLIC_URL + '/blender.png'}`} alt="Blender" className="w-full h-full object-cover" />
+        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Random Recipe</div>
+      </Link>
+    </div>
   )
 }
 
@@ -116,8 +115,8 @@ function HomePage(){
   return (
     <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cuttingboard-bg.avif'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '100vh', overflow: 'auto' }}>
           <Navbar />
-          <div className="grid grid-cols-3 gap-2">
-              <RecipeOfTheDay className='col-start-2'/>
+          <div className="grid grid-cols-3 gap-10">
+              <RecipeOfTheDay className='col-start-1 row-span-2'/>
               <Library className='border border-white' />
               <RandomRecipe className='border border-black'/>
               {/* <AboutChop />*/}
