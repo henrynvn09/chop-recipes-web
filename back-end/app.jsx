@@ -34,6 +34,7 @@ mongoose
 //recipe routes
 app.get("/api/recipe/add", recipeController.addRecipe);
 app.get("/api/recipe/all_recipes", recipeController.getAllRecipes);
+app.get("/api/recipe/random", recipeController.getRandomRecipe);
 app.post("/uploadRecipe", recipeController.uploadRecipe);
 
 

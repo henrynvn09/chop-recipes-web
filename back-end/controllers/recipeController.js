@@ -39,3 +39,11 @@ exports.getAllRecipes = (req, res) => {
         })
         .catch((err) => console.log(err));
 };
+
+exports.getRandomRecipe = (req, res) => {
+  Recipe.aggregate().sample(1).exec()
+        .then((result) => {
+        res.send(result[0]._id);
+        })
+        .catch((err) => console.log(err));
+}
