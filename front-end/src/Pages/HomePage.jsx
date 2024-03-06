@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import ProtectedRoute from "../Components/ProtectedRoute";
 import { useUser } from "../contexts/UserContent";
+import RecipePreviewBox from '../Components/RecipePreviewBox.jsx';
 
 import 'tailwindcss/tailwind.css';
 
@@ -16,8 +17,7 @@ function Welcome() {
         <p className="italic text-lg">
           Whether you're a seasoned chef or a kitchen novice, prepare to embark
           on a flavor-packed adventure like no other. Dive into our recipe
-          library, where a treasure trove of culinary delights awaits your
-          discovery. With our intuitive search bar and ingredient-tagging
+          library! With our intuitive search bar and ingredient-tagging
           magic, finding your next culinary masterpiece is as easy as pie. So,
           sharpen your knives and unleash your inner chef – let's Chop till we
           drop!
@@ -27,11 +27,19 @@ function Welcome() {
   );
 };
 
+const todaysRecipe = {
+  title: "Apple Pie",
+  image: "https://greateightfriends.com/wp-content/uploads/2019/03/Apple-Pie-v-1-2.jpeg",
+  id: "1"
+}
+
+
 function RecipeOfTheDay() {
   return (
-      <div className="bg-custom-red rounded-full w-1/3 h-auto p-2 absolute left-12 top-2/3 box-border font-roboto flex flex-col items-center justify-center text-center">
-          <h1 className="font-bold italic text-lg mb-2">Recipe Of The Day</h1>
-      </div>
+    <div className="bg-custom-red rounded-full w-1/3 p-2 absolute left-12 top-[400px] box-border font-roboto flex items-center justify-center text-center">
+      <h1 className="font-bold italic text-lg mb-2">Recipe Of The Day</h1>
+      <RecipePreviewBox id={todaysRecipe.id} title={todaysRecipe.title} image={todaysRecipe.image} />
+    </div>
   );
 }
 
