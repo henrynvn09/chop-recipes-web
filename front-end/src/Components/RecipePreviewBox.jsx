@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 function RecipePreviewBox(props) {
+  let navigate = useNavigate();
+  
   const onClickHandler = () => {
-    // window.location.href = `/recipe/${props.id}`;
-    console.log("redirect to the props has id: ", props.id);
+    navigate(`/view-recipe/${props.id}`);
   };
+
+
   return (
     <div
       className="border border-b rounded-md m-3 shadow-md hover:shadow-lg bg-slate-50 transition-transform duration-300 transform hover:scale-105 w-40 h-60"
