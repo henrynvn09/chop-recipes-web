@@ -8,24 +8,24 @@ import RecipePreviewBox from '../Components/RecipePreviewBox.jsx';
 
 import 'tailwindcss/tailwind.css';
 
-function Welcome() {
-  return (
-    <div className="fixed top-24 left-12 w-1/3 h-40vh p-4 rounded-lg bg-custom-red">
-      <div className="text-center">
-        <p className="font-bold italic text-lg">Welcome to</p>
-        <p className="font-bold italic text-4xl">CHOP</p>
-        <p className="italic text-lg">
-          Whether you're a seasoned chef or a kitchen novice, prepare to embark
-          on a flavor-packed adventure like no other. Dive into our recipe
-          library! With our intuitive search bar and ingredient-tagging
-          magic, finding your next culinary masterpiece is as easy as pie. So,
-          sharpen your knives and unleash your inner chef – let's Chop till we
-          drop!
-        </p>
-      </div>
-    </div>
-  );
-};
+// function Welcome() {
+//   return (
+//     <div className="fixed top-24 left-12 w-1/3 h-40vh p-4 rounded-lg bg-custom-red">
+//       <div className="text-center">
+//         <p className="font-bold italic text-lg">Welcome to</p>
+//         <p className="font-bold italic text-4xl">CHOP</p>
+//         <p className="italic text-lg">
+//           Whether you're a seasoned chef or a kitchen novice, prepare to embark
+//           on a flavor-packed adventure like no other. Dive into our recipe
+//           library! With our intuitive search bar and ingredient-tagging
+//           magic, finding your next culinary masterpiece is as easy as pie. So,
+//           sharpen your knives and unleash your inner chef – let's Chop till we
+//           drop!
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
 
 const todaysRecipe = {
   title: "Apple Pie",
@@ -46,7 +46,7 @@ function RecipeOfTheDay() {
 function Library(){
   return (
     <Link to="/library">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cookbook-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-xl w-64 h-64 absolute left-1/2 top-24 transform -translate-x-1/2 box-border font-roboto flex flex-col justify-between items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cookbook.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-xl w-64 h-64 absolute left-1/2 top-24 transform -translate-x-1/2 box-border font-roboto flex flex-col justify-between items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
         <div></div>
         <div>Browse our Library</div>
       </div>
@@ -57,7 +57,7 @@ function Library(){
 function UploadRecipe(){
   return (
     <Link to="/upload-recipe">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/whisk-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-1/2 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/whisk.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-1/2 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
         <div></div>
         <div>Upload New Recipe</div>
       </div>
@@ -68,7 +68,7 @@ function UploadRecipe(){
 function ChefProfile() {
   return (
     <Link to="/user">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/chefhat-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-24 transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/chefhat.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-24 transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
         <div></div>
         <div>Chef's Profile</div>
       </div>
@@ -80,7 +80,7 @@ function RandomRecipe() {
   return (
     //TODO: MAKE THIS LINK TO THE PAGE OF A RANDOM RECIPE
     <Link to="/random-recipe">
-      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender-button.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
+      <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-lg w-64 h-64 absolute left-3/4 top-[400px] transform -translate-x-1/2 box-border font-roboto flex flex-col justify-end items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 space-y-4 p-4">
         <div></div>
         <div>Random Recipe</div>
       </div>
@@ -104,10 +104,9 @@ function HomePage(){
   const {userID} = useUser(); 
   ProtectedRoute();
   return (
-    <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/stripes-bg.jpg'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '100vh', overflow: 'auto' }}>
+    <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cuttingboard-bg.avif'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '100vh', overflow: 'auto' }}>
           <Navbar />
           <div>
-              <Welcome></Welcome>
               <RecipeOfTheDay></RecipeOfTheDay>
               <Library></Library>
               <RandomRecipe></RandomRecipe>
