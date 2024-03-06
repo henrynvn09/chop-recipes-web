@@ -18,6 +18,31 @@ function LibraryRecipes() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+ // thoughts for implementing the random recipe
+ 
+//  const [clickedRandomRecipe, setClickedRandomRecipe] = useState(false);
+//  // in the onclick function, setClickedRandomRecipe(true)
+
+//  // fetch the recipe from backend
+//  useEffect(() => {
+//    if (clickedRandomRecipe) {
+//      fetchRecipes().then((id) => {
+//        // TODO: do a redirect to /viewrecipe/{id}
+//      });
+//    }
+//  }, [clickedRandomRecipe]);
+
+//  const fetchRecipes = async () => {
+//    try {
+//      console.log("backend url = " + BACKEND_URL);
+//      const response = await axios.get(BACKEND_URL + "/api/recipe/all_recipes");
+//      console.log("Recipes fetched:", response.data);
+//      return response.data;
+//      //setRecipes(response.data);
+//    } catch (error) {
+//      console.error("Error fetching recipes:", error);
+//    }
+//  };
 
   // fetch the recipe from backend
   useEffect(() => {
