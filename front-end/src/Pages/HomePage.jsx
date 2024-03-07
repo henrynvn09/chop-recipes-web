@@ -49,7 +49,7 @@ function UploadRecipe({ className }) {
 function ChefProfile({ className, userID }) {
   return (
     <div className="flex justify-center">
-      <Link to={`/user/${userID}`} className={`rounded-lg w-64 h-64 box-border font-roboto flex flex-col justify-center items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+      <Link to={`/user/${userID}`} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
         <img src={`${process.env.PUBLIC_URL + '/chefhat.png'}`} alt="Chef Hat" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Chef's Profile</div>
       </Link>
@@ -68,18 +68,52 @@ function RandomRecipe({ className }) {
   )
 }
 
+function ContactUs({ className }) {
+  return (
+    <div className="flex justify-center">
+      <Link to="/contact" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+        <img src={`${process.env.PUBLIC_URL + '/mail.png'}`} alt="Contact" className="w-full h-full object-cover" />
+        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Contact Us</div>
+      </Link>
+    </div>
+  )
+}
+
+function ShareWithFriend({ className, handleShare }) {
+  return (
+    <button onClick={handleShare} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+      <img src={`${process.env.PUBLIC_URL + '/chef.png'}`} alt="Share" className="w-full h-full object-cover" />
+      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Share with a friend</div>
+    </button>
+  )
+}
+
 function HomePage(){
   const {userID} = useUser(); 
   ProtectedRoute();
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check out this awesome recipe website!',
+        url: window.location.href
+      }).catch(console.error);
+    } else {
+      alert('Web Share API is not supported in your browser.');
+    }
+  };
+
   return (
     <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cuttingboard-bg.avif'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '100vh', overflow: 'auto' }}>
           <Navbar />
-          <div className="pt-4 grid grid-cols-3 gap-10">
+          <div className="pt-4 grid grid-cols-4 gap-12">
               <RecipeOfTheDay className='col-start-1 row-span-2'/>
-              <Library className='' />
-              <UploadRecipe className=''/>
-              <ChefProfile className='' userID={userID}/>
-              <RandomRecipe className=''/>
+              <Library className='col-start-2 row-start-1' />
+              <UploadRecipe className='col-start-3 row-start-1'/>
+              <ContactUs className='col-start-4 row-start-1'/>
+              <ChefProfile className='col-start-2 row-start-2' userID={userID}/>
+              <RandomRecipe className='col-start-3 row-start-2'/>
+              <ShareWithFriend className='col-start-4 row-start-2' handleShare={handleShare}/>
           </div>
       </div> 
   );
