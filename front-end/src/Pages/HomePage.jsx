@@ -84,7 +84,7 @@ function RandomRecipe({ className }) {
 function ContactUs({ className }) {
   return (
     <div className="flex justify-center">
-      <Link to="/contact" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+      <Link to="/contacts" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
         <img src={`${process.env.PUBLIC_URL + '/mail.png'}`} alt="Contact" className="w-64 h-64 object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Contact Us</div>
       </Link>
@@ -111,6 +111,7 @@ function HomePage(){
     if (navigator.share) {
       navigator.share({
         title: 'Check out this awesome recipe website!',
+        text: 'Hey, I found this awesome recipe website! Check it out and let\'s cook something delicious together!',
         url: window.location.href
       }).catch(console.error);
     } else {
