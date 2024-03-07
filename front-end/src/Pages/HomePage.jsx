@@ -14,12 +14,25 @@ const todaysRecipe = {
   id: "1"
 }
 
+function getTodaysRecipe() {
+  //TODO: CHANGE THIS TO FETCH FROM BACKEND
+  return {
+    title: "Apple Pie",
+    image: "https://greateightfriends.com/wp-content/uploads/2019/03/Apple-Pie-v-1-2.jpeg",
+    id: "1"
+  };
+}
+
 
 function RecipeOfTheDay({ className }) {
+  const recipe = getTodaysRecipe();
   return (
-    <div className={`rounded-lg box-border font-roboto text-center flex items-center ${className}`}>
-      <h1 className="font-bold italic text-lg mb-2">Recipe Of TheDay</h1>
-      <RecipePreviewBox id={todaysRecipe.id} title={todaysRecipe.title} image={todaysRecipe.image} />
+    <div className={`rounded-lg box-border font-roboto flex flex-col items-center justify-center ${className}`}>
+      <Link to={`/view-recipe/${recipe.id}`} className="flex flex-col items-center">
+        <h1 className="font-bold italic text-2xl mb-2">Recipe Of The Day</h1>
+        <h2 className="font-bold italic text-xl mb-2">{recipe.title}</h2>
+        <img src={recipe.image} alt={recipe.title} className="w-64 h-64 object-cover" />
+      </Link>
     </div>
   );
 }
@@ -72,7 +85,7 @@ function ContactUs({ className }) {
   return (
     <div className="flex justify-center">
       <Link to="/contact" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/mail.png'}`} alt="Contact" className="w-full h-full object-cover" />
+        <img src={`${process.env.PUBLIC_URL + '/mail.png'}`} alt="Contact" className="w-64 h-64 object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Contact Us</div>
       </Link>
     </div>
@@ -81,10 +94,12 @@ function ContactUs({ className }) {
 
 function ShareWithFriend({ className, handleShare }) {
   return (
+    <div className="flex justify-center">
     <button onClick={handleShare} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-      <img src={`${process.env.PUBLIC_URL + '/chef.png'}`} alt="Share" className="w-full h-full object-cover" />
+      <img src={`${process.env.PUBLIC_URL + '/chef.png'}`} alt="Share" className="w-64 h-64 object-cover" />
       <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Share with a friend</div>
     </button>
+    </div>
   )
 }
 
