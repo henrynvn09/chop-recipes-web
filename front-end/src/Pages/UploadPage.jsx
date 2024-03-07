@@ -193,7 +193,7 @@ export default function UploadPage() {
             <main className="upload-page">
 
                 <h1>Recipe Upload</h1>     
-                <label htmlFor="recipeTitle">Recipe Title:</label>
+                <div className="recipe-title-label"><label htmlFor="recipeTitle">Recipe Title</label></div>
                 <input
                     type="text"
                     id="recipeTitle"
@@ -215,11 +215,11 @@ export default function UploadPage() {
                         style={{display: 'none'}} // Make the file input element invisible
                     />
                 {coverImage && <img src={coverImage} alt="Uploaded" />}
-                <br></br>
+                
 
                 <Ingredient addIngredient={handleAddIngredient} />
                 <IngredientTable ingredients={ingredients} deleteIngredient={handleDeleteIngredient}/>
-                <br></br>
+                
 
                 <h2>Tags</h2>
                 <div>
@@ -246,9 +246,9 @@ export default function UploadPage() {
                     </ul>
                     </div>
                 )}
-                <br></br>
+                
 
-                <h1>Steps</h1>
+                <h2>Steps</h2>
                 <Step
                     newStep={newStep}
                     handleChange={handleChange}
@@ -258,8 +258,8 @@ export default function UploadPage() {
 
                 <StepsList allSteps={allSteps} handleDelete={handleDelete} />
 
-                <form onSubmit={handleFormSubmit}>
-                    <input type="submit"/>
+                <form onSubmit={handleFormSubmit} className="submit-form">
+                    <input type="submit" id="submitButton"/>
                 </form>
             </main>
         </>
