@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import ProtectedRoute from "../Components/ProtectedRoute";
 import { useUser } from "../contexts/UserContent";
 import 'tailwindcss/tailwind.css';
+import "../Styles/HomePage.css";
+import { useEffect } from "react";
 
 const todaysRecipe = {
   title: "Apple Pie",
@@ -107,9 +109,57 @@ function ShareWithFriend({ className, handleShare }) {
   )
 }
 
+ // Dummy function for browsing the library
+  const handleLibraryClick = () => {
+    console.log('Library button clicked');
+    // Navigate to the library page or perform any action here
+    // history.push('/library');
+  };
+
+  // Dummy function for uploading a new recipe
+  const handleUploadRecipeClick = () => {
+    console.log('Upload recipe button clicked');
+    // Navigate to the upload recipe page or perform any action here
+    // history.push('/upload-recipe');
+  };
+
+  // Dummy function for contacting us
+  const handleContactClick = () => {
+    console.log('Contact button clicked');
+    // Navigate to the contact page or perform any action here
+    // history.push('/contacts');
+  };
+
+  // Dummy function for user profile
+  const handleProfileClick = (userID) => {
+    console.log('Profile button clicked for user:', userID);
+    // Navigate to the user profile page or perform any action here
+    // history.push(`/user/${userID}`);
+  };
+
+  // Dummy function for a random recipe
+  const handleRandomRecipeClick = () => {
+    console.log('Random recipe button clicked');
+    // Navigate to a random recipe page or perform any action here
+    // history.push(`/view-recipe/${getRandomRecipeID().id}`);
+  };
+
+  // Dummy function for sharing with a friend
+  const handleShare = () => {
+    console.log('Share button clicked');
+    // Perform share action here
+  };
+
 function HomePage(){
   const {userID} = useUser(); 
   ProtectedRoute();
+  useEffect(() => {
+  document.body.classList.add('overflow-hidden');
+  
+  return () => {
+    document.body.classList.remove('overflow-hidden');
+  };
+}, []);
 
   const handleShare = () => {
     if (navigator.share) {
@@ -124,17 +174,87 @@ function HomePage(){
   };
 
   return (
-    <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cuttingboard-bg.avif'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '100vh', overflow: 'auto' }}>
-          <Navbar />
-          <div className="pt-4 grid grid-cols-4 gap-12">
-              <RecipeOfTheDay className='col-start-1 row-span-2'/>
-              <Library className='col-start-2 row-start-1' />
-              <UploadRecipe className='col-start-3 row-start-1'/>
-              <ContactUs className='col-start-4 row-start-1'/>
-              <ChefProfile className='col-start-2 row-start-2' userID={userID}/>
-              <RandomRecipe className='col-start-3 row-start-2'/>
-              <ShareWithFriend className='col-start-4 row-start-2' handleShare={handleShare}/>
-          </div>
+    <div className="bg-custom-grey ">
+        <Navbar />
+        <div className="relative h-screen">
+        <div className="relative block w-full h-1/4screen hover:bg-opacity-75">
+         
+            <img src='/allfoodimg.jpg' alt="All Food" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black transition duration-300 ease-in-out bg-opacity-50 hover:bg-opacity-75 ">
+
+              <a href="/library" className="absolute inset-0 flex justify-center mt-40 z-0">
+                  <h1 className="text-white text-2xl md:text-4xl lg:text-7xl font-bold">Never Takeout Again</h1>
+              </a>
+              <a href="/library" className="absolute inset-0 flex justify-center mt-80 z-0">
+                  <h3 className="text-custom-grey text-sm md:text-md lg:text-lg italic">At Chop, we offer quality services for all!</h3>
+              </a>
+            </div>
+        </div>
+
+          
+          <div className="centered-grid absolute flex justify-center z-1000">
+                  <div className="grid grid-cols-3 gap-[4rem] max-w-5xl "
+                  >
+            
+                    <div className="bg-custom-darkgreen rounded-[4rem] transition duration-500 ease-in-out hover:scale-110 hover:bg-custom-green p-10">
+                        <button onClick={() => handleLibraryClick()} className="  rounded-lg h-64 box-border font-roboto text-lg font-bold italic ">
+                          <div className="justify-center flex-col ">
+
+                            <img src='/cookbook.png' alt="Cookbook"  />
+                            <div className=" bg-opacity-50">Browse our Library</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div className="bg-custom-darkgreen rounded-[4rem]  transition duration-500 ease-in-out hover:scale-110 hover:bg-custom-green p-10">
+                        <button onClick={() => handleUploadRecipeClick()} className=" rounded-lg h-64 box-border font-roboto text-lg font-bold italic ">
+                                                <div className="justify-center flex-col">
+
+                            <img src={'/whisk-square.png'} alt="Whisk"  />
+                            <div className=" bg-opacity-50">Upload New Recipe</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div className="bg-custom-darkgreen rounded-[4rem]   transition duration-500 ease-in-out hover:scale-110 hover:bg-custom-green p-10">
+                        <button onClick={() => handleContactClick()} className="rounded-lg h-64 box-border font-roboto text-lg font-bold italic ">
+                                                <div className="justify-center flex-col">
+
+                            <img src={'/mail-square.png'} alt="Contact"  />
+                            <div className=" bg-opacity-50">Contact Us</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div className="bg-custom-darkgreen rounded-[4rem]   transition duration-500 ease-in-out hover:scale-110 hover:bg-custom-green p-10">
+                        <button onClick={() => handleProfileClick(userID)} className="rounded-lg h-64 box-border font-roboto text-lg font-bold italic ">
+                            <div className="justify-center flex-col">
+                            <img src={'/chefhat.png'} alt="Chef Hat"  />
+                            <div className="bg-opacity-50">Chef's Profile</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div className="bg-custom-darkgreen rounded-[4rem]   transition duration-500 ease-in-out hover:scale-110 hover:bg-custom-green p-10">
+                        <button onClick={() => handleRandomRecipeClick()} className="rounded-lg h-64 box-border font-roboto text-lg font-bold italic ">
+                            <div className="justify-center flex-col">
+
+                            <img src={'/blender-newest.png'} alt="Blender" />
+                            <div className=" bg-opacity-50">Random Recipe</div>
+                            </div>
+                        </button>
+                    </div>
+                    <div className="bg-custom-darkgreen rounded-[4rem]  transition duration-500 ease-in-out hover:scale-110 hover:bg-custom-green p-10">
+                        <button onClick={handleShare} className=" rounded-lg w-60 h-60 box-border font-roboto text-lg font-bold italic  flex flex-col">
+                            <div className="justify-center flex-col">
+                              <img src={'/chef.png'} alt="Share" />
+                              <div className="bg-opacity-50">Share with a Friend</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
       </div> 
   );
 }
