@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000000;
+    background-color: black;
     padding-right: 2%;
     padding-left: 1%;
 }
@@ -11,7 +11,7 @@
 .search-box {
     display: flex;
     align-items: center;
-    background: #242424;
+    background: #ffffff;
     padding: 5px 20px; 
     border-radius: 50px;
     width: 500px;
@@ -23,12 +23,12 @@
     border: none;
     background: transparent;
     outline: none;
-    color: white;
+    color: black;
     font-size: 12px;
 }
 
 .search-button{
-    background: #242424;
+    background: #ffffff;
     border: none;
     cursor: pointer;
 }

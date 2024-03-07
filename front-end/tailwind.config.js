@@ -18,7 +18,12 @@ module.exports = {
       },
       colors: {
         'custom-red': '#FF1A1A',
-      }
+        'custom-grey':'#FAFAFA'
+      },
+      screens: {
+        '3xl': '1930px',
+        '4xl': '2560px',
+      },
     },
   },
   variants: {},
