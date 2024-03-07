@@ -6,6 +6,7 @@ import { useUser } from "../contexts/UserContent";
 import 'tailwindcss/tailwind.css';
 import "../Styles/HomePage.css";
 import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
 
 const todaysRecipe = {
   title: "Apple Pie",
@@ -29,51 +30,6 @@ function getRandomRecipeID() {
   };
 }
 
-function RecipeOfTheDay({ className }) {
-  const recipe = getTodaysRecipe();
-  return (
-    <div className={`rounded-lg box-border font-roboto flex flex-col items-center justify-center ${className}`}>
-      <Link to={`/view-recipe/${recipe.id}`} className="flex flex-col items-center">
-        <h1 className="font-bold italic text-2xl mb-2">Recipe Of The Day</h1>
-        <h2 className="font-bold italic text-xl mb-2">{recipe.title}</h2>
-        <img src={recipe.image} alt={recipe.title} className="w-64 h-64 object-cover" />
-      </Link>
-    </div>
-  );
-}
-
-function Library({ className }) {
-  return (
-    <div className="flex justify-center">
-      <Link to="/library" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/cookbook.png'}`} alt="Cookbook" className="w-full h-full object-cover" />
-        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Browse our Library</div>
-      </Link>
-    </div>
-  )
-}
-
-function UploadRecipe({ className }) {
-  return (
-    <div className="flex justify-center">
-      <Link to="/upload-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/whisk-square.png'}`} alt="Whisk" className="w-full h-full object-cover" />
-        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Upload New Recipe</div>
-      </Link>
-    </div>
-  )
-}
-
-function ChefProfile({ className, userID }) {
-  return (
-    <div className="flex justify-center">
-      <Link to={`/user/${userID}`} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/chefhat.png'}`} alt="Chef Hat" className="w-full h-full object-cover" />
-        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Chef's Profile</div>
-      </Link>
-    </div>
-  ) 
-}
 
 function RandomRecipe({ className }) {
   const randomRecipeID = getRandomRecipeID().id;
@@ -109,32 +65,45 @@ function ShareWithFriend({ className, handleShare }) {
   )
 }
 
- // Dummy function for browsing the library
+
+
+function HomePage(){
+  const {userID} = useUser(); 
+  ProtectedRoute();
+  const Navigate = useNavigate();
+  useEffect(() => {
+      document.body.classList.add('overflow-hidden');
+      
+      return () => {
+        document.body.classList.remove('overflow-hidden');
+      };
+    }, []);
+
+
   const handleLibraryClick = () => {
+    Navigate('/library');
     console.log('Library button clicked');
-    // Navigate to the library page or perform any action here
-    // history.push('/library');
+
   };
 
-  // Dummy function for uploading a new recipe
+
   const handleUploadRecipeClick = () => {
+    Navigate('/upload-recipe');
     console.log('Upload recipe button clicked');
-    // Navigate to the upload recipe page or perform any action here
-    // history.push('/upload-recipe');
+
   };
 
-  // Dummy function for contacting us
+ 
   const handleContactClick = () => {
+    Navigate('/contacts');
     console.log('Contact button clicked');
-    // Navigate to the contact page or perform any action here
-    // history.push('/contacts');
+
   };
 
-  // Dummy function for user profile
+ 
   const handleProfileClick = (userID) => {
+    Navigate('/user/' + userID);
     console.log('Profile button clicked for user:', userID);
-    // Navigate to the user profile page or perform any action here
-    // history.push(`/user/${userID}`);
   };
 
   // Dummy function for a random recipe
@@ -150,28 +119,7 @@ function ShareWithFriend({ className, handleShare }) {
     // Perform share action here
   };
 
-function HomePage(){
-  const {userID} = useUser(); 
-  ProtectedRoute();
-  useEffect(() => {
-  document.body.classList.add('overflow-hidden');
-  
-  return () => {
-    document.body.classList.remove('overflow-hidden');
-  };
-}, []);
 
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Check out this awesome recipe website!',
-        text: 'Hey, I found this awesome recipe website! Check it out and let\'s cook something delicious together!',
-        url: window.location.href
-      }).catch(console.error);
-    } else {
-      alert('Web Share API is not supported in your browser.');
-    }
-  };
 
   return (
     <div className="bg-custom-grey ">
