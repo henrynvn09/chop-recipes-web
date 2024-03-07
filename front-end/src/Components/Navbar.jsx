@@ -11,7 +11,6 @@ const Navbar = () => {
   { path: "/contacts", label: "Contact" },
   { path: `/user/${userID}`, label: "User" },
   { path: "/upload-recipe", label: "Upload Recipe" },
-  { path: "/view-recipe", label: "View Recipe" },
 ];
 
 
