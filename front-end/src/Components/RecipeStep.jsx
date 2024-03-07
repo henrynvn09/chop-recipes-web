@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Step({ newStep, handleChange, handleSubmit, handleImageChange }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="step-form">
       <input
         name="title"
         placeholder="New Step"
@@ -11,8 +11,15 @@ export default function Step({ newStep, handleChange, handleSubmit, handleImageC
       />
       {!newStep.title ? null : (
         <>
-          <label for="imageInput">Input an image</label>
-          <input type="file" id = "imageInput" accept="image/*" onChange={handleImageChange}/>
+          <div className="upload-box">
+            <label htmlFor="imageInput" className="image-label">
+              <div className="upload-icon-container">
+                <div className="upload-icon"></div>
+              </div>
+              <p className="upload-text">Browse Files</p>
+            </label>
+            <input type="file" id = "imageInput" accept="image/*" className="file-input" onChange={handleImageChange}/>
+          </div>
           <textarea
             name="description"
             placeholder="Details..."

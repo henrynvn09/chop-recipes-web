@@ -4,17 +4,46 @@
   padding: 20px;
 }
 
-.upload-page form {
-  background-color: #fff;
+.upload-page h1 {
+  text-align: center;
+  color: #cccc99;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.upload-page h2 {
+  color: #e6e6b4;
+  font-size: 2rem;
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+.upload-page .recipe-title-label {
+  color: #e6e6b4;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.upload-page .step-form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
-} */
+}
 
-.upload-page label {
-  display: block;
-  margin-bottom: 8px;
+.upload-page .submit-form {
+  text-align: center;
+}
+#submitButton {
+  width: 20%;
+  color: #fff;
+  margin-top: 20px;
+  background-color: #4caf50;
+}
+#submitButton:hover {
+  background-color: #45a049;
+}
+#submitButton:active {
+  background-color: #0c7812;
 }
 
 .upload-page input, textarea {
@@ -22,14 +51,14 @@
   padding: 10px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .upload-page button {
   background-color: #4caf50;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
@@ -45,14 +74,16 @@
 }
 
 #steps li {
-  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   margin: 16px 0;
   padding: 20px;
+  padding-top: 0px;
 }
 
 #steps li h2 {
+  text-align: center;
+  font-size: 1.5rem;
   background-color: #4caf50;
   color: #fff;
   padding: 10px;
@@ -62,6 +93,7 @@
 
 #steps li p {
   margin: 10px 0;
+  overflow-wrap: break-word;
 }
 
 #steps li img {
@@ -70,6 +102,7 @@
   border-radius: 4px;
 }
 
+/* specifically for the delete step buttons */
 #steps li div button {
   background-color: #e53935;
   color: #fff;
@@ -79,25 +112,19 @@
   cursor: pointer;
   font-size: 14px;
 }
-
 #steps li div button:hover {
   background-color: #c62828;
 }
 
-
 #tags {
   margin-top: 20px;
-  margin-bottom: 20px;
-  margin-right: 20px;
   display: flex;
   flex-wrap: wrap;
 }
-
 #tags li {
   margin-right: 20px;
   margin-top: 10px;
 }
-
 .tag-container {
   background-color: #4caf50;
   color: #fff;
@@ -106,7 +133,6 @@
   display: flex;
   align-items: center;
 }
-
 .tag-container button {
   background-color: #e53935;
   color: #fff;
@@ -117,13 +143,15 @@
   cursor: pointer;
   font-size: 10px;
 }
-
 .tag-container button:hover {
   background-color: #c62828;
 }
 
 .newline {
   display: block; /* Ensures the element is treated as a block-level element, starting on a new line */
+  color: #e6e6b4;
+  font-size: 2rem;
+  margin-bottom: 12px;
 }
 .coverImageContainer {
   max-width: 60%;
@@ -177,4 +205,41 @@
 
 .ingredient-table td {
   background-color: #fff;
+}
+
+
+.upload-box {
+  border: 2px dashed #ccc;
+  padding: 8px;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 16px;
+}
+.image-label {
+  display: block;
+  cursor: pointer;
+}
+.upload-icon-container {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.upload-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 24px;
+  background-color: #888;
+  border-radius: 4px;
+}
+.upload-text {
+  font-weight: bold;
+  font-size: 16px;
+  color:#ccc;
+}
+.file-input {
+  display: none;
 }
