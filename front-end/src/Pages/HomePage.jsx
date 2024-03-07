@@ -52,7 +52,7 @@ function UploadRecipe({ className }) {
   return (
     <div className="flex justify-center">
       <Link to="/upload-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/whisk.png'}`} alt="Whisk" className="w-full h-full object-cover" />
+        <img src={`${process.env.PUBLIC_URL + '/whisk-square.png'}`} alt="Whisk" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Upload New Recipe</div>
       </Link>
     </div>
@@ -74,7 +74,7 @@ function RandomRecipe({ className }) {
   return (
     <div className="flex justify-center">
       <Link to="/random-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/blender.png'}`} alt="Blender" className="w-full h-full object-cover" />
+        <img src={`${process.env.PUBLIC_URL + '/blender-newest.png'}`} alt="Blender" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Random Recipe</div>
       </Link>
     </div>
@@ -85,7 +85,7 @@ function ContactUs({ className }) {
   return (
     <div className="flex justify-center">
       <Link to="/contacts" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-        <img src={`${process.env.PUBLIC_URL + '/mail.png'}`} alt="Contact" className="w-64 h-64 object-cover" />
+        <img src={`${process.env.PUBLIC_URL + '/mail-square.png'}`} alt="Contact" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Contact Us</div>
       </Link>
     </div>
@@ -96,8 +96,8 @@ function ShareWithFriend({ className, handleShare }) {
   return (
     <div className="flex justify-center">
     <button onClick={handleShare} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
-      <img src={`${process.env.PUBLIC_URL + '/chef.png'}`} alt="Share" className="w-64 h-64 object-cover" />
-      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Share with a friend</div>
+      <img src={`${process.env.PUBLIC_URL + '/chef.png'}`} alt="Share" className="w-full h-full object-cover" />
+      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Share with a Friend</div>
     </button>
     </div>
   )
