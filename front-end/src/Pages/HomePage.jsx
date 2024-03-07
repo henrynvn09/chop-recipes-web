@@ -59,7 +59,7 @@ function ShareWithFriend({ className, handleShare }) {
     <div className="flex justify-center">
     <button onClick={handleShare} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
       <img src={`${process.env.PUBLIC_URL + '/chef.png'}`} alt="Share" className="w-full h-full object-cover" />
-      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Share with a Friend</div>
+      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Share with a Friend!</div>
     </button>
     </div>
   )
