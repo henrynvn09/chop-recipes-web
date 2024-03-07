@@ -8,25 +8,6 @@ import RecipePreviewBox from '../Components/RecipePreviewBox.jsx';
 
 import 'tailwindcss/tailwind.css';
 
-// function Welcome() {
-//   return (
-//     <div className="fixed top-24 left-12 w-1/3 h-40vh p-4 rounded-lg bg-custom-red">
-//       <div className="text-center">
-//         <p className="font-bold italic text-lg">Welcome to</p>
-//         <p className="font-bold italic text-4xl">CHOP</p>
-//         <p className="italic text-lg">
-//           Whether you're a seasoned chef or a kitchen novice, prepare to embark
-//           on a flavor-packed adventure like no other. Dive into our recipe
-//           library! With our intuitive search bar and ingredient-tagging
-//           magic, finding your next culinary masterpiece is as easy as pie. So,
-//           sharpen your knives and unleash your inner chef – let's Chop till we
-//           drop!
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
-
 const todaysRecipe = {
   title: "Apple Pie",
   image: "https://greateightfriends.com/wp-content/uploads/2019/03/Apple-Pie-v-1-2.jpeg",
@@ -36,7 +17,7 @@ const todaysRecipe = {
 
 function RecipeOfTheDay({ className }) {
   return (
-    <div className={`rounded-lg box-border font-roboto text-center flex items-center border ${className}`}>
+    <div className={`rounded-lg box-border font-roboto text-center flex items-center ${className}`}>
       <h1 className="font-bold italic text-lg mb-2">Recipe Of TheDay</h1>
       <RecipePreviewBox id={todaysRecipe.id} title={todaysRecipe.title} image={todaysRecipe.image} />
     </div>
@@ -45,7 +26,7 @@ function RecipeOfTheDay({ className }) {
 
 function Library({ className }) {
   return (
-    <div className="border border-white flex justify-center">
+    <div className="flex justify-center">
       <Link to="/library" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
         <img src={`${process.env.PUBLIC_URL + '/cookbook.png'}`} alt="Cookbook" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Browse our Library</div>
@@ -56,7 +37,7 @@ function Library({ className }) {
 
 function UploadRecipe({ className }) {
   return (
-    <div className="border border-white flex justify-center">
+    <div className="flex justify-center">
       <Link to="/upload-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
         <img src={`${process.env.PUBLIC_URL + '/whisk.png'}`} alt="Whisk" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Upload New Recipe</div>
@@ -65,21 +46,21 @@ function UploadRecipe({ className }) {
   )
 }
 
-function ChefProfile({ className }) {
+function ChefProfile({ className, userID }) {
   return (
-    <div className="border border-white flex justify-center">
-    <Link to="/user" className={`rounded-lg w-64 h-64 box-border font-roboto flex flex-col justify-center items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 border border-black ${className}`}>
-      <img src={`${process.env.PUBLIC_URL + '/chefhat.png'}`} alt="Chef Hat" className="w-full h-full object-cover" />
-      <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Chef's Profile</div>
-    </Link>
+    <div className="flex justify-center">
+      <Link to={`/user/${userID}`} className={`rounded-lg w-64 h-64 box-border font-roboto flex flex-col justify-center items-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+        <img src={`${process.env.PUBLIC_URL + '/chefhat.png'}`} alt="Chef Hat" className="w-full h-full object-cover" />
+        <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Chef's Profile</div>
+      </Link>
     </div>
   )
 }
 
 function RandomRecipe({ className }) {
   return (
-    <div className="border border-white flex justify-center">
-      <Link to="/random-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 border border-black ${className}`}>
+    <div className="flex justify-center">
+      <Link to="/random-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
         <img src={`${process.env.PUBLIC_URL + '/blender.png'}`} alt="Blender" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Random Recipe</div>
       </Link>
@@ -99,29 +80,19 @@ function AboutChop() {
   )
 }
 
-// function tester() {
-//   return (
-//     <Link to="/random-recipe">
-//       <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/blender.png'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
-//         <div>Random Recipe</div>
-//       </div>
-//     </Link>
-//   );
-// }
-
 function HomePage(){
   const {userID} = useUser(); 
   ProtectedRoute();
   return (
     <div style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/cuttingboard-bg.avif'})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', height: '100vh', overflow: 'auto' }}>
           <Navbar />
-          <div className="grid grid-cols-3 gap-10">
+          <div className="pt-4 grid grid-cols-3 gap-10">
               <RecipeOfTheDay className='col-start-1 row-span-2'/>
-              <Library className='border border-white' />
-              <RandomRecipe className='border border-black'/>
+              <Library className='' />
+              <UploadRecipe className=''/>
               {/* <AboutChop />*/}
-              <ChefProfile className='border border-white'/>
-              <UploadRecipe className='border border-white'/>
+              <ChefProfile className=''/>
+              <RandomRecipe className=''/>
           </div>
       </div> 
   );
