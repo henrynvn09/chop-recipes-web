@@ -1,11 +1,8 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import { Link } from 'react-router-dom'
-
 import ProtectedRoute from "../Components/ProtectedRoute";
 import { useUser } from "../contexts/UserContent";
-import RecipePreviewBox from '../Components/RecipePreviewBox.jsx';
-
 import 'tailwindcss/tailwind.css';
 
 const todaysRecipe = {
@@ -23,6 +20,12 @@ function getTodaysRecipe() {
   };
 }
 
+function getRandomRecipeID() {
+  //TODO: CHANGE THIS TO FETCH FROM BACKEND TO RETURN A RANDOM RECIPE ID
+  return {
+    id: "1",
+  };
+}
 
 function RecipeOfTheDay({ className }) {
   const recipe = getTodaysRecipe();
@@ -71,9 +74,10 @@ function ChefProfile({ className, userID }) {
 }
 
 function RandomRecipe({ className }) {
+  const randomRecipeID = getRandomRecipeID().id;
   return (
     <div className="flex justify-center">
-      <Link to="/random-recipe" className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
+      <Link to={`/view-recipe/${randomRecipeID}`} className={`rounded-lg w-64 h-64 box-border font-roboto text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110 ${className}`}>
         <img src={`${process.env.PUBLIC_URL + '/blender-newest.png'}`} alt="Blender" className="w-full h-full object-cover" />
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Random Recipe</div>
       </Link>
