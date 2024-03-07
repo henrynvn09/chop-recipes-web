@@ -13,6 +13,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import ProfilePreview from "../Components/ProfilePreview.jsx";
 import RecipePreviewBox from "../Components/RecipePreviewBox.jsx";
+import EditableInput from "../Components/EditableInput.jsx";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -252,6 +253,7 @@ export default function Profile() {
                 <div className="text-center">
                   <h3 className="profile-name">{user.name}</h3>
                   {followOrSignoutButton()}
+                  <EditableInput value={'howdy'}/>
                   <div>{user.description}</div>
                 </div>
 
