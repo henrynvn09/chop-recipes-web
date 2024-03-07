@@ -1,0 +1,31 @@
+.centered-grid {
+  z-index: 1000;
+  left: 32%;
+  top: 40%;
+}
+
+
+
+/* xl */
+@media (min-width: 1280px) {
+        .centered-grid {
+        left: 10%;
+        top: 40%;
+    }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+    .centered-grid {
+        left: 24%;
+        top: 40%;
+    }
+}
+
+/* 2xl */
+@media (min-width: 2000px) {
+    .centered-grid {
+        left: 32%;
+        top: 40%;
+    }
+}
