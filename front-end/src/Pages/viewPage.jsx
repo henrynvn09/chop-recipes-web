@@ -2,41 +2,71 @@ import React from "react";
 
 import '../Styles/viewRecipe.css';  
 import Navbar from "../Components/Navbar";
-
-
-const fakeData = {
-    title: "Cake",
-    cover_image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
-    author_id: "141421421412",
-    author_name: "Bruin Joe",
-    author_image: "https://source.unsplash.com/150x150/?portrait?3",
-    author_description: "I am a UCLA student and I am a fried chicken lover, I will teach you how make one!",
-
-    ingredient_lists: [
-      { name: "Flour", quantity: "100g" },
-      { name: "Water", quantity: "200g" },
-      // Add more ingredient_lists as needed
-    ],
-    tags: ["easy to make", "within 10 miniutes", "delicious"],
-    content_list: [
-      {
-        title: "Step 1",
-        text: "Put water in flour",
-        image: "https://media.istockphoto.com/id/520916393/photo/washing-vegetables-under-running-water.jpg?s=2048x2048&w=is&k=20&c=DVb4-JfbSezRfL9pqLPnNwtNIIvZIOvC-CS7yTaU5nM=",
-      },
-      {
-        title: "Step 2",
-        text: "stir the flour...",
-        image: "https://media.istockphoto.com/id/1698683047/photo/woman-kneading-dough-on-table-sprinkled-with-flour-close-up-of-home-baker-chef-is-making-with.jpg?s=2048x2048&w=is&k=20&c=Qm7dqg03gGxelvAkl8Y1qJ002RVJhwLnrje9Dr3mQ2c=",
-      },
-      // Add more steps as needed
-    ],
-
-  }
+import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 const ViewRecipe = () => {
-  const recipe = fakeData; // Replace with actual fetched data
+  // const recipe = fakeData; // Replace with actual fetched data
+  let {recipe_id} = useParams();
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
+  const [recipe, setRecipe] = useState( {
+            title: "", // To be filled from fetched data
+            cover_image: "", // To be filled from fetched data
+            content_list: [], // Initialize as empty array
+            tagName_lists: [], // Initialize as empty array
+            ingredient_lists: [], // Initialize as empty array
+            author_id: null, // Assuming userID is available in your scope
+        }); // Initialize the recipe state to null
+
+  const [author, setAuthor] = useState({
+      name:"",
+      email:"",
+      password:"",
+      Image:"",
+      description:"",
+      following: [],
+    }); // Initialize the author state to null
+
+useEffect(() => {
+  const fetchRecipeAndAuthor = async () => {
+    try {
+      // Fetch the Recipe
+      const recipeResponse = await fetch(`${BACKEND_URL}/api/recipe/${recipe_id}`);
+      if (!recipeResponse.ok) throw new Error('Failed to fetch recipe');
+      const recipeData = await recipeResponse.json();
+      setRecipe(recipeData);
+      console.log("Recipe fetched successfully, Recipe Data:", recipeData);
+
+      // Proceed to fetch the Author if author_id is available
+      if (recipeData.author_id) {
+        console.log("Fetching author for ID:", recipeData.author_id);
+        const authorResponse = await fetch(`${BACKEND_URL}/api/${recipeData.author_id}`); // Adjust the endpoint as needed
+        if (!authorResponse.ok) throw new Error('Failed to fetch author');
+        const authorData = await authorResponse.json();
+        setAuthor(authorData[0]);
+        console.log("Author data fetched:", authorData);
+      }
+    } catch (error) {
+      console.error('Error during recipe or author fetch:', error);
+    }
+  };
+
+  fetchRecipeAndAuthor();
+
+    // Cleanup function
+  return () => {
+    setAuthor({
+      name: "",
+      email: "",
+      Image: "",
+      description: "",
+      followings: [],
+    }); // Reset author state to initial values
+    console.log("Author state reset due to component unmount or re-render");
+  };
+
+}, [recipe_id, BACKEND_URL]); // Ensures this runs once upon initial render or if recipe_id/BACKEND_URL changes
 
   if (!recipe) {
     return <div>Loading...</div>;
@@ -56,11 +86,9 @@ const ViewRecipe = () => {
 
             <h3>Tags</h3>
             <ul id="tags">
-              {recipe.tags.map((tag, index) => (
+              {recipe.tagName_lists && recipe.tagName_lists.map((tag, index) => (
                 <li key={index}>
-                  <div>
-                    {tag}
-                  </div>
+                  <div>{tag}</div>
                 </li>
               ))}
             </ul>
@@ -105,11 +133,11 @@ const ViewRecipe = () => {
 
         <div className="author-card">
           <div className="author-image-container">
-            <img src={recipe.author_image} alt="" className="author-image" />
+            <img src={author.Image} alt="Author" />
           </div>
           <div className="author-info">
-            <h3 className="author-name">{recipe.author_name}</h3>
-            <p className="author-descrip">{recipe.author_description}</p>
+            <h3 className="author-name">{author.name}</h3>
+            <p className="author-descrip">{author.description}</p>
           </div>
         </div>
       </div>

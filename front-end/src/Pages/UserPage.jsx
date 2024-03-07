@@ -23,7 +23,7 @@ export default function Profile() {
   const [followed, setFollowed] = React.useState(false);
   const { userID } = useUser();
   const { profile_id } = useParams();
-
+  console.log("Profile ID:", profile_id);
   const [userDetails, setUserDetails] = React.useState(null);
   const [viewerProfile, setViewerProfile] = React.useState(null);
   const [recipes, setRecipes] = React.useState([]);
@@ -275,3 +275,4 @@ export default function Profile() {
     </>
   );
 }
+
