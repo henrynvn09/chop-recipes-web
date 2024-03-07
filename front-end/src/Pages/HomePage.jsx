@@ -68,18 +68,6 @@ function RandomRecipe({ className }) {
   )
 }
 
-
-//CURRENTLY NOT USED
-function AboutChop() {
-  return (
-    <Link to="/about">
-      <div style={{ backgroundImage: `url('https://img.freepik.com/premium-vector/blurred-gradient-mesh-abstract-background-orange-yellow-seamless-transition_427410-505.jpg')`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="rounded-full w-64 h-64 transform box-border font-roboto flex items-center justify-center text-center text-lg font-bold italic transition-transform duration-500 ease-in-out hover:scale-110">
-        About our kitchen
-      </div>
-    </Link>
-  )
-}
-
 function HomePage(){
   const {userID} = useUser(); 
   ProtectedRoute();
@@ -90,7 +78,6 @@ function HomePage(){
               <RecipeOfTheDay className='col-start-1 row-span-2'/>
               <Library className='' />
               <UploadRecipe className=''/>
-              {/* <AboutChop />*/}
               <ChefProfile className='' userID={userID}/>
               <RandomRecipe className=''/>
           </div>
