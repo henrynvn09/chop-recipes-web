@@ -54,7 +54,7 @@ function ChefProfile({ className, userID }) {
         <div className="mt-auto bg-white bg-opacity-50 w-full text-center">Chef's Profile</div>
       </Link>
     </div>
-  )
+  ) 
 }
 
 function RandomRecipe({ className }) {
@@ -91,7 +91,7 @@ function HomePage(){
               <Library className='' />
               <UploadRecipe className=''/>
               {/* <AboutChop />*/}
-              <ChefProfile className=''/>
+              <ChefProfile className='' userID={userID}/>
               <RandomRecipe className=''/>
           </div>
       </div> 
