@@ -76,7 +76,9 @@ useEffect(() => {
     <>
       <Navbar />
       <div className="view-recipe-container">
-          <div className="view-recipe">
+
+          <div className="pt-10 pb-10 rounded-[100rem]">
+            <div className="view-recipe">
             <h1>{recipe.title}</h1>
             
             <div className="cover_imageContainer">
@@ -129,6 +131,7 @@ useEffect(() => {
                 </li>
               ))}
             </ul>
+          </div>
           </div>
 
         <div className="author-card">
