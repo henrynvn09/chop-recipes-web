@@ -2,7 +2,7 @@ import React from "react";
 
 import '../Styles/viewRecipe.css';  
 import Navbar from "../Components/Navbar";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 const ViewRecipe = () => {
@@ -140,10 +140,14 @@ useEffect(() => {
 
         <div className="author-card">
           <div className="author-image-container">
-            <img src={author.Image} alt="Author" />
+            <Link to={`/user/${recipe.author_id}`}>
+              <img src={author.Image} alt="Author" />
+            </Link>
           </div>
           <div className="author-info">
-            <h3 className="author-name">{author.name}</h3>
+            <Link to={`/user/${recipe.author_id}`}>
+              <h3 className="author-name">{author.name}</h3>
+            </Link>
             <p className="author-descrip">{author.description}</p>
           </div>
         </div>
