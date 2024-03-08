@@ -45,3 +45,25 @@ exports.getRecipeByID = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+
+exports.getRandomRecipe = (req, res) => {
+  Recipe.aggregate([
+    { $sample: { size: 1 } }, // Randomly selects one document
+    { $project: { 
+        title: 1, 
+        cover_image: 1, 
+        tagName_lists: 1, 
+        ingredient_lists: 1, 
+        _id: 1 
+      } 
+    }
+  ])
+  .then((result) => {
+    res.send(result[0]); // Send the first (and only) item in the result array
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send({ message: "Error retrieving random recipe" });
+  });
+};
