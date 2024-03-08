@@ -230,12 +230,6 @@ export default function Profile() {
                   </div>
                   <div className="image-container">
                     <div className="relative">
-                      {/* <img
-                        alt="..."
-                        src={user.Image}
-                        className="profile-img rounded-full w-48 h-48 object-cover border-4 border-white justify-center"
-                        style={{ maxWidth: "200px" }}
-                      /> */}
                       <ProfilePicture/>
                     </div>
                   </div>
@@ -259,7 +253,7 @@ export default function Profile() {
                 <div className="text-xl h-10 pt-10 pl-10">
                   <h2>User's recipes</h2>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mx-10 p-10 overflow-y-scroll">
+                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 3xl:grid-cols-5 mx-10 p-10 overflow-y-scroll">
                   {recipePreviewBoxes}
                 </div>
                 <h3 className="text-xl h-10 pl-10">Followings</h3>

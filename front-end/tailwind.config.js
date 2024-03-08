@@ -26,7 +26,8 @@ module.exports = {
         'custom-darkgreen':'#CCCC99',
       },
       screens: {
-        '3xl': '1930px',
+        '2xl': '1560px',
+        '3xl': '1920px',
         '4xl': '2560px',
       },
     },
