@@ -1,5 +1,5 @@
 import React from 'react'
-import css from '../Styles/EditableInput.module.scss'
+//import css from '../Styles/EditableInput.module.scss'
 import PropTypes from 'prop-types'
 import 'tailwindcss/tailwind.css'
 import { mdiPencil } from '@mdi/js'
@@ -12,7 +12,7 @@ function EditableInput(props) {
     }
     return (
         <div className='flex justify-between items-center'>
-            <span className=''>
+            <span className='float-start'>
                 {/* text */}
                 <input type="text" 
                 value={props.value} 
