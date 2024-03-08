@@ -131,7 +131,7 @@ function HomePage(){
             <div className="absolute inset-0 bg-black transition duration-300 ease-in-out bg-opacity-50 hover:bg-opacity-75 ">
 
               <a href="/library" className="absolute inset-0 flex justify-center heading1 z-0">
-                  <h1 className="text-white text-2xl md:text-4xl lg:text-7xl font-bold">Never Takeout Again</h1>
+                  <h1 className="text-white text-2xl md:text-4xl lg:text-7xl font-bold">Never Takeout <div className="text-custom-red inline">Again</div></h1>
               </a>
               <a href="/library" className="absolute inset-0 flex justify-center heading2 z-0">
                   <h3 className="text-custom-grey text-sm md:text-md lg:text-lg italic">At Chop, we offer quality services for all!</h3>

@@ -17,7 +17,7 @@ function RecipePreviewBox(props) {
           <img
             className="w-full object-cover"
             style={{height: '205px'}} // Adjust the height to allocate space for text
-            src={props.image}
+            src={props.image !== "null" ? props.image :  "/allfoodimg.jpg"}
             alt={props.title}
           />
           <div className="text-center  text-md md:text-lg p-1 overflow-hidden"

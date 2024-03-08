@@ -36,6 +36,7 @@ app.get(
   recipeController.getRecipesbyUserID
 );
 app.get("/api/recipe/:id", recipeController.getRecipeByID);
+app.get("/api/recipe/random", recipeController.getRandomRecipe);
 
 // ================== User routes ==================
 app.get("/api/:userid", userController.getProfileByID);

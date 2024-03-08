@@ -80,10 +80,12 @@ useEffect(() => {
           <div className="pt-10 pb-10 rounded-[100rem]">
             <div className="view-recipe">
             <h1>{recipe.title}</h1>
-            
+            {recipe.cover_image && recipe.cover_image !== "null" &&
             <div className="cover_imageContainer">
               <img src={recipe.cover_image} alt="Cover" className="cover_image" />
             </div>
+            }
+
             <br/>
 
             <h3>Tags</h3>
@@ -120,17 +122,19 @@ useEffect(() => {
               {recipe.content_list.map((step, index) => (
                 <li key={index}>
                   <div className="step-container">
-                    <h3>{step.title}</h3>
-                    {step.text && <p>{step.text}</p>}
-                    {step.image && (
+                    <h3>{index + 1}. {step.title}</h3>
+                    {step.text && step.text !== 'undefined' && <p>{step.text}</p>}
+                    {step.image && step.image !== "null" && (
                       <div className="stepImageContainer">
-                        <img src={step.image} alt={step.title} className="stepImage" />
+                        <img src={step.image} alt={step.title || 'Step image'} className="stepImage" />
                       </div>
                     )}
                   </div>
                 </li>
               ))}
             </ul>
+
+
           </div>
           </div>
 
