@@ -16,7 +16,7 @@ const ContactPage = () => {
       <div className="bg-gradient-to-tr from-red-500 to-purple-400 relative h-screen w-screen">
         <img
           className="absolute inset-0 w-full h-full"
-          alt="background image"
+          alt="background image for"
           src="/contactBackground.jpg"
         />
 

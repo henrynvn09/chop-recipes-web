@@ -69,8 +69,6 @@ exports.signup = (req, res) => {
   });
 };
 
-
-
 exports.verifyUser = (req, res) => {
   return res.json({ valid: true, message: "testauhorizednew" });
 };
