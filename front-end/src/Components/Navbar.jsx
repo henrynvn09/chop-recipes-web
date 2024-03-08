@@ -33,7 +33,7 @@ const Navbar = () => {
       <Link to="/home">
         <img src="/chopLogoWhite.svg" alt="" className="logo" />
       </Link>
-      <div className="search-box">
+      {/* <div className="search-box">
         <input
           type="text"
           placeholder="Search"
@@ -44,7 +44,7 @@ const Navbar = () => {
         <button className="search-button" onClick={handleSearch}>
           <img src="/searchIcon.svg" alt="" className="search-icon" />
         </button>
-      </div>
+      </div> */}
       <ul>
         <li>
           <Link to="/home">Home</Link>
@@ -68,11 +68,6 @@ const Navbar = () => {
         <li>
           <Link className="notoverflow" to="/upload-recipe">
             Upload Recipe
-          </Link>
-        </li>
-        <li>
-          <Link className="notoverflow" to="/view-recipe">
-            View Recipe
           </Link>
         </li>
       </ul>
