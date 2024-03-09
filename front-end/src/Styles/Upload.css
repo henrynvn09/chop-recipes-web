@@ -243,3 +243,6 @@
 .file-input {
   display: none;
 }
+.uploaded {
+  background-color: #4caf50; /* Green color */
+}
