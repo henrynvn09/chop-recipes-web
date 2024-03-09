@@ -248,7 +248,7 @@ export default function Profile() {
                 <div className="text-center">
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
-                  <EditableInput value={user.description}/>
+                  <EditableInput value='howdy'/>
                   {/* <div>{user.description}</div> */}
                 </div>
 
