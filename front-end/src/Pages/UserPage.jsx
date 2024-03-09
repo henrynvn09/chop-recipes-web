@@ -14,6 +14,7 @@ import axios from "axios";
 import ProfilePreview from "../Components/ProfilePreview.jsx";
 import RecipePreviewBox from "../Components/RecipePreviewBox.jsx";
 import EditableInput from "../Components/EditableInput.jsx";
+import UserDescriptionBox from "../Components/UserDescriptionBox.jsx";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -248,7 +249,8 @@ export default function Profile() {
                 <div className="text-center">
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
-                  <EditableInput value='howdy'/>
+                  <UserDescriptionBox value={user.description}/>
+                  <EditableInput value={user.description}/>
                   {/* <div>{user.description}</div> */}
                 </div>
 

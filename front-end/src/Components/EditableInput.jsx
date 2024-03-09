@@ -6,27 +6,33 @@ import { mdiPencil } from '@mdi/js'
 import ButtonIcon from './ButtonIcon'
 import '../Styles/Scrollbar.css'
 
-function EditableInput({value, type = '', ...props}) {
-    const [isEditMode, setIsEditMode] = React.useState(false)
+function EditableInput({value: initialValue, type = '', ...props}) {
+    const [isEditMode, setIsEditMode] = React.useState(false);
+    const [value, setValue] = React.useState(initialValue);
     const inputRef = React.useRef(null)
+
     function turnOnEditMode() {
         setIsEditMode(true);
         inputRef.current.focus();
     }
+
     const adjustHeight = (element) => {
         element.style.height = "auto";
         element.style.height = element.scrollHeight + "px";
     }
+
     const handleChange = (event) => {
         adjustHeight(event.target);
+        setValue(event.target.value);
     }
+
     return (
         <div className='flex justify-center items-center'>
           <span className="relative"> 
             <textarea
               ref={inputRef}
               autoFocus
-              value={props.value} 
+              value={value} 
               readOnly={!isEditMode} 
               onClick={turnOnEditMode}
               onBlur={() => setIsEditMode(false)}
