@@ -1,16 +1,14 @@
 import React from 'react'
-//import css from '../Styles/EditableInput.module.scss'
 import PropTypes from 'prop-types'
 import 'tailwindcss/tailwind.css'
 import { mdiPencil } from '@mdi/js'
 import ButtonIcon from './ButtonIcon'
 import '../Styles/Scrollbar.css'
 
-//TODO: MAKE THIS UPDATE BACKEND 
-
 function EditableInput({value: initialValue, type = '', ...props}) {
     const [isEditMode, setIsEditMode] = React.useState(false);
     const [value, setValue] = React.useState(initialValue);
+    const [charCount, setCharCount] = React.useState(initialValue ? initialValue.length : 0);
     const inputRef = React.useRef(null)
 
     function turnOnEditMode() {
@@ -18,14 +16,20 @@ function EditableInput({value: initialValue, type = '', ...props}) {
         inputRef.current.focus();
     }
 
+    const handleChange = (event) => {
+        setValue(event.target.value);
+        setCharCount(event.target.value.length);
+    }
+
     const adjustHeight = (element) => {
         element.style.height = "auto";
         element.style.height = element.scrollHeight + "px";
     }
 
-    const handleChange = (event) => {
-        adjustHeight(event.target);
-        setValue(event.target.value);
+    const getCharCountColor = () => {
+        const percentage = charCount / 2000;
+        const hue = (1 - percentage) * 120;
+        return `hsl(${hue}, 100%, 40%)`;
     }
 
     return (
@@ -43,6 +47,11 @@ function EditableInput({value: initialValue, type = '', ...props}) {
               maxLength={2000}
               {...props}
             />
+            {isEditMode && (
+              <div style={{color: getCharCountColor(), transition: 'color 0.5s'}} className="absolute bottom-[-5px] right-0 text-sm">
+                {charCount}/2000
+              </div>
+            )}
             {!isEditMode && (
               <ButtonIcon 
                 onClick={turnOnEditMode}
