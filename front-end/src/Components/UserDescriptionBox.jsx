@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import PropTypes from 'prop-types'
-import 'tailwindcss/tailwind.css'
+import PropTypes from 'prop-types';
+import 'tailwindcss/tailwind.css';
 
 function UserDescriptionBox({ value = '', ...props }) {
   const textareaRef = useRef(null);
@@ -23,12 +23,16 @@ function UserDescriptionBox({ value = '', ...props }) {
         value={value}
         readOnly
         onChange={adjustHeight}
-        className="w-96 max-w-96 h-auto min-h-32 max-h-72 py-2 px-4 font-roboto text-sm font-semibold text-green-500 bg-gradient-to-r from-green-400 to-green-600 rounded-md shadow-sm text-center resize-none overflow-auto"
+        className="w-1/2 min-w-96 py-2 px-4 font-roboto text-sm font-semibold text-green-500 bg-gradient-to-r from-green-100 to-white rounded-md shadow-sm text-center resize-none overflow-hidden"
         maxLength={2000}
         {...props}
       />
     </div>
   );
 }
+
+UserDescriptionBox.propTypes = {
+  value: PropTypes.string,
+};
 
 export default UserDescriptionBox;

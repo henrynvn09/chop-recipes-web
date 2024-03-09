@@ -6,6 +6,8 @@ import { mdiPencil } from '@mdi/js'
 import ButtonIcon from './ButtonIcon'
 import '../Styles/Scrollbar.css'
 
+//TODO: MAKE THIS UPDATE BACKEND 
+
 function EditableInput({value: initialValue, type = '', ...props}) {
     const [isEditMode, setIsEditMode] = React.useState(false);
     const [value, setValue] = React.useState(initialValue);
