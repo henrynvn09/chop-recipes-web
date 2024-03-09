@@ -148,7 +148,7 @@ function LibraryRecipes() {
             className="border border-gray-300 rounded px-2 py-1 mb-4 pr-24 w-4/5 "
           />
           {/* Recipe preview boxes */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-8 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-5 4xl:grid-cols-8 gap-4">
             {recipePreviewBoxes}
           </div>
         </div>

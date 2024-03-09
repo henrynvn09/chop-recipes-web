@@ -24,7 +24,7 @@ export default function Profile() {
   const [followed, setFollowed] = React.useState(false);
   const { userID } = useUser();
   const { profile_id } = useParams();
-  
+
   const [userDetails, setUserDetails] = React.useState(null);
   const [viewerProfile, setViewerProfile] = React.useState(null);
   const [recipes, setRecipes] = React.useState([]);
@@ -86,6 +86,7 @@ export default function Profile() {
   }, [viewerProfile, userDetails]);
 
   const fetchFollowingsByProfileID = async () => {
+    if (userDetails.followings.length === 0) return;
     try {
       const response = await axios.get(
         BACKEND_URL + "/api/followings/" + userDetails.followings.join(",")
@@ -231,13 +232,7 @@ export default function Profile() {
                   </div>
                   <div className="image-container">
                     <div className="relative">
-                      {/* <img
-                        alt="..."
-                        src={user.Image}
-                        className="profile-img rounded-full w-48 h-48 object-cover border-4 border-white justify-center"
-                        style={{ maxWidth: "200px" }}
-                      /> */}
-                      <ProfilePicture/>
+                      <ProfilePicture />
                     </div>
                   </div>
                   <div className="profile-stat">
@@ -251,7 +246,7 @@ export default function Profile() {
                 </div>
 
                 <div className="text-center">
-                  <h3 className="profile-name">{user.name}</h3>
+                  <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
                   <EditableInput value={user.description}/>
                   {/* <div>{user.description}</div> */}
@@ -261,7 +256,7 @@ export default function Profile() {
                 <div className="text-xl h-10 pt-10 pl-10">
                   <h2>User's recipes</h2>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mx-10 p-10 overflow-y-scroll">
+                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 3xl:grid-cols-5 mx-10 p-10 overflow-y-scroll">
                   {recipePreviewBoxes}
                 </div>
                 <h3 className="text-xl h-10 pl-10">Followings</h3>
@@ -277,4 +272,3 @@ export default function Profile() {
     </>
   );
 }
-

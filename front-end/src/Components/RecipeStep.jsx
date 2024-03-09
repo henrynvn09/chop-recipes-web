@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Step({ newStep, handleChange, handleSubmit, handleImageChange }) {
+export default function Step({ newStep, handleChange, handleSubmit, handleImageChange, imageUploaded }) {
   return (
     <form onSubmit={handleSubmit} className="step-form">
       <input
@@ -14,7 +14,7 @@ export default function Step({ newStep, handleChange, handleSubmit, handleImageC
           <div className="upload-box">
             <label htmlFor="imageInput" className="image-label">
               <div className="upload-icon-container">
-                <div className="upload-icon"></div>
+                <div className={`upload-icon ${imageUploaded ? 'uploaded' : ''}`}></div>
               </div>
               <p className="upload-text">Browse Files</p>
             </label>
