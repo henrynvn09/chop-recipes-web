@@ -132,10 +132,10 @@ function HomePage(){
     <div className="bg-custom-grey ">
       <Navbar />
       <div className="relative h-screen">
-        <div className="relative block w-full h-1/4screen hover:bg-opacity-75">
+        <div className="relative block w-full h-full">
           
             <img src='/allfoodimg.jpg' alt="All Food" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-black transition duration-300 ease-in-out bg-opacity-50 hover:bg-opacity-75 ">
+          <div className="absolute inset-0 bg-black transition duration-300 ease-in-out bg-opacity-50 hover:bg-opacity-55 ">
             
               <a href="/library" className="absolute inset-0 flex justify-center heading1 z-0">
               <h1 className="text-white text-2xl md:text-4xl lg:text-7xl font-bold">Never Takeout <div className="text-custom-red inline">Again</div></h1>
