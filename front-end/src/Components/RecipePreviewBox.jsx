@@ -1,10 +1,31 @@
 import { useNavigate } from "react-router-dom";
-
+import { useState, useEffect } from "react";
 function RecipePreviewBox(props) {
   let navigate = useNavigate();
-  
+  const [authorName, setAuthorName] = useState("Unknown Author");  // State to store the author's name
   const onClickHandler = () => {
     navigate(`/view-recipe/${props.id}`);
+  };
+  
+  useEffect(() => {
+    // Fetch author name when the component mounts
+    fetchAuthor();
+  }, []);
+  const fetchAuthor = async () => {
+    try {
+      const authorData = await props.fetchAuthorName(props.id);      
+      if (Array.isArray(authorData) && authorData.length > 0) {
+        const authorName = authorData[0].name;
+        setAuthorName(authorName);
+        console.log("the author name is", authorName);
+      } else {
+        console.log("Author data is empty or not in the expected format");
+        setAuthorName('Unknown Author');
+      }
+    } catch (error) {
+      console.error('Error fetching author name:', error);
+      setAuthorName('Unknown Author');
+    }
   };
 
   return (
@@ -27,7 +48,7 @@ function RecipePreviewBox(props) {
           </div>
 
           <div className="text-center text-sm md:text-md p-1" style={{minHeight: '35px'}}>
-            By: {props.author_id}
+            By: {authorName}
           </div>
         </div>
     </div>

@@ -37,6 +37,28 @@ function LibraryRecipes() {
     }
   };
 
+  // fetch the author name from backend
+  const fetchAuthorName = async (recipeId) => {
+    try {
+      const recipeResponse = await fetch(`${BACKEND_URL}/api/recipe/${recipeId}`);
+      if (!recipeResponse.ok) throw new Error('Failed to fetch recipe');
+      const recipeData = await recipeResponse.json();
+  
+      if (recipeData.author_id) {
+        const authorResponse = await fetch(`${BACKEND_URL}/api/${recipeData.author_id}`);
+        if (!authorResponse.ok) throw new Error('Failed to fetch author');
+        const authorData = await authorResponse.json();
+        console.log("Author data fetched:", authorData);
+        return authorData; 
+      }
+  
+      return 'Unknown Author';
+    } catch (error) {
+      console.error('Error fetching author name:', error);
+      return 'Unknown Author';
+    }
+  };
+
   // Handle typing in the search bar
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -95,7 +117,8 @@ function LibraryRecipes() {
       image={recipe.cover_image}
       title={recipe.title}
       id={recipe._id}
-      author={recipe.author_id}
+      author={recipe.author}
+      fetchAuthorName={fetchAuthorName}
     />
   ));
   
