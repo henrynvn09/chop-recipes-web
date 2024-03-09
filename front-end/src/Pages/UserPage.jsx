@@ -23,7 +23,7 @@ export default function Profile() {
   const [followed, setFollowed] = React.useState(false);
   const { userID } = useUser();
   const { profile_id } = useParams();
-  
+
   const [userDetails, setUserDetails] = React.useState(null);
   const [viewerProfile, setViewerProfile] = React.useState(null);
   const [recipes, setRecipes] = React.useState([]);
@@ -85,6 +85,7 @@ export default function Profile() {
   }, [viewerProfile, userDetails]);
 
   const fetchFollowingsByProfileID = async () => {
+    if (userDetails.followings.length === 0) return;
     try {
       const response = await axios.get(
         BACKEND_URL + "/api/followings/" + userDetails.followings.join(",")
@@ -230,7 +231,7 @@ export default function Profile() {
                   </div>
                   <div className="image-container">
                     <div className="relative">
-                      <ProfilePicture/>
+                      <ProfilePicture />
                     </div>
                   </div>
                   <div className="profile-stat">
@@ -269,4 +270,3 @@ export default function Profile() {
     </>
   );
 }
-
