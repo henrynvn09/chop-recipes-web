@@ -256,7 +256,14 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
                   {profile_id === userID ? (
-                    <EditableInput value={user.description} />
+                    <EditableInput
+                      value={user.description}
+                      onSave={(newDescription) => {
+                        // Update the user's description in your database
+                        // For now, just log the new description
+                        console.log(newDescription);
+                      }}
+                  />
                   ) : (
                     <UserDescriptionBox value={user.description} />
                   )}

@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import 'tailwindcss/tailwind.css'
-import { mdiPencil } from '@mdi/js'
+import { mdiPencil, mdiContentSave } from '@mdi/js'
 import ButtonIcon from './ButtonIcon'
 import '../Styles/Scrollbar.css'
 
-function EditableInput({value: initialValue, type = '', ...props}) {
-    const [isEditMode, setIsEditMode] = React.useState(false);
-    const [value, setValue] = React.useState(initialValue);
-    const [charCount, setCharCount] = React.useState(initialValue ? initialValue.length : 0);
-    const inputRef = React.useRef(null)
+function EditableInput({value: initialValue, type = '', onSave, ...props}) {
+    const [isEditMode, setIsEditMode] = useState(false);
+    const [value, setValue] = useState(initialValue);
+    const [charCount, setCharCount] = useState(initialValue ? initialValue.length : 0);
+    const [showSaveMessage, setShowSaveMessage] = useState(false);
+    const inputRef = useRef(null)
+
+    const handleSave = () => {
+        onSave(value);
+        setShowSaveMessage(true);
+        setTimeout(() => setShowSaveMessage(false), 3000); // Hide message after 3 seconds
+    }
 
     function turnOnEditMode() {
         setIsEditMode(true);
@@ -19,11 +26,6 @@ function EditableInput({value: initialValue, type = '', ...props}) {
     const handleChange = (event) => {
         setValue(event.target.value);
         setCharCount(event.target.value.length);
-    }
-
-    const adjustHeight = (element) => {
-        element.style.height = "auto";
-        element.style.height = element.scrollHeight + "px";
     }
 
     const getCharCountColor = () => {
@@ -48,9 +50,18 @@ function EditableInput({value: initialValue, type = '', ...props}) {
               {...props}
             />
             {isEditMode && (
-              <div style={{color: getCharCountColor(), transition: 'color 0.5s'}} className="absolute bottom-[-5px] right-0 text-sm">
-                {charCount}/2000
-              </div>
+              <>
+                <div style={{color: getCharCountColor(), transition: 'color 0.5s'}} className="absolute bottom-[-5px] right-0 text-sm">
+                  {charCount}/2000
+                </div>
+                <ButtonIcon 
+                  onClick={handleSave}
+                  className='hover:bg-gray-200 rounded-full absolute bottom-6 left-2.5'
+                  path={mdiContentSave}
+                  size={0.65}
+                  color='grey'
+                />
+              </>
             )}
             {!isEditMode && (
               <ButtonIcon 
@@ -62,12 +73,16 @@ function EditableInput({value: initialValue, type = '', ...props}) {
               />
             )}
           </span>
+          {showSaveMessage && (
+            <div className="text-green-500 mt-2">Description saved!</div>
+          )}
         </div>
       );
 }
 
 EditableInput.propTypes = {
-    value: PropTypes.string
+    value: PropTypes.string,
+    onSave: PropTypes.func
 }
 
 export default EditableInput
