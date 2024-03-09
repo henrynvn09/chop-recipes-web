@@ -10,39 +10,34 @@ function EditableInput({value, type = '', ...props}) {
     const inputRef = React.useRef(null)
     function turnOnEditMode() {
         setIsEditMode(true);
-        //inputRef.current.focus();
+        inputRef.current.focus();
     }
     return (
-        <div className='flex justify-between items-center'>
-            <span className='float-start'>
-                {/* text */}
-                <input 
-                ref = {inputRef}
-                type={type} 
-                autofocus
-                value={props.value} 
-                readOnly={!isEditMode} 
-                onClick={turnOnEditMode}
-                onBlur = {() => setIsEditMode(false)}
-                {...props}
-                />
-            </span>
+        <div className='flex justify-center items-center'>
+          <span className="relative"> 
+            <input 
+              ref={inputRef}
+              type={type} 
+              autoFocus
+              value={props.value} 
+              readOnly={!isEditMode} 
+              onClick={turnOnEditMode}
+              onBlur={() => setIsEditMode(false)}
+              className="w-1/2 py-2 px-4 font-roboto text-lg border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-100 transition-colors"
+              {...props}
+            />
             {!isEditMode && (
-                <ButtonIcon 
+              <ButtonIcon 
                 onClick={turnOnEditMode}
-                className='hover: bg-gray-200 rounded-full'
+                className='hover:bg-gray-200 rounded-full absolute right-8 top-1/2 transform -translate-y-1/2'
                 path={mdiPencil}
                 size={0.65}
                 color='grey'
-            />
-            )
-            }
-            
-            <button>
-                {/* edit button*/}
-            </button>
+              />
+            )}
+          </span>
         </div>
-    )
+      );
 }
 
 EditableInput.propTypes = {
