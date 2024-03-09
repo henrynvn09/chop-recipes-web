@@ -115,8 +115,16 @@ function HomePage(){
 
   // Dummy function for sharing with a friend
   const handleShare = () => {
-    console.log('Share button clicked');
-    // Perform share action here
+    console.log('handleShare called');
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check out this awesome recipe website!',
+        text: 'Hey, I found this awesome recipe website! Check it out and let\'s cook something delicious together!',
+        url: window.location.href
+      }).catch(console.error);
+    } else {
+      alert('Web Share API is not supported in your browser.');
+    }
   };
 
 
