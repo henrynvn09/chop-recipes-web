@@ -65,6 +65,7 @@ export default function UploadPage() {
     };
 
     // Recipe Steps image
+    const [imageUploaded, setImageUploaded] = useState(false);
     const [image, setImage] = useState(null);
     const UploadStepImage = (event) => {
         const selectedFile = event.target.files[0];
@@ -77,10 +78,12 @@ export default function UploadPage() {
                 snapshot.ref.getDownloadURL().then((downloadURL) => {
                     console.log(downloadURL); // URL of the uploaded file
                     setImage(downloadURL); // Set state with the URL
+                    setImageUploaded(true); // Set imageUploaded to true
                 });
             });
         } else {
             console.log("No file selected");
+            setImageUploaded(false); // Set imageUploaded to false
         }
     };
 
@@ -92,6 +95,7 @@ export default function UploadPage() {
         setAllSteps((prev) => [...prev, { ...newStep, image }]);
         setNewStep({});
         setImage(null);
+        setImageUploaded(false);
     };
     const handleDelete = (stepIdToRemove) => {
         setAllSteps((prev) => prev.filter(
@@ -254,6 +258,7 @@ export default function UploadPage() {
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
                     handleImageChange={UploadStepImage}
+                    imageUploaded={imageUploaded}
                 />
 
                 <StepsList allSteps={allSteps} handleDelete={handleDelete} />
