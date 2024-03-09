@@ -8,7 +8,7 @@ const ProfilePreview = ({ user }) => {
   };
   const description = user.description
     ? user.description
-    : "This user has not written a description yet.";
+    : "No Description Available";
   return (
     <div
       className="flex flex-col p-3  rounded-lg  bg-transparent bg-opacity-80 w-32 border border-b  m-3 shadow-md hover:shadow-lg transition-transform duration-300 transform hover:scale-105 text-gray-100 bg-gray-600"
@@ -20,8 +20,8 @@ const ProfilePreview = ({ user }) => {
         className="flex-shrink-0 object-cover bg-gray-500 rounded-lg w-64"
       />
       <div>
-        <h2 className="text-lg font-semibold">{user.name}</h2>
-        <p className="block pb-2 text-sm text-gray-300 overflow-hidden h-12">
+        <h2 className="text-lg font-semibold text-gray-700">{user.name}</h2>
+        <p className="block pb-2 text-sm text-gray-400 overflow-hidden h-12">
           {description}
         </p>
       </div>

@@ -245,7 +245,7 @@ export default function Profile() {
                 </div>
 
                 <div className="text-center">
-                  <h3 className="profile-name">{user.name}</h3>
+                  <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
                   <div>{user.description}</div>
                 </div>
