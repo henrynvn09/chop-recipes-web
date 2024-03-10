@@ -1,11 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import "../Styles/Navbar.css";
 import { useUser } from "../contexts/UserContent";
+import { placeholders } from "./SearchPlaceholders";
 
 const Navbar = () => {
   // State variable to hold the value of the input field
   const [searchInput, setSearchInput] = useState("");
+  const [placeholder, setPlaceholder] = useState(""); // State variable to hold the placeholder
+
+  const navigate = useNavigate(); // Create a navigate function
+
+  // Set a random placeholder phrase when the component is rendered
+  useEffect(() => {
+    const randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+    setPlaceholder(randomPlaceholder);
+  }, []);
 
   // Event handler to update the search input value when Enter key is pressed
   const handleKeyPress = (event) => {
@@ -16,9 +26,8 @@ const Navbar = () => {
 
   // Event handler to update the search input value when search button is clicked
   const handleSearch = () => {
-    console.log("Search Input:", searchInput);
+    navigate(`/library?search=${searchInput}`); // Navigate to the Library page with the search query
     setSearchInput("");
-    // Here you can perform any further actions with the searchInput value
   };
 
   // Event handler to update the search input value when input field changes
@@ -36,7 +45,7 @@ const Navbar = () => {
       <div className="search-box">
         <input
           type="text"
-          placeholder="Search"
+          placeholder={placeholder}
           value={searchInput}
           onChange={handleInputChange}
           onKeyPress={handleKeyPress}

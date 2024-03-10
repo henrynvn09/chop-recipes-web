@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../Styles/LibraryRecipes.css";
+import { useLocation } from "react-router-dom";
 
 import React from "react";
 
@@ -19,11 +20,15 @@ function LibraryRecipes() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const location = useLocation(); // Create a location object
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get('search'); // Get the search query from the URL
 
   // fetch the recipe from backend
   useEffect(() => {
+    setSearchTerm(searchQuery || ''); // Set the search term to the search query or an empty string if the search query is null
     fetchRecipes();
-  }, []);
+  }, [searchQuery]); // Add searchQuery as a dependency
 
   const fetchRecipes = async () => {
     try {
