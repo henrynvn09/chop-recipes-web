@@ -10,29 +10,35 @@ const Navbar = () => {
   const placeholderRef = useRef(); // Create a ref for the search input
 
   const navigate = useNavigate(); // Create a navigate function
+  
 
   // Function to get a random placeholder
   const getRandomPlaceholder = () => placeholders[Math.floor(Math.random() * placeholders.length)];
 
   const [placeholder, setPlaceholder] = useState(getRandomPlaceholder()); // Set the initial value to a random placeholder
 
- // Set a random placeholder phrase every 7 seconds
- useEffect(() => {
-  const intervalId = setInterval(() => {
-    // ...
+  // Set a random placeholder phrase every 7 seconds
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Fade out the current placeholder
+      if (placeholderRef.current) {
+        placeholderRef.current.style.opacity = 0;
+      }
 
-    // Wait for the fade out animation to finish, then change the placeholder and fade it back in
-    setTimeout(() => {
-      const randomPlaceholder = getRandomPlaceholder();
-      setPlaceholder(randomPlaceholder);
+      // Wait for the fade out animation to finish, then change the placeholder and fade it back in
+      setTimeout(() => {
+        const randomPlaceholder = getRandomPlaceholder();
+        setPlaceholder(randomPlaceholder);
 
-      // ...
-    }, 500); // Wait for 0.5 seconds, which is the duration of the fade out animation
-  }, 7000); // Change the placeholder every 7 seconds
+        if (placeholderRef.current) {
+          placeholderRef.current.style.opacity = 1;
+        }
+      }, 500); // Wait for 0.5 seconds, which is the duration of the fade out animation
+    }, 7000); // Change the placeholder every 7 seconds
 
-  // Clear the interval when the component is unmounted
-  return () => clearInterval(intervalId);
-}, []);
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(intervalId);
+  }, []);
 
   // Event handler to update the search input value when Enter key is pressed
   const handleKeyPress = (event) => {
