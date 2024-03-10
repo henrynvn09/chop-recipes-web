@@ -268,6 +268,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                   />
                   </span>
                   ) : (
+                    //TODO: IF user.description is empty, dont show the UserDescriptionBox
                     <UserDescriptionBox value={user.description} />
                   )}
                 </div>
