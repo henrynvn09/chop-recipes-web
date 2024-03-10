@@ -13,7 +13,7 @@
   padding: 24px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  max-height: 350px;
+  /* max-height: 350px; */
   background-color: #CCCC99;
   margin: 50px;
 
@@ -53,6 +53,7 @@
 }
 .view-recipe {
   max-width: 800px; /* this determines how large is the white space on two sides */
+  width: 800px; /*temorary fix the size shrunk when the delete recipe button appears */
   padding: 20px;
   flex: 1;
   background-color: #dfd9c5;
