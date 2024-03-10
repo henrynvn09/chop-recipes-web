@@ -53,3 +53,19 @@ exports.getRandomRecipeID = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.deleteRecipe = (req, res) => {
+  const { id } = req.params;
+
+  Recipe.findByIdAndDelete(id)
+    .then((deletedRecipe) => {
+      if (!deletedRecipe) {
+        return res.status(404).json({ message: 'Recipe not found' });
+      }
+      res.status(200).json({ message: 'Recipe deleted successfully' });
+    })
+    .catch((err) => {
+      console.error('Error deleting recipe:', err);
+      res.status(500).json({ message: 'Internal server error' });
+    });
+};

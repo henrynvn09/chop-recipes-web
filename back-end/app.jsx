@@ -37,6 +37,8 @@ app.get(
 );
 app.get("/api/recipe/:id", recipeController.getRecipeByID);
 app.get("/api/get_random_recipe_id", recipeController.getRandomRecipeID);
+// Add the DELETE route for deleting a recipe
+app.delete('/api/recipe/:id', recipeController.deleteRecipe);
 
 // ================== User routes ==================
 app.get("/api/:userid", userController.getProfileByID);
