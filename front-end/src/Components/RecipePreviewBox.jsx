@@ -24,7 +24,7 @@ function RecipePreviewBox(props) {
       }
     } catch (error) {
       console.error('Error fetching author name:', error);
-      setAuthorName('Unknown Author');
+      setAuthorName('whose user page? LOL'); // Tricky fix that User page's by thing display "Unknown Author" instead of their name
     }
   };
 
