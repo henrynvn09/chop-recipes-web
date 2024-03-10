@@ -91,8 +91,8 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
             )}
           </span>
           {showSaveMessage && (
-            <div className="text-green-500 mt-2">Description saved!</div>
-          )}
+              <div className="text-green-500 absolute bottom-full left-1/2 transform -translate-x-1/2 -mb-2 text-xs">Description saved!</div>
+            )}
         </div>
       );
 }

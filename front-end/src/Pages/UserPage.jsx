@@ -256,6 +256,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
                   {profile_id === userID ? (
+                    <span className="relative">
                     <EditableInput
                       value={user.description}
                       onSave={(newDescription) => {
@@ -265,6 +266,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                         //TODO: Change above line to be calling the backend to update the user's description
                       }}
                   />
+                  </span>
                   ) : (
                     <UserDescriptionBox value={user.description} />
                   )}
