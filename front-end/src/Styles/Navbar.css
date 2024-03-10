@@ -25,6 +25,7 @@
     outline: none;
     color: black;
     font-size: 12px;
+    transition: opacity 0.5s ease-in-out; /* Add this line */
 }
 
 .search-button{
