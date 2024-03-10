@@ -53,7 +53,6 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
           <span className="relative"> 
           <textarea
             ref={inputRef}
-            autoFocus
             value={value} 
             readOnly={!isEditMode} 
             onClick={turnOnEditMode}
