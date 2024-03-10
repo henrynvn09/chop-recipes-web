@@ -7,27 +7,26 @@ import { placeholders } from "./SearchPlaceholders";
 const Navbar = () => {
   // State variable to hold the value of the input field
   const [searchInput, setSearchInput] = useState("");
-  const [placeholder, setPlaceholder] = useState(""); // State variable to hold the placeholder
   const placeholderRef = useRef(); // Create a ref for the search input
 
   const navigate = useNavigate(); // Create a navigate function
 
+  // Function to get a random placeholder
+  const getRandomPlaceholder = () => placeholders[Math.floor(Math.random() * placeholders.length)];
+
+  const [placeholder, setPlaceholder] = useState(getRandomPlaceholder()); // Set the initial value to a random placeholder
+
  // Set a random placeholder phrase every 7 seconds
  useEffect(() => {
   const intervalId = setInterval(() => {
-    // Fade out the current placeholder
-    if (placeholderRef.current) {
-      placeholderRef.current.style.opacity = 0;
-    }
+    // ...
 
     // Wait for the fade out animation to finish, then change the placeholder and fade it back in
     setTimeout(() => {
-      const randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+      const randomPlaceholder = getRandomPlaceholder();
       setPlaceholder(randomPlaceholder);
 
-      if (placeholderRef.current) {
-        placeholderRef.current.style.opacity = 1;
-      }
+      // ...
     }, 500); // Wait for 0.5 seconds, which is the duration of the fade out animation
   }, 7000); // Change the placeholder every 7 seconds
 

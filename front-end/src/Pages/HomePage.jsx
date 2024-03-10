@@ -141,7 +141,7 @@ function HomePage(){
               <h1 className="text-white text-2xl md:text-4xl lg:text-7xl font-bold">Never Takeout <div className="text-custom-red inline">Again</div></h1>
             </a>
             <a href="/library" className="absolute inset-0 flex justify-center heading2 z-0">
-              <h3 className="text-custom-grey text-sm md:text-md lg:text-lg italic">At Chop, we offer quality services for all!</h3>
+              <h3 className="text-custom-grey text-sm md:text-md lg:text-lg italic"> At Chop, every recipe is a slice of kitchen magic!</h3>
             </a>
           </div>
         </div>
