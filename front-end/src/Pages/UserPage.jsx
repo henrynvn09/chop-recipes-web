@@ -261,7 +261,8 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                       onSave={(newDescription) => {
                         // Update the user's description in your database
                         // For now, just log the new description
-                        console.log(newDescription);
+                        console.log('New description:', newDescription);
+                        //TODO: Change above line to be calling the backend to update the user's description
                       }}
                   />
                   ) : (

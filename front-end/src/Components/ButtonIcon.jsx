@@ -13,6 +13,7 @@ function ButtonIcon({children, className='', path, size=1, color='grey', ...prop
                 path={path}
                 size={size}
                 color={color}
+                className="pointer-events-none" // Add this line
             />
         </div>
     )

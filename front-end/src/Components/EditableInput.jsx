@@ -12,13 +12,16 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
     const [showSaveMessage, setShowSaveMessage] = useState(false);
     const inputRef = useRef(null)
 
-    const handleSave = () => {
-        onSave(value);
-        setShowSaveMessage(true);
-        setTimeout(() => setShowSaveMessage(false), 3000); // Hide message after 3 seconds
+    const handleSave = (event) => {
+      event.stopPropagation();
+      console.log("clicked save")
+      onSave(value);
+      setShowSaveMessage(true);
+      setTimeout(() => setShowSaveMessage(false), 3000); // Hide message after 3 seconds
     }
 
     function turnOnEditMode() {
+      console.log("textarea clicked");
         setIsEditMode(true);
         inputRef.current.focus();
     }
@@ -34,29 +37,43 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
         return `hsl(${hue}, 100%, 40%)`;
     }
 
+    const handleBlur = (event) => {
+      // Check if the save button is being clicked
+      if (event.relatedTarget && event.relatedTarget.className.includes('save-button')) {
+        // If it is, delay setting isEditMode to false
+        setTimeout(() => setIsEditMode(false), 100);
+      } else {
+        // If it's not, set isEditMode to false immediately
+        setIsEditMode(false);
+      }
+    }
+
     return (
         <div className='flex justify-center items-center'>
           <span className="relative"> 
-            <textarea
-              ref={inputRef}
-              autoFocus
-              value={value} 
-              readOnly={!isEditMode} 
-              onClick={turnOnEditMode}
-              onBlur={() => setIsEditMode(false)}
-              onChange={handleChange}
-              className="w-96 max-w-96 h-auto min-h-32 max-h-72 py-2 px-4 font-roboto text-sm border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-100 transition-colors resize-none overflow-auto custom-scrollbar"
-              maxLength={2000}
-              {...props}
-            />
+          <textarea
+            ref={inputRef}
+            autoFocus
+            value={value} 
+            readOnly={!isEditMode} 
+            onClick={turnOnEditMode}
+            onBlur={handleBlur}
+            onChange={handleChange}
+            className="w-96 max-w-96 h-auto min-h-32 max-h-72 py-2 px-4 font-roboto text-sm border-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:bg-blue-100 transition-colors resize-none overflow-auto custom-scrollbar"
+            maxLength={2000}
+            {...props}
+          />
             {isEditMode && (
               <>
                 <div style={{color: getCharCountColor(), transition: 'color 0.5s'}} className="absolute bottom-[-5px] right-0 text-sm">
                   {charCount}/2000
                 </div>
                 <ButtonIcon 
-                  onClick={handleSave}
-                  className='hover:bg-gray-200 rounded-full absolute bottom-6 left-2.5'
+                  onMouseDown={(event) => {
+                    event.preventDefault(); // Prevent the textarea from losing focus
+                    handleSave(event);
+                  }}
+                  className='hover:bg-gray-200 rounded-full absolute bottom-6 left-2.5 save-button'
                   path={mdiContentSave}
                   size={0.65}
                   color='grey'
