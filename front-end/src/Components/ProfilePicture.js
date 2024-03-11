@@ -1,22 +1,66 @@
 import { useRef, useState } from "react";
 import EditIcon from "./EditIcon";
 import PhotoModal from "./PhotoModal";
+import axios from 'axios';
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
+import { useUser } from "../contexts/UserContent";
+import React, { useEffect } from 'react';
 
-const ProfilePicture = () => {
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
+const ProfilePicture = ({photo}) => {
   const avatarUrl = useRef(
-    "https://avatarfiles.alphacoders.com/161/161002.jpg"
+    {photo}
   );
+  const [picture, setPicture] = useState(photo);
   const [modalOpen, setModalOpen] = useState(false);
 
+  useEffect(() => {
+    // console.log('effect activated');
+    setPicture(photo);
+  }, [photo]);
   const updateAvatar = (imgSrc) => {
     avatarUrl.current = imgSrc;
+    // console.log("get imgsrc", imgSrc);
+    let trimmedimgSrc = imgSrc.substring(22);
+    // console.log("get imgsrc", trimmedimgSrc);
+    const uniqueFileName = `${Date.now()}-${trimmedimgSrc.name}`;
+    const storageRef = firebase.storage().ref();
+    const fileRef = storageRef.child(uniqueFileName);
+    
+    fileRef.putString(trimmedimgSrc,'base64').then((snapshot) => {
+        snapshot.ref.getDownloadURL().then((downloadURL) => {
+            updateAvatarDB(downloadURL);
+            setPicture(photo);
+            force_refresh();
+        });
+    });
+
+  };
+ const force_refresh = () => {
+  window.location.href = "/user/" + userID;
+};
+  const { userID } = useUser();
+
+  const updateAvatarDB = async (downloadURL) => {
+    try {
+      const response = await axios.post(
+        BACKEND_URL + "/api/updatePhoto/" + userID
+        , {downloadURL});
+        console.error("uploaded that to the db");
+        // window.location.href= "/user/"+userID;
+
+    } catch (error) {
+      console.error("Error update photo image:", error);
+    }
   };
 
   return (
     <div className="flex flex-col items-center pt-12">
       <div className="relative">
         <img
-          src={avatarUrl.current}
+          src={picture}
           alt="Avatar"
           className="w-[150px] h-[150px] rounded-full border-2 border-gray-400"
         />
@@ -28,8 +72,6 @@ const ProfilePicture = () => {
           <EditIcon />
         </button>
       </div>
-      <h2 className="text-white font-bold mt-2">Mack Aroney</h2>
-      {/* <p className="text-gray-500 text-xs mt-2">Software Engineer</p> */}
       {modalOpen && (
         <PhotoModal
           updateAvatar={updateAvatar}

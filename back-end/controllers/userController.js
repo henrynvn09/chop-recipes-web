@@ -40,3 +40,17 @@ exports.unfollowProfile = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+exports.updateAvatar = (req, res) => {
+  const { downloadURL } = req.body;
+  console.log(req.params.userID);
+  console.log(downloadURL);
+  UserModel.findByIdAndUpdate(
+    req.params.userID,
+    {Image: downloadURL},
+    { new: true }
+  )
+    .then((result) => {
+      console.log("updated avatar");
+    })
+    .catch((err) => console.log(err));
+};
