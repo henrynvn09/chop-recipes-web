@@ -15,6 +15,7 @@ import ProfilePreview from "../Components/ProfilePreview.jsx";
 import RecipePreviewBox from "../Components/RecipePreviewBox.jsx";
 import EditableInput from "../Components/EditableInput.jsx";
 import UserDescriptionBox from "../Components/UserDescriptionBox.jsx";
+import RecipePreviewBox_userPage from "../Components/RecipePreviewBox_userPage.jsx";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -187,7 +188,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
 
   // render recipes
   const recipePreviewBoxes = recipes.map((recipe, index) => (
-    <RecipePreviewBox
+    <RecipePreviewBox_userPage
       key={index}
       image={recipe.cover_image}
       title={recipe.title}
