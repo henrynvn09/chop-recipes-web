@@ -48,6 +48,7 @@ app.post(
   "/api/unfollowProfile/:userID/:profileID",
   userController.unfollowProfile
 );
+app.post("/api/updatePhoto/:userID", userController.updateAvatar);
 
 // =============== authentication routes ===========
 app.post("/login", authController.login);

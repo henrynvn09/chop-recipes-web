@@ -31,7 +31,7 @@ export default function Profile() {
   const [viewerProfile, setViewerProfile] = React.useState(null);
   const [recipes, setRecipes] = React.useState([]);
   const [followingProfiles, setFollowingProfiles] = React.useState([]);
-
+  const [profilePicture, setProfilePicture] = React.useState(null);
   // Fetching user data from backend
   React.useEffect(() => {
     fetchProfile();
@@ -119,7 +119,9 @@ export default function Profile() {
   if (followingProfiles) {
     user.followings = followingProfiles;
   }
-
+  if(profilePicture != user.Image){
+    setProfilePicture(user.Image);
+  }
   // Dummy data
 const dummyMinDescription="This is the minimum description END HERE"
 const dummyShortDescription="This is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. END HERE";
@@ -240,7 +242,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                   </div>
                   <div className="image-container">
                     <div className="relative">
-                      <ProfilePicture />
+                      <ProfilePicture photo={profilePicture}  />
                     </div>
                   </div>
                   <div className="profile-stat">
