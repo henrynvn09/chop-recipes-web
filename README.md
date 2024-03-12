@@ -10,3 +10,11 @@ Edmund added annoying sign in stuff, but he never give you account?
 
 userid: edmundyau777@gmail.com
 password: qwer
+
+Resources Used During Construction:
+
+Tutorials:
+https://www.youtube.com/watch?v=rzoLTK3T36U "Ep36 - Editable Field in React"
+
+Online Components:
+https://tailwindcomponents.com/component/tailwind-css-404-error-page 
