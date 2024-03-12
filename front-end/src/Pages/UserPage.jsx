@@ -32,6 +32,7 @@ export default function Profile() {
   const [recipes, setRecipes] = React.useState([]);
   const [followingProfiles, setFollowingProfiles] = React.useState([]);
   const [profilePicture, setProfilePicture] = React.useState(null);
+  const [isEditing, setIsEditing] = React.useState(false);
   // Fetching user data from backend
   React.useEffect(() => {
     fetchProfile();
@@ -122,6 +123,7 @@ export default function Profile() {
   if(profilePicture != user.Image){
     setProfilePicture(user.Image);
   }
+
   // Dummy data
 const dummyMinDescription="This is the minimum description END HERE"
 const dummyShortDescription="This is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. It is a short description of the user. It is a brief summary of the user's profile. END HERE";
@@ -258,7 +260,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                 <div className="text-center">
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
-                  {profile_id === userID ? (
+                  {user.description === null ? (
                     <span className="relative">
                     <EditableInput
                       value={user.description}

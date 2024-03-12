@@ -49,6 +49,7 @@ app.post(
   userController.unfollowProfile
 );
 app.post("/api/updatePhoto/:userID", userController.updateAvatar);
+app.post("/api/updateDescription", userController.updateDescription);
 
 // =============== authentication routes ===========
 app.post("/login", authController.login);
@@ -64,7 +65,7 @@ const verifyUser = (req, res, next) => {
   } else {
     jwt.verify(accessToken, "jwt-access-token-secret-key", (err, decoded) => {
       if (err) {
-        return res.json({ valid: false, message: "user not authorized" });
+        return res.json({ valid: false, message: `user not authorized ${accessToken}`, accessToken : accessToken ? accessToken : null});
       } else {
         req.email = decoded.email;
         next();
@@ -77,7 +78,7 @@ const renewToken = (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   let exist = false;
   if (!refreshToken) {
-    return res.json({ valid: false, message: "user not authorized" });
+    return res.json({ valid: false, message: `user not authorized ${refreshToken}`, refreshToken : refreshToken ? refreshToken : null});
   } else {
     jwt.verify(refreshToken, "jwt-refresh-token-secret-key", (err, decoded) => {
       if (err) {
