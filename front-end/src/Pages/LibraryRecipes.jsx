@@ -166,7 +166,7 @@ function LibraryRecipes() {
     <Navbar />
       <div className="flex flex-row">
         <Sidebar tags={tags_html} ingredients={ingredients_html} />
-        <div className="flex-4 flex flex-col w-[100%] py-5 items-center">
+        <div className="flex flex-col w-[100%] flex-5 py-5 items-center pr-10">
           <h1 className="text-4xl font-bold flex-row pb-6 ">All Recipes</h1>     
           <input
             type="text"

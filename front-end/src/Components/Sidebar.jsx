@@ -8,7 +8,7 @@ const AccordionItem = ({ title, content }) => {
   const contentStyle = isOpen ? 'max-h-48 overflow-y-scroll' : 'max-h-0';
 
   return (
-    <div>
+    <div className={`max-w-96`}>
       <button
         className={`text-lg font-bold mb-2 p-5 pb-0 w-full text-left flex items-center justify-between`}
         onClick={() => setIsOpen(!isOpen)}
