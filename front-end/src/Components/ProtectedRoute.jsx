@@ -12,6 +12,7 @@ const ProtectedRoute = () => {
         .then(res => {
             if(res.data.valid){
                 setMessage(res.data.message)
+                console.log("heloo " + res.data.accessToken)
                 console.log(message)
             } else{
                 navigate('/')
