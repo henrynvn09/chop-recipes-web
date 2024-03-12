@@ -260,7 +260,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                 <div className="text-center">
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
-                  {user.description === null ? (
+                  {user.description === null && profile_id === userID ? (
                     <span className="relative">
                     <EditableInput
                       value={user.description}
