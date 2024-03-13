@@ -15,6 +15,7 @@ import ProfilePreview from "../Components/ProfilePreview.jsx";
 import RecipePreviewBox from "../Components/RecipePreviewBox.jsx";
 import EditableInput from "../Components/EditableInput.jsx";
 import UserDescriptionBox from "../Components/UserDescriptionBox.jsx";
+import RecipePreviewBox_userPage from "../Components/RecipePreviewBox_userPage.jsx";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -30,7 +31,8 @@ export default function Profile() {
   const [viewerProfile, setViewerProfile] = React.useState(null);
   const [recipes, setRecipes] = React.useState([]);
   const [followingProfiles, setFollowingProfiles] = React.useState([]);
-
+  const [profilePicture, setProfilePicture] = React.useState(null);
+  const [isEditing, setIsEditing] = React.useState(false);
   // Fetching user data from backend
   React.useEffect(() => {
     fetchProfile();
@@ -118,6 +120,9 @@ export default function Profile() {
   if (followingProfiles) {
     user.followings = followingProfiles;
   }
+  if(profilePicture != user.Image){
+    setProfilePicture(user.Image);
+  }
 
   // Dummy data
 const dummyMinDescription="This is the minimum description END HERE"
@@ -187,7 +192,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
 
   // render recipes
   const recipePreviewBoxes = recipes.map((recipe, index) => (
-    <RecipePreviewBox
+    <RecipePreviewBox_userPage
       key={index}
       image={recipe.cover_image}
       title={recipe.title}
@@ -237,9 +242,9 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                       </div>
                     </div>
                   </div>
-                  <div className="image-container">
+                  <div className="image-container pb-3">
                     <div className="relative">
-                      <ProfilePicture />
+                      <ProfilePicture photo={profilePicture}  />
                     </div>
                   </div>
                   <div className="profile-stat">
@@ -255,7 +260,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                 <div className="text-center">
                   <h3 className="profile-name mt-[-10px]">{user.name}</h3>
                   {followOrSignoutButton()}
-                  {profile_id === userID ? (
+                  {user.description === null && profile_id === userID ? (
                     <span className="relative">
                     <EditableInput
                       value={user.description}

@@ -4,18 +4,29 @@ import 'tailwindcss/tailwind.css'
 import { mdiPencil, mdiContentSave } from '@mdi/js'
 import ButtonIcon from './ButtonIcon'
 import '../Styles/Scrollbar.css'
-
+import { useUser } from '../contexts/UserContent'
+import axios from 'axios'
 function EditableInput({value: initialValue, type = '', onSave, ...props}) {
     const [isEditMode, setIsEditMode] = useState(false);
     const [value, setValue] = useState(initialValue);
     const [charCount, setCharCount] = useState(initialValue ? initialValue.length : 0);
     const [showSaveMessage, setShowSaveMessage] = useState(false);
     const inputRef = useRef(null)
-
+    const {userID} = useUser();
+    const userIDedit = userID;
+    console.log("userIDedit: " + userIDedit)
+    axios.defaults.withCredentials = true;
     const handleSave = (event) => {
       event.stopPropagation();
       console.log("clicked save")
       onSave(value);
+      console.log("value: " + value)
+      console.log("userID: " + userIDedit)
+      axios.post('http://localhost:5000/api/updateDescription' , {description: value, userID: userIDedit})
+        .then(result => {
+            console.log(result.data);
+        })
+        .catch(err => console.log(err))
       setShowSaveMessage(true);
       setTimeout(() => setShowSaveMessage(false), 3000); // Hide message after 3 seconds
     }
@@ -47,6 +58,7 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
         setIsEditMode(false);
       }
     }
+
 
     return (
         <div className='flex justify-center items-center'>

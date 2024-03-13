@@ -4,6 +4,8 @@ import '../Styles/viewRecipe.css';
 import Navbar from "../Components/Navbar";
 import {useParams, Link} from "react-router-dom";
 import {useEffect, useState} from "react";
+import { useUser } from "../contexts/UserContent";
+
 
 const ViewRecipe = () => {
   // const recipe = fakeData; // Replace with actual fetched data
@@ -27,7 +29,28 @@ const ViewRecipe = () => {
       description:"",
       following: [],
     }); // Initialize the author state to null
+  const [isAuthor, setIsAuthor] = useState(false);
+  const handleDeleteRecipe = async () => {
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/recipe/${recipe_id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
+      if (response.ok) {
+        console.log('Recipe deleted successfully');
+        // Redirect to the recipe library page when deleted a recipe
+        window.location.href = '/library';
+      } else {
+        console.error('Failed to delete recipe');
+      }
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    }
+  }
+  const { userID } = useUser();
 useEffect(() => {
   const fetchRecipeAndAuthor = async () => {
     try {
@@ -46,6 +69,14 @@ useEffect(() => {
         const authorData = await authorResponse.json();
         setAuthor(authorData[0]);
         console.log("Author data fetched:", authorData);
+
+         // Check if the current user is the author of the recipe
+         
+         if (userID === recipeData.author_id) {
+           setIsAuthor(true);
+         } else {
+           setIsAuthor(false);
+         }
       }
     } catch (error) {
       console.error('Error during recipe or author fetch:', error);
@@ -134,9 +165,9 @@ useEffect(() => {
               ))}
             </ul>
 
-
+          
           </div>
-          </div>
+        </div>
 
         <div className="author-card">
           <div className="author-image-container">
@@ -150,6 +181,12 @@ useEffect(() => {
             </Link>
             <p className="author-descrip">{author.description}</p>
           </div>
+          {isAuthor && (
+            <div className="delete-recipe-container">
+              <h3>This is your recipe, don't like it? Delete it!</h3>
+              <button onClick={handleDeleteRecipe}>Delete Recipe</button>
+            </div>
+          )}
         </div>
       </div>
     </>
