@@ -243,7 +243,7 @@ export default function UploadPage() {
                         <li key={index}>
                             <div className="tag-container">
                                 {tag}
-                                <button onClick={() => handleDeleteTag(index)}>Remove</button>
+                                <button className="tag-button" onClick={() => handleDeleteTag(index)}>Remove</button>
                             </div>
                         </li>
                         ))}
