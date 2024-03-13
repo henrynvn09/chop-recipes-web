@@ -106,7 +106,7 @@ useEffect(() => {
   return (
     <>
       <Navbar />
-      <div className="view-recipe-container">
+      <div className="view-recipe-container flex items-center justify-center">
 
           <div className="pt-10 pb-10 rounded-[100rem]">
             <div className="view-recipe">
@@ -150,26 +150,26 @@ useEffect(() => {
 
             <h2>Steps</h2>
             <ul>
-              {recipe.content_list.map((step, index) => (
-                <li key={index}>
-                  <div className="step-container">
-                    <h3>{index + 1}. {step.title}</h3>
-                    {step.text && step.text !== 'undefined' && <p>{step.text}</p>}
-                    {step.image && step.image !== "null" && (
-                      <div className="stepImageContainer">
-                        <img src={step.image} alt={step.title || 'Step image'} className="stepImage" />
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
+            {recipe.content_list.map((step, index) => (
+              <li key={index}>
+                <div className="step-container">
+                  <h3>{index + 1}. {step.title}</h3>
+                  {step.text && step.text !== 'undefined' && <p>{step.text}</p>}
+                  {step.image && step.image !== "null" && (
+                    <div className="stepImageContainer">
+                      <img src={step.image} alt={step.title || 'Step image'} className="stepImage w-full h-auto object-cover" />
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
             </ul>
 
           
           </div>
         </div>
 
-        <div className="author-card">
+        <div className="author-card flex-col items-center justify-center">
           <div className="author-image-container">
             <Link to={`/user/${recipe.author_id}`}>
               <img src={author.Image} alt="Author" />
@@ -179,7 +179,11 @@ useEffect(() => {
             <Link to={`/user/${recipe.author_id}`}>
               <h3 className="author-name">{author.name}</h3>
             </Link>
-            <p className="author-descrip">{author.description}</p>
+            <p className="author-descrip">
+            {author.description.length > 250 
+              ? `${author.description.substring(0, 250)}...` 
+              : author.description}
+          </p>
           </div>
           {isAuthor && (
             <div className="delete-recipe-container">
