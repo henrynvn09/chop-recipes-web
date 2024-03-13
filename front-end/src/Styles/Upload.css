@@ -1,5 +1,3 @@
-
-
 .upload-page {
   width: 50%;
   margin: 0 auto;
@@ -128,8 +126,17 @@
 
 /* specifically for the delete step buttons */
 #steps li div button {
-  background-color: #e53935;
-  color: #fff;
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -137,7 +144,9 @@
   font-size: 14px;
 }
 #steps li div button:hover {
-  background-color: #c62828;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 #tags {
@@ -157,7 +166,8 @@
   display: flex;
   align-items: center;
 }
-.tag-container button {
+
+.upload-page .tag-container .tag-button {
   background-color: #e53935;
   color: #fff;
   border: none;
@@ -167,7 +177,8 @@
   cursor: pointer;
   font-size: 10px;
 }
-.tag-container button:hover {
+
+.upload-page .tag-container .tag-button:hover {
   background-color: #c62828;
 }
 
