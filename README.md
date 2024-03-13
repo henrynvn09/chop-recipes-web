@@ -55,7 +55,10 @@ Tutorials:
 - https://www.youtube.com/watch?v=dX_LteE0NFM&ab_channel=WebDevCody
 
 Online Components:
-- https://tailwindcomponents.com/component/tailwind-css-404-error-page 
+- https://tailwindcomponents.com/component/tailwind-css-404-error-page
+- https://www.flaticon.com/
+- https://gradientbuttons.colorion.co/
+
 
 Docs:
 - https://tailwindcss.com/
