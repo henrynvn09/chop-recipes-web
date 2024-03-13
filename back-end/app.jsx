@@ -10,7 +10,8 @@ const userController = require("./controllers/userController");
 const authController = require("./controllers/authController");
 const PORT = process.env.PORT || 5000;
 const URI = process.env.ATLAS_URI;
-
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_SECRET;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_SECRET;
 const app = express();
 //turns it to json file
 app.use(express.json());
@@ -63,7 +64,7 @@ const verifyUser = (req, res, next) => {
       next();
     }
   } else {
-    jwt.verify(accessToken, "jwt-access-token-secret-key", (err, decoded) => {
+    jwt.verify(accessToken, ACCESS_TOKEN_SECRET, (err, decoded) => {
       if (err) {
         return res.json({ valid: false, message: `user not authorized ${accessToken}`, accessToken : accessToken ? accessToken : null});
       } else {
@@ -80,13 +81,13 @@ const renewToken = (req, res) => {
   if (!refreshToken) {
     return res.json({ valid: false, message: `user not authorized ${refreshToken}`, refreshToken : refreshToken ? refreshToken : null});
   } else {
-    jwt.verify(refreshToken, "jwt-refresh-token-secret-key", (err, decoded) => {
+    jwt.verify(refreshToken, REFRESH_TOKEN_SECRET, (err, decoded) => {
       if (err) {
         return res.json({ valid: false, message: "Invalid Refresh" });
       } else {
         const accessToken = jwt.sign(
           { email: decoded.email },
-          "jwt-access-token-secret-key",
+          ACCESS_TOKEN_SECRET,
           { expiresIn: "1m" }
         );
         res.cookie("accessToken", accessToken, { maxAge: 60000 });
