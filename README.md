@@ -14,7 +14,7 @@
 7. Now within the Storage go under rules and change `allow read, write: if false;` to `allow read, write: if true;`
 8. Now within your code editor of the front-end/ do npm install or npm install Firebase 
 9. now within **front-end/index.js** and add which is just the initialization of Firebase given
-    -  import firebase from "firebase/compat/app";
+    import firebase from "firebase/compat/app";
        const firebaseConfig = {
          apiKey: process.env.REACT_APP_API_KEY,
          authDomain: process.env.REACT_APP_AUTH_DOMAIN,
