@@ -150,19 +150,19 @@ useEffect(() => {
 
             <h2>Steps</h2>
             <ul>
-              {recipe.content_list.map((step, index) => (
-                <li key={index}>
-                  <div className="step-container">
-                    <h3>{index + 1}. {step.title}</h3>
-                    {step.text && step.text !== 'undefined' && <p>{step.text}</p>}
-                    {step.image && step.image !== "null" && (
-                      <div className="stepImageContainer">
-                        <img src={step.image} alt={step.title || 'Step image'} className="stepImage" />
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
+            {recipe.content_list.map((step, index) => (
+              <li key={index}>
+                <div className="step-container">
+                  <h3>{index + 1}. {step.title}</h3>
+                  {step.text && step.text !== 'undefined' && <p>{step.text}</p>}
+                  {step.image && step.image !== "null" && (
+                    <div className="stepImageContainer">
+                      <img src={step.image} alt={step.title || 'Step image'} className="stepImage w-full h-auto object-cover" />
+                    </div>
+                  )}
+                </div>
+              </li>
+            ))}
             </ul>
 
           
