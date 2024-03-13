@@ -106,7 +106,7 @@ useEffect(() => {
   return (
     <>
       <Navbar />
-      <div className="view-recipe-container">
+      <div className="view-recipe-container flex items-center justify-center">
 
           <div className="pt-10 pb-10 rounded-[100rem]">
             <div className="view-recipe">
@@ -169,7 +169,7 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="author-card">
+        <div className="author-card flex-col items-center justify-center">
           <div className="author-image-container">
             <Link to={`/user/${recipe.author_id}`}>
               <img src={author.Image} alt="Author" />
@@ -179,7 +179,11 @@ useEffect(() => {
             <Link to={`/user/${recipe.author_id}`}>
               <h3 className="author-name">{author.name}</h3>
             </Link>
-            <p className="author-descrip">{author.description}</p>
+            <p className="author-descrip">
+            {author.description.length > 250 
+              ? `${author.description.substring(0, 250)}...` 
+              : author.description}
+          </p>
           </div>
           {isAuthor && (
             <div className="delete-recipe-container">
