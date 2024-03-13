@@ -9,7 +9,7 @@ import React, { useEffect } from 'react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
-const ProfilePicture = ({photo}) => {
+const ProfilePicture = ({photo, profileID}) => {
   const avatarUrl = useRef(
     {photo}
   );
@@ -67,6 +67,7 @@ const ProfilePicture = ({photo}) => {
         <button
           className="absolute -bottom-3 left-0 right-0 m-auto w-fit p-[.35rem] rounded-full bg-gray-800 hover:bg-gray-700 border border-gray-600"
           title="Change photo"
+          hidden={userID !== profileID}
           onClick={() => setModalOpen(true)}
         >
           <EditIcon />

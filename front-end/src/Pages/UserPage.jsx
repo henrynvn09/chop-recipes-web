@@ -244,7 +244,7 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                   </div>
                   <div className="image-container pb-3">
                     <div className="relative">
-                      <ProfilePicture photo={profilePicture}  />
+                      <ProfilePicture photo={profilePicture} profileID={profile_id} />
                     </div>
                   </div>
                   <div className="profile-stat">
