@@ -46,24 +46,26 @@ exports.getRecipeByID = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+exports.getRandomRecipeID = (req, res) => {
+  Recipe.aggregate([{ $sample: { size: 1 } }, { $project: { _id: 1 } }])
+    .then((result) => {
+      res.send(result[0]); // Send the first (and only) item in the result array
+    })
+    .catch((err) => console.log(err));
+};
 
-exports.getRandomRecipe = (req, res) => {
-  Recipe.aggregate([
-    { $sample: { size: 1 } }, // Randomly selects one document
-    { $project: { 
-        title: 1, 
-        cover_image: 1, 
-        tagName_lists: 1, 
-        ingredient_lists: 1, 
-        _id: 1 
-      } 
-    }
-  ])
-  .then((result) => {
-    res.send(result[0]); // Send the first (and only) item in the result array
-  })
-  .catch((err) => {
-    console.log(err);
-    res.status(500).send({ message: "Error retrieving random recipe" });
-  });
+exports.deleteRecipe = (req, res) => {
+  const { id } = req.params;
+
+  Recipe.findByIdAndDelete(id)
+    .then((deletedRecipe) => {
+      if (!deletedRecipe) {
+        return res.status(404).json({ message: 'Recipe not found' });
+      }
+      res.status(200).json({ message: 'Recipe deleted successfully' });
+    })
+    .catch((err) => {
+      console.error('Error deleting recipe:', err);
+      res.status(500).json({ message: 'Internal server error' });
+    });
 };

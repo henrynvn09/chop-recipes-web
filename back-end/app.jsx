@@ -36,7 +36,9 @@ app.get(
   recipeController.getRecipesbyUserID
 );
 app.get("/api/recipe/:id", recipeController.getRecipeByID);
-app.get("/api/recipe/random", recipeController.getRandomRecipe);
+app.get("/api/get_random_recipe_id", recipeController.getRandomRecipeID);
+// Add the DELETE route for deleting a recipe
+app.delete('/api/recipe/:id', recipeController.deleteRecipe);
 
 // ================== User routes ==================
 app.get("/api/:userid", userController.getProfileByID);
@@ -46,6 +48,8 @@ app.post(
   "/api/unfollowProfile/:userID/:profileID",
   userController.unfollowProfile
 );
+app.post("/api/updatePhoto/:userID", userController.updateAvatar);
+app.post("/api/updateDescription", userController.updateDescription);
 
 // =============== authentication routes ===========
 app.post("/login", authController.login);
@@ -61,7 +65,7 @@ const verifyUser = (req, res, next) => {
   } else {
     jwt.verify(accessToken, "jwt-access-token-secret-key", (err, decoded) => {
       if (err) {
-        return res.json({ valid: false, message: "user not authorized" });
+        return res.json({ valid: false, message: `user not authorized ${accessToken}`, accessToken : accessToken ? accessToken : null});
       } else {
         req.email = decoded.email;
         next();
@@ -74,7 +78,7 @@ const renewToken = (req, res) => {
   const refreshToken = req.cookies.refreshToken;
   let exist = false;
   if (!refreshToken) {
-    return res.json({ valid: false, message: "user not authorized" });
+    return res.json({ valid: false, message: `user not authorized ${refreshToken}`, refreshToken : refreshToken ? refreshToken : null});
   } else {
     jwt.verify(refreshToken, "jwt-refresh-token-secret-key", (err, decoded) => {
       if (err) {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import "../Styles/LibraryRecipes.css";
+import { useLocation } from "react-router-dom";
 
 import React from "react";
 
@@ -19,11 +20,15 @@ function LibraryRecipes() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const location = useLocation(); // Create a location object
+  const searchParams = new URLSearchParams(location.search);
+  const searchQuery = searchParams.get('search'); // Get the search query from the URL
 
   // fetch the recipe from backend
   useEffect(() => {
+    setSearchTerm(searchQuery || ''); // Set the search term to the search query or an empty string if the search query is null
     fetchRecipes();
-  }, []);
+  }, [searchQuery]); // Add searchQuery as a dependency
 
   const fetchRecipes = async () => {
     try {
@@ -34,6 +39,28 @@ function LibraryRecipes() {
       setRecipes(response.data);
     } catch (error) {
       console.error("Error fetching recipes:", error);
+    }
+  };
+
+  // fetch the author name from backend
+  const fetchAuthorName = async (recipeId) => {
+    try {
+      const recipeResponse = await fetch(`${BACKEND_URL}/api/recipe/${recipeId}`);
+      if (!recipeResponse.ok) throw new Error('Failed to fetch recipe');
+      const recipeData = await recipeResponse.json();
+  
+      if (recipeData.author_id) {
+        const authorResponse = await fetch(`${BACKEND_URL}/api/${recipeData.author_id}`);
+        if (!authorResponse.ok) throw new Error('Failed to fetch author');
+        const authorData = await authorResponse.json();
+        console.log("Author data fetched:", authorData);
+        return authorData; 
+      }
+  
+      return 'Unknown Author';
+    } catch (error) {
+      console.error('Error fetching author name:', error);
+      return 'Unknown Author';
     }
   };
 
@@ -95,7 +122,8 @@ function LibraryRecipes() {
       image={recipe.cover_image}
       title={recipe.title}
       id={recipe._id}
-      author={recipe.author_id}
+      author={recipe.author}
+      fetchAuthorName={fetchAuthorName}
     />
   ));
   
@@ -138,7 +166,7 @@ function LibraryRecipes() {
     <Navbar />
       <div className="flex flex-row">
         <Sidebar tags={tags_html} ingredients={ingredients_html} />
-        <div className="flex-4 flex flex-col w-[100%] py-5 items-center">
+        <div className="flex flex-col w-[100%] flex-5 py-5 items-center pr-10">
           <h1 className="text-4xl font-bold flex-row pb-6 ">All Recipes</h1>     
           <input
             type="text"
