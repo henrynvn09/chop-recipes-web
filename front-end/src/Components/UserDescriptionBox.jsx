@@ -22,11 +22,18 @@ function UserDescriptionBox({ value = '', ...props }) {
   };
 
   useEffect(() => {
-    adjustHeight();
-  }, [value]);
+    if (!isEditing && textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      adjustHeight();
+    }
+  }, [isEditing, value]);
 
   const toggleEdit = () => {
     setIsEditing(!isEditing);
+    if (isEditing && textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      adjustHeight();
+    }
   };
 
   return (
@@ -44,7 +51,7 @@ function UserDescriptionBox({ value = '', ...props }) {
             ref={textareaRef}
             value={value}
             readOnly
-            className="w-1/2 min-w-96 py-2 px-4 text-sm font-semibold text-black italic font-gillsans rounded-md shadow-sm text-center resize-none overflow-hidden focus:outline-none focus:ring-0 border-2 rounded-lg"
+            className="w-1/2 min-w-96 h-auto py-2 px-4 text-sm font-semibold text-black italic font-gillsans rounded-md shadow-sm text-center resize-none overflow-hidden focus:outline-none focus:ring-0 border-2 rounded-lg"
             maxLength={2000}
             style={{borderImage: 'linear-gradient(to right, #ff7eb6, #da49be, #7e6bff, #2ac5d6)', borderImageSlice: 1}}
             {...props}
