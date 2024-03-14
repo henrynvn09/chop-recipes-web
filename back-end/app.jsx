@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
 // Replace the uri string with your MongoDB deployment's connection string.
 require("dotenv").config({ path: "./config.env" });
 const recipeController = require("./controllers/recipeController");
