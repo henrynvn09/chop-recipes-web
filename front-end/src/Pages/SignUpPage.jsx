@@ -13,6 +13,7 @@ const SignUpPage = () => {
     const [userExists, setUserExists] = useState(false)
     //for resetting the useEffect
     const [popupKey, setPopupKey] = useState(0);
+    const [passwordMessage, setPasswordMessage] = useState(false); // Add this line
 
     const [fadeIn, setFadeIn] = useState(false);
 
@@ -75,7 +76,12 @@ const SignUpPage = () => {
                         </div>
                         <div className='email-password'>
                             <label htmlFor="password">Password</label>
-                            <input type="password" placeholder='Enter Password' className="custom-input" onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" placeholder='Enter Password' className="custom-input" onChange={(e) => {setPassword(e.target.value); setPasswordMessage(true);}} />
+                            {passwordMessage && 
+                            <p className='text-red-500 text-xs absolute'>
+                            Password must be at least 8 characters long and contain a special
+                            <br />character.
+                            </p>}
                         </div>
                         <div key={popupKey} className={`popup ${userExists ? 'show' : ''}`}>
                             <p>User already exists!</p>
