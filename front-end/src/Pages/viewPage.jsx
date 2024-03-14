@@ -40,7 +40,6 @@ const ViewRecipe = () => {
       });
 
       if (response.ok) {
-        console.log('Recipe deleted successfully');
         // Redirect to the recipe library page when deleted a recipe
         window.location.href = '/library';
       } else {
@@ -59,16 +58,12 @@ useEffect(() => {
       if (!recipeResponse.ok) throw new Error('Failed to fetch recipe');
       const recipeData = await recipeResponse.json();
       setRecipe(recipeData);
-      console.log("Recipe fetched successfully, Recipe Data:", recipeData);
-
       // Proceed to fetch the Author if author_id is available
       if (recipeData.author_id) {
-        console.log("Fetching author for ID:", recipeData.author_id);
         const authorResponse = await fetch(`${BACKEND_URL}/api/${recipeData.author_id}`); // Adjust the endpoint as needed
         if (!authorResponse.ok) throw new Error('Failed to fetch author');
         const authorData = await authorResponse.json();
         setAuthor(authorData[0]);
-        console.log("Author data fetched:", authorData);
 
          // Check if the current user is the author of the recipe
          
@@ -94,7 +89,6 @@ useEffect(() => {
       description: "",
       followings: [],
     }); // Reset author state to initial values
-    console.log("Author state reset due to component unmount or re-render");
   };
 
 }, [recipe_id, BACKEND_URL]); // Ensures this runs once upon initial render or if recipe_id/BACKEND_URL changes

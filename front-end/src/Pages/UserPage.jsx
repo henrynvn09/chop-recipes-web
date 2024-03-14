@@ -42,7 +42,6 @@ export default function Profile() {
   const fetchProfile = async () => {
     try {
       const response = await axios.get(BACKEND_URL + "/api/" + profile_id);
-      console.log("User details fetched:", response.data[0]);
       setUserDetails(response.data[0]);
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -52,7 +51,6 @@ export default function Profile() {
   const fetchViewerProfile = async () => {
     try {
       const response = await axios.get(BACKEND_URL + "/api/" + userID);
-      console.log("Viewer details fetched:", response.data[0]);
       setViewerProfile(response.data[0]);
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -62,7 +60,6 @@ export default function Profile() {
   // fetch recipes by profile id
   const fetchRecipesByProfileID = async () => {
     try {
-      console.log("backend url = " + BACKEND_URL);
       const response = await axios.get(
         BACKEND_URL + "/api/recipe/all_recipes/" + profile_id
       );
@@ -83,8 +80,6 @@ export default function Profile() {
   React.useEffect(() => {
     if (userID !== profile_id && userDetails && viewerProfile) {
       setFollowed(viewerProfile.followings.includes(profile_id));
-      console.log("Followed:", viewerProfile.followings, profile_id);
-      console.log("Followed:", followed);
     }
   }, [viewerProfile, userDetails]);
 
@@ -94,8 +89,6 @@ export default function Profile() {
       const response = await axios.get(
         BACKEND_URL + "/api/followings/" + userDetails.followings.join(",")
       );
-      console.log("Followings fetched:", response.data);
-
       setFollowingProfiles(response.data);
     } catch (error) {
       console.error("Error fetching recipes:", error);
@@ -143,7 +136,6 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
       const response = await axios.post(
         BACKEND_URL + "/api/followProfile/" + userID + "/" + profile_id
       );
-      console.log("Followed:", response.data);
       setFollowed(true);
     } catch (error) {
       console.error("Error following user:", error);
@@ -157,7 +149,6 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
       const response = await axios.post(
         BACKEND_URL + "/api/unfollowProfile/" + userID + "/" + profile_id
       );
-      console.log("Unfollowed:", response.data);
       setFollowed(false);
     } catch (error) {
       console.error("Error unfollowing user:", error);
@@ -265,15 +256,10 @@ const dummyMaxDescription="Lorem ipsum dolor sit amet, consectetuer adipiscing e
                     <EditableInput
                       value={user.description}
                       onSave={(newDescription) => {
-                        // Update the user's description in your database
-                        // For now, just log the new description
-                        console.log('New description:', newDescription);
-                        //TODO: Change above line to be calling the backend to update the user's description
                       }}
                   />
                   </span>
                   ) : (
-                    //TODO: IF user.description is empty, dont show the UserDescriptionBox
                     <UserDescriptionBox value={user.description} />
                   )}
                 </div>

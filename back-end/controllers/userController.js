@@ -42,8 +42,6 @@ exports.unfollowProfile = (req, res) => {
 };
 exports.updateAvatar = (req, res) => {
   const { downloadURL } = req.body;
-  console.log(req.params.userID);
-  console.log(downloadURL);
   UserModel.findByIdAndUpdate(
     req.params.userID,
     {Image: downloadURL},

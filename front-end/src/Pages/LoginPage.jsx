@@ -38,7 +38,6 @@ const LoginPage = () => {
             if (result.data.Login)
             {
                 // setIsLoggedIn(true);
-                console.log(result.data.UserID)
                 setUserID(result.data.UserID);
                 navigate('/home')
             }

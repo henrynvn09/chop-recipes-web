@@ -9,7 +9,6 @@ const AutoLogout = () => {
     useEffect(() => {
         axios.post('http://localhost:5000/logout', {}, { withCredentials: true })
             .then(result => {
-                console.log(result);
                 setUserID(null);
                 localStorage.removeItem('userID');
             })

@@ -83,38 +83,29 @@ function HomePage(){
 
   const handleLibraryClick = () => {
     Navigate('/library');
-    console.log('Library button clicked');
-
   };
 
   const handleUploadRecipeClick = () => {
     Navigate('/upload-recipe');
-    console.log('Upload recipe button clicked');
-
   };
 
 
   const handleContactClick = () => {
     Navigate('/contacts');
-    console.log('Contact button clicked');
-
   };
 
 
   const handleProfileClick = (userID) => {
     Navigate('/user/' + userID);
-    console.log('Profile button clicked for user:', userID);
   };
 
   // Dummy function for a random recipe
   const handleRandomRecipeClick = () => {
-    console.log("Random recipe button clicked");
     Navigate(`/view-recipe/${randomRecipeID}`);
   };
 
   // Dummy function for sharing with a friend
   const handleShare = () => {
-    console.log('handleShare called');
     if (navigator.share) {
       navigator.share({
           title: 'Check out this awesome recipe website!',
