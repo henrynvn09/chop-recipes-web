@@ -1,8 +1,10 @@
+https://github.com/henrynvn09/chop-recipes-web
+
 # How to get your API
-Add Firebase API to `front-end` directory
+Create Firebase API to `front-end/.env`
 - [How to setup Firebase Storage Buckets API](./how-get-firebase-api.md)
 
-Add MongoDB API to `back-end` directory
+Create MongoDB API to `back-end/config.env`
 - [How to setup MongoDB API](./how-get-mongodb-api.md)
 
 
@@ -13,6 +15,10 @@ Add MongoDB API to `back-end` directory
 2. run `npm install` in `front-end` folder
 5. run `npm start` in the **back-end** folder
 6. Open another terminal and run `npm start` in the **front-end** folder
+
+# Connection issues with MongoDB
+- You can use any wifi but not `UCLA_WEB` because it blocks MongoDB
+
 
 ---
 
