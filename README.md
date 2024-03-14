@@ -20,6 +20,7 @@ Use two terminal:
 
 Tutorials:
 - https://www.youtube.com/watch?v=rzoLTK3T36U "Ep36 - Editable Field in React"
+- https://www.youtube.com/watch?v=Xkvk7axUoKY "For deleting recipe feature"
 Userpage
 - https://www.youtube.com/watch?v=odscV57kToU "How to Crop Images in React (react-image-crop)"
 - https://www.youtube.com/watch?v=Op5LkZiAn2E&t=120s&ab_channel=AshishNallana "MERN File Upload using Firebase 🔥| Upload Files & Images to MongoDB | Firebase Storage"
