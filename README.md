@@ -1,3 +1,4 @@
+
 ## How to get your on API for MongoDB Database and Firebase Storage Buckets
 ### For Firebase Storage Buckets for Front End Folder
 1. Go to https://console.firebase.google.com/
@@ -31,6 +32,11 @@
       - For example in the .env: `REACT_APP_API_KEY=AIzaSyDeXC8ui1BTeL1UdvemE7ntCNscUxl_HTE`
       
 ### For Mongodb Database for Backend Folder
+
+=======
+## How to get your API
+- [How to setup Firebase Storage Buckets API](./how-get-firebase-api.md)
+- [How to setup MongoDB API](./how-get-mongodb-api.md)
 
 
 ## How to run the web properly?
