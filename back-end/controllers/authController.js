@@ -1,6 +1,9 @@
 // controllers/authController.js
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/Users');
+require("dotenv").config({ path: "./config.env" });
+const ACCESS_TOKEN_SECRET = process.env.ACCESS_SECRET;
+const REFRESH_TOKEN_SECRET = process.env.REFRESH_SECRET;
 
 exports.login = (req, res) => {
   const { email, password } = req.body;
@@ -10,12 +13,12 @@ exports.login = (req, res) => {
         UserID = users._id;
         const accessToken = jwt.sign(
           { email: email },
-          "jwt-access-token-secret-key",
+          ACCESS_TOKEN_SECRET,
           { expiresIn: "1m" }
         );
         const refreshToken = jwt.sign(
           { email: email },
-          "jwt-refresh-token-secret-key",
+          REFRESH_TOKEN_SECRET,
           { expiresIn: "24h" }
         );
         res.cookie("accessToken", accessToken, { maxAge: 60000 });
