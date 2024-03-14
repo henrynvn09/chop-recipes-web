@@ -201,8 +201,14 @@ export default function UploadPage() {
             <Navbar />
             <main className="upload-page">
 
-                <h1>Recipe Upload</h1>     
-                <div className="recipe-title-label"><label htmlFor="recipeTitle">Recipe Title</label></div>
+                <h1>
+                    <img src="/recipe-upload.png" alt="upIcon" className="icon-special"/>
+                    Share Your Recipe
+                </h1>     
+                <div className="recipe-title-label">
+                    <img src="/recipe-title.png" alt="titleIcon" className="icon"/>
+                    <label htmlFor="recipeTitle">Recipe Title</label>
+                </div>
                 <input
                     type="text"
                     id="recipeTitle"
@@ -213,6 +219,7 @@ export default function UploadPage() {
                 />
                 <br></br>
                 <div className ="newline">
+                    <img src="/recipe-cover.png" alt="coverIcon" className="icon"/>
                     <label  htmlFor="coverImage">Cover Image:</label>
                 </div>
                 <button className="button-upload" onClick={handleClick}>
@@ -231,7 +238,10 @@ export default function UploadPage() {
                 <IngredientTable ingredients={ingredients} deleteIngredient={handleDeleteIngredient}/>
                 
 
-                <h2>Tags</h2>
+                <h2>
+                    <img src="/recipe-tags.png" alt="tagIcon" className="icon"/>
+                    Tags
+                </h2>
                 <div>
                     <input
                     type="text"
@@ -258,7 +268,10 @@ export default function UploadPage() {
                 )}
                 
 
-                <h2>Steps</h2>
+                <h2>
+                    <img src="/recipe-steps.png" alt="stepIcon" className="icon"/>
+                    Steps
+                </h2>
                 <Step
                     newStep={newStep}
                     handleChange={handleChange}

@@ -14,7 +14,10 @@ export default function Ingredient({ addIngredient }) {
 
   return (
     <div>
-      <h2>Add Ingredient</h2>
+      <h2>
+        <img src="/recipe-ingredient.png" alt="ingredientIcon" className="icon"/>
+        Ingredients
+      </h2>
       <input
         type="text"
         placeholder="Ingredient"
