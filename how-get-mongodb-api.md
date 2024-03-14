@@ -1,4 +1,4 @@
-## Create mongoDb API
+# Create mongoDb API
 1. Sign in to mongodb https://www.mongodb.com/atlas/database
 <img src="./attachments/mongo-1.png" width="400">
 
@@ -30,7 +30,9 @@ mongodb+srv://bulbasaur:hereisPassword@cluster0.dyzicgw.mongodb.net/
 
 12. Click **Done**
 
-## Add API to the app
+---
+
+# Add API to the app
 
 1. In the `back-end` folder, create `config.env` with content below
 
