@@ -43,7 +43,7 @@ ACCESS_SECRET = "jwt-access-token-secret-key"
 REFRESH_SECRET = "jwt-refresh-token-secret-key"
 ```
 
-side note:`jwt-access-token-secret-key` is a string, it's not a token
+Side note:`jwt-access-token-secret-key` is a string, it's not a token and it could be anything as long it is not null
 
 For example:
 ```
