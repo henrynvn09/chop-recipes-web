@@ -37,13 +37,20 @@ const SignUpPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(name,email,password)
-
-    // Check if password is at least 8 characters long, includes a special character, and does not include any whitespace characters
-    if (password.length < 8 || !/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || /\s/.test(password)) {
-        alert("Password must be at least 8 characters long, include a special character, and not contain any whitespace characters.");
-        return;
-    }
-
+    
+        // Check if password is at least 8 characters long, includes a special character, and does not include any whitespace characters
+        if (password.length < 8 || !/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || /\s/.test(password)) {
+            alert("Password must be at least 8 characters long, include a special character, and not contain any whitespace characters.");
+            return;
+        }
+    
+        // Check if email is valid
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+    
         axios.post('http://localhost:5000/signup', {name,email,password})
         .then(result => {
             if (result.data === "user already exists")
