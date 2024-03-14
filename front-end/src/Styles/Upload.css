@@ -2,61 +2,20 @@
   width: 50%;
   margin: 0 auto;
   padding: 20px;
-}
-
-.upload-page h1 {
-  text-align: center;
-  color: #cccc99;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.upload-page h2 {
-  color: #e6e6b4;
-  font-size: 2rem;
-  margin-top: 48px;
-  margin-bottom: 12px;
-}
-.upload-page .recipe-title-label {
-  color: #e6e6b4;
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
-
-.upload-page .step-form {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.upload-page .submit-form {
-  text-align: center;
-}
-#submitButton {
-  width: 20%;
-  color: #fff;
-  margin-top: 20px;
-  background-color: #4caf50;
-}
-#submitButton:hover {
-  background-color: #45a049;
-}
-#submitButton:active {
-  background-color: #0c7812;
-}
-
-.upload-page input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .upload-page button {
-  background-color: #4caf50;
-  color: #fff;
+  background-image: linear-gradient(to right, #c21500 0%, #ffc500  51%, #c21500  100%);
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  display: block;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
@@ -65,7 +24,70 @@
 }
 
 .upload-page button:hover {
-  background-color: #45a049;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.upload-page h1 {
+  text-align: center;
+  color: #FF1A1A;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+.upload-page h2 {
+  color: #FF1A1A;
+  font-size: 2rem;
+  margin-top: 48px;
+  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+.upload-page .recipe-title-label {
+  color: #FF1A1A;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.upload-page .step-form {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.upload-page .submit-form {
+  text-align: center;
+}
+#submitButton {
+  width: 20%;
+  margin-top: 20px;
+  background-image: linear-gradient(to right, #c21500 0%, #ffc500  51%, #c21500  100%);
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  display: block;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#submitButton:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.upload-page input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }
 
 #steps {
@@ -104,8 +126,17 @@
 
 /* specifically for the delete step buttons */
 #steps li div button {
-  background-color: #e53935;
-  color: #fff;
+  background-image: linear-gradient(to right, #e52d27 0%, #b31217  51%, #e52d27  100%);
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
@@ -113,7 +144,9 @@
   font-size: 14px;
 }
 #steps li div button:hover {
-  background-color: #c62828;
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 #tags {
@@ -133,7 +166,8 @@
   display: flex;
   align-items: center;
 }
-.tag-container button {
+
+.upload-page .tag-container .tag-button {
   background-color: #e53935;
   color: #fff;
   border: none;
@@ -143,13 +177,14 @@
   cursor: pointer;
   font-size: 10px;
 }
-.tag-container button:hover {
+
+.upload-page .tag-container .tag-button:hover {
   background-color: #c62828;
 }
 
 .newline {
   display: block; /* Ensures the element is treated as a block-level element, starting on a new line */
-  color: #e6e6b4;
+  color: #FF1A1A;
   font-size: 2rem;
   margin-bottom: 12px;
 }
@@ -239,9 +274,10 @@
   font-weight: bold;
   font-size: 16px;
   color:#ccc;
+  font-family: 'Roboto', sans-serif;
 }
 .file-input {
-  display: none;
+  display: visible;
 }
 .uploaded {
   background-color: #4caf50; /* Green color */
