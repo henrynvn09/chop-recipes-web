@@ -1,18 +1,18 @@
 # How to get your API
+Add Firebase API to `front-end` directory
 - [How to setup Firebase Storage Buckets API](./how-get-firebase-api.md)
+
+Add MongoDB API to `back-end` directory
 - [How to setup MongoDB API](./how-get-mongodb-api.md)
 
 
 # How to run the web?
-Use two terminal:
 
-1. Get API access from the previous sectioin
-2. CD into chop-recipes-web/back-end
-   - run `npm install`
-3. CD into chop-recipes-web/front-end
-   - run `npm install`
+1. Get API access from **Firebase** and **MongoDB** from previous section
+2. run `npm install` in `back-end` folder
+2. run `npm install` in `front-end` folder
 5. run `npm start` in the **back-end** folder
-6. run `npm start` in the **front-end** folder
+6. Open another terminal and run `npm start` in the **front-end** folder
 
 ---
 
