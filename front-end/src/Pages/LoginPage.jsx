@@ -55,7 +55,7 @@ const LoginPage = () => {
 
     return (
         <div className = "login-page">
-            <img className = "macbook" src="/macbook.svg" alt=""/>
+            <img className = "macbook" src="/macbook.png" alt=""/>
             <div className='login-setup'>
                 <div className = "login-form">
                     <div className='center-logo'>
