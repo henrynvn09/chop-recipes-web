@@ -9,6 +9,7 @@ Use two terminal:
 
 Tutorials:
 - https://www.youtube.com/watch?v=rzoLTK3T36U "Ep36 - Editable Field in React"
+https://www.youtube.com/watch?v=odscV57kToU "How to Crop Images in React (react-image-crop)"
 
 Online Components:
 - https://tailwindcomponents.com/component/tailwind-css-404-error-page 
