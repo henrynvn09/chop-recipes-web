@@ -180,7 +180,7 @@ useEffect(() => {
               <h3 className="author-name">{author.name}</h3>
             </Link>
             <p className="author-descrip">
-            {author.description.length > 250 
+            {(author.description != null && author.description.length) > 250 
               ? `${author.description.substring(0, 250)}...` 
               : author.description}
           </p>

@@ -14,18 +14,21 @@ export default function Ingredient({ addIngredient }) {
 
   return (
     <div>
-      <h2>Add Ingredient</h2>
+      <h2>
+        <img src="/recipe-ingredient.png" alt="ingredientIcon" className="icon"/>
+        Ingredients
+      </h2>
       <input
         type="text"
         placeholder="Ingredient"
         value={ingredientName}
-        onChange={(e) => setIngredientName(e.target.value)}
+        onChange={(e) => setIngredientName(e.target.value.toLowerCase())}
       />
       <input
         type="text"
         placeholder="Quantity"
         value={ingredientQuantity}
-        onChange={(e) => setIngredientQuantity(e.target.value)}
+        onChange={(e) => setIngredientQuantity(e.target.value.toLowerCase())}
       />
       <button onClick={handleAddIngredient}>Add</button>
     </div>

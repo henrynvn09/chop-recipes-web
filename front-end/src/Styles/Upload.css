@@ -36,7 +36,18 @@
   margin-bottom: 1rem;
   font-family: 'Oswald', sans-serif;
 }
-
+.upload-page .icon {
+  height: 2rem;
+  display: inline;
+  margin-right: 1rem;
+  margin-bottom: 5px;
+}
+.upload-page .icon-special {
+  height: 2.5rem;
+  display: inline;
+  margin-right: 1rem;
+  margin-bottom: 10px;
+}
 .upload-page h2 {
   color: #FF1A1A;
   font-size: 2rem;

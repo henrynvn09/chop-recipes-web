@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Signup.css'
 import  AutoLogout  from '../Components/AutoLogout'
+
 const SignUpPage = () => {
     AutoLogout();
     const [name, setName] = useState()
@@ -12,6 +13,8 @@ const SignUpPage = () => {
     const [userExists, setUserExists] = useState(false)
     //for resetting the useEffect
     const [popupKey, setPopupKey] = useState(0);
+    const [passwordMessage, setPasswordMessage] = useState(['Password must be at least 8 characters long and contain a special', <br key="br" />, 'character.']);
+    const [passwordEditing, setPasswordEditing] = useState(false); 
 
     const [fadeIn, setFadeIn] = useState(false);
 
@@ -34,6 +37,20 @@ const SignUpPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(name,email,password)
+    
+        // Check if password is at least 8 characters long, includes a special character, and does not include any whitespace characters
+        if (password.length < 8 || !/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || /\s/.test(password)) {
+            alert("Password must be at least 8 characters long, include a special character, and not contain any whitespace characters.");
+            return;
+        }
+    
+        // Check if email is valid
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+    
         axios.post('http://localhost:5000/signup', {name,email,password})
         .then(result => {
             if (result.data === "user already exists")
@@ -67,7 +84,30 @@ const SignUpPage = () => {
                         </div>
                         <div className='email-password'>
                             <label htmlFor="password">Password</label>
-                            <input type="password" placeholder='Enter Password' className="custom-input" onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" placeholder='Enter Password' className="custom-input" 
+                                onChange={(e) => {
+                                    if (e.target.value.includes(' ')) {
+                                        setPasswordMessage(['No whitespace characters allowed in password.']);
+                                    } else if (e.target.value.length >= 8 && /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(e.target.value)) {
+                                        setPassword(e.target.value); 
+                                        setPasswordMessage('');
+                                    } else {
+                                        setPassword(e.target.value); 
+                                        setPasswordMessage(['Password must be at least 8 characters long and contain a special', <br key="br" />, 'character.']);
+                                    }
+                                }} 
+                                onKeyDown={(e) => {
+                                    if (e.key === ' ') {
+                                        e.preventDefault();
+                                    }
+                                }}
+                                onFocus={() => setPasswordEditing(true)}
+                                onBlur={() => setPasswordEditing(false)}
+                            />
+                            {passwordMessage && passwordEditing && 
+                            <p className='text-red-500 text-xs absolute'>
+                            {passwordMessage}
+                            </p>}
                         </div>
                         <div key={popupKey} className={`popup ${userExists ? 'show' : ''}`}>
                             <p>User already exists!</p>
