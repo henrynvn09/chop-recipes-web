@@ -3,7 +3,7 @@
 - [How to setup MongoDB API](./how-get-mongodb-api.md)
 
 
-# How to run the web properly?
+# How to run the web?
 Use two terminal:
 
 1. Get API access from the previous sectioin
