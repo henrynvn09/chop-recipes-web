@@ -204,6 +204,7 @@ export default function UploadPage() {
                     placeholder="Enter Recipe Title"
                     value={recipeTitle}
                     onChange={handleRecipeTitleChange}
+                    required
                 />
                 <br></br>
                 <div className ="newline">
@@ -231,12 +232,12 @@ export default function UploadPage() {
                     type="text"
                     placeholder="Enter Tag"
                     value={tag}
-                    onChange={(e) => setTag(e.target.value)}
+                    onChange={(e) => setTag(e.target.value.toLowerCase())}
                     />
                     <button onClick={handleAddTag}>Add Tag</button>
                 </div>
 
-                {tags.length > 0 && (
+                {(tags != null && tags.length > 0) && (
                     <div>
                     <ul id="tags">
                         {tags.map((tag, index) => (

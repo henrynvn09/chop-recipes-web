@@ -19,13 +19,13 @@ export default function Ingredient({ addIngredient }) {
         type="text"
         placeholder="Ingredient"
         value={ingredientName}
-        onChange={(e) => setIngredientName(e.target.value)}
+        onChange={(e) => setIngredientName(e.target.value.toLowerCase())}
       />
       <input
         type="text"
         placeholder="Quantity"
         value={ingredientQuantity}
-        onChange={(e) => setIngredientQuantity(e.target.value)}
+        onChange={(e) => setIngredientQuantity(e.target.value.toLowerCase())}
       />
       <button onClick={handleAddIngredient}>Add</button>
     </div>
