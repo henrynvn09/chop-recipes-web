@@ -119,6 +119,11 @@ export default function UploadPage() {
     // Recipe Submit to database
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
+        if (recipeTitle.trim() === "") {
+            alert("Please enter a title for the recipe.");
+            return;
+        }
     
         const formData = new FormData();
         formData.append('recipeTitle', recipeTitle);

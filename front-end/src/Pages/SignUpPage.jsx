@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../Styles/Signup.css'
 import  AutoLogout  from '../Components/AutoLogout'
+
 const SignUpPage = () => {
     AutoLogout();
     const [name, setName] = useState()
@@ -34,6 +35,13 @@ const SignUpPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(name,email,password)
+
+        // Check if password is at least 8 characters long and includes a special character
+        if (password.length < 8 || !/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
+            alert("Password must be at least 8 characters long and include a special character.");
+            return;
+        }
+
         axios.post('http://localhost:5000/signup', {name,email,password})
         .then(result => {
             if (result.data === "user already exists")
