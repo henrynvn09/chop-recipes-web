@@ -15,7 +15,6 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 function LibraryRecipes() {
   ProtectedRoute();
-  console.log("backend url = " + BACKEND_URL);
   const [recipes, setRecipes] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
@@ -32,10 +31,7 @@ function LibraryRecipes() {
 
   const fetchRecipes = async () => {
     try {
-      console.log("backend url = " + BACKEND_URL);
       const response = await axios.get(BACKEND_URL + "/api/recipe/all_recipes");
-      console.log("Recipes fetched:", response.data);
-
       setRecipes(response.data);
     } catch (error) {
       console.error("Error fetching recipes:", error);

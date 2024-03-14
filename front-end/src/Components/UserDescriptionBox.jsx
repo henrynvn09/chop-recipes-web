@@ -10,9 +10,6 @@ function UserDescriptionBox({ value = '', ...props }) {
   const [isEditing, setIsEditing] = useState(false);
   const { userID } = useUser();
   const { profile_id } = useParams();
-
-  console.log("userID: in zendaya " + userID);
-  console.log("profile_id: in zendaya" + profile_id);
   
   const adjustHeight = () => {
     if (textareaRef.current) {

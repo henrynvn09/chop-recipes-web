@@ -46,12 +46,10 @@ export default function UploadPage() {
 
             fileRef.put(selectedFile).then((snapshot) => {
                 snapshot.ref.getDownloadURL().then((downloadURL) => {
-                    console.log(downloadURL); // URL of the uploaded file
                     setCoverImage(downloadURL); // Set state with the URL
                 });
             });
         } else {
-            console.log("No file selected");
         }
     };
 
@@ -76,13 +74,11 @@ export default function UploadPage() {
 
             fileRef.put(selectedFile).then((snapshot) => {
                 snapshot.ref.getDownloadURL().then((downloadURL) => {
-                    console.log(downloadURL); // URL of the uploaded file
                     setImage(downloadURL); // Set state with the URL
                     setImageUploaded(true); // Set imageUploaded to true
                 });
             });
         } else {
-            console.log("No file selected");
             setImageUploaded(false); // Set imageUploaded to false
         }
     };
@@ -152,8 +148,6 @@ export default function UploadPage() {
             ingredient_lists: [], // To be filled from formData (ingredients)
             author_id: userID // Assuming userID is available in your scope
         }; 
-         console.log(responseJson);
-
         for (let [key, value] of formData.entries()) {
             if (key === 'recipeTitle') {
                 responseJson.title = value;
@@ -184,14 +178,11 @@ export default function UploadPage() {
         
         axios.post('http://localhost:5000/uploadRecipe', responseJson)
         .then(result => {
-            console.log('Recipe added successfully')
-            console.log(result)
             setRecipeTitle('');
             setCoverImage(null);
             setIngredients([]);
             setTags([]);
             setAllSteps([]);
-            console.log(responseJson);
         })
         .catch(err => console.log(err))
     };

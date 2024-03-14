@@ -17,9 +17,7 @@ function RecipePreviewBox(props) {
       if (Array.isArray(authorData) && authorData.length > 0) {
         const authorName = authorData[0].name;
         setAuthorName(authorName);
-        console.log("the author name is", authorName);
       } else {
-        console.log("Author data is empty or not in the expected format");
         setAuthorName('Unknown Author');
       }
     } catch (error) {

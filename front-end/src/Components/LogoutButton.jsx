@@ -12,7 +12,6 @@ const LogoutButton = () => {
     axios
       .post("http://localhost:5000/logout", {}, { withCredentials: true })
       .then((result) => {
-        console.log(result);
         if (result.data.Logout) {
           setUserID(null);
           localStorage.removeItem("userID");

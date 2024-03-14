@@ -36,7 +36,6 @@ const SignUpPage = () => {
     const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(name,email,password)
     
         // Check if password is at least 8 characters long, includes a special character, and does not include any whitespace characters
         if (password.length < 8 || !/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || /\s/.test(password)) {

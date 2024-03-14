@@ -17,14 +17,11 @@ const ProfilePicture = ({photo, profileID}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
-    // console.log('effect activated');
     setPicture(photo);
   }, [photo]);
   const updateAvatar = (imgSrc) => {
     avatarUrl.current = imgSrc;
-    // console.log("get imgsrc", imgSrc);
     let trimmedimgSrc = imgSrc.substring(22);
-    // console.log("get imgsrc", trimmedimgSrc);
     const uniqueFileName = `${Date.now()}-${trimmedimgSrc.name}`;
     const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(uniqueFileName);

@@ -14,14 +14,10 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
     const inputRef = useRef(null)
     const {userID} = useUser();
     const userIDedit = userID;
-    console.log("userIDedit: " + userIDedit)
     axios.defaults.withCredentials = true;
     const handleSave = (event) => {
       event.stopPropagation();
-      console.log("clicked save")
       onSave(value);
-      console.log("value: " + value)
-      console.log("userID: " + userIDedit)
       axios.post('http://localhost:5000/api/updateDescription' , {description: value, userID: userIDedit})
         .then(result => {
             console.log(result.data);
@@ -32,7 +28,6 @@ function EditableInput({value: initialValue, type = '', onSave, ...props}) {
     }
 
     function turnOnEditMode() {
-      console.log("textarea clicked");
         setIsEditMode(true);
         inputRef.current.focus();
     }
