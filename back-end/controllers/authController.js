@@ -18,7 +18,7 @@ exports.login = (req, res) => {
             const accessToken = jwt.sign(
               { email: email },
               ACCESS_TOKEN_SECRET,
-              { expiresIn: "1m" }
+              { expiresIn: "10m" }
             );
             const refreshToken = jwt.sign(
               { email: email },
